@@ -1,0 +1,101 @@
+.imageScroller{
+    display: block;
+}
+.imageScroller a{
+    align-items: center;
+    background-color: #eee;
+    display: flex;
+    height: 150px;
+}
+.scrollerDescription{
+    align-items: center;
+    background-color: #eee;
+    justify-content: center;
+    color: #fff;
+    display: flex;
+    font-size: 18px;
+    line-height: 20px;
+    min-width: 180px;
+    text-align: right;
+}
+.scrollerDescription img{
+    max-height: 100px;
+    vertical-align: middle;
+}
+.scrollerContainer{
+    flex: 1;
+    height: 100px;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    display: flex;
+    margin: 0;
+}
+/* .scrollAnimation1{
+    animation: image_scroller1  linear 0s infinite normal forwards;
+} */
+/* .scrollAnimation2 .scrollerImage:first-child{
+    margin-left: 3px;
+} */
+/* @keyframes image_scroller1 {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-100%);}
+} */
+/* .scrollAnimation2{
+    animation: image_scroller2  linear 0s infinite normal forwards;
+} */
+/* @keyframes image_scroller2 {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-100%);}
+} */
+.scrollerImage{
+    display: inline-block;
+    margin: 0 8px;
+    position: relative;
+    height: inherit;
+}
+/* .scrollerImage:last-child{
+    margin-right: 0;
+} */
+.scrollerImage img{
+    height: 100px;
+    box-sizing: border-box;
+}
+.scrollerImageOverlay{
+    background-color: rgba(0,0,0,0.5);
+    display: block;
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    /* z-index: 1; */
+    opacity: 0;
+}
+.scrollerImageAuthor{
+    display: flex;
+    align-items: center;
+    color: white;
+    font: 700 13px 'Quicksand',sans-serif;
+    height: 100%;
+    justify-content: center;
+    left: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: normal;
+    width: 100%;
+    z-index: 2;
+    opacity: 0;
+    /* transition: all .1s ease-in-out; */
+}
+.scrollerImageAuthor:hover{
+    opacity: 1;
+}
+.scrollerImageAuthor:hover + .scrollerImageOverlay{
+    opacity: 1;
+}
+
+/* .scrollerImageAuthor:hover{
+    opacity: 1;
+} */

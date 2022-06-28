@@ -1,0 +1,73 @@
+.masonryLayout{
+    display: grid;
+    grid-auto-flow: row  dense ;
+    grid-template-columns: repeat(4, minmax(350px,1fr)) ;
+    /* grid-template-columns: repeat(4, 1fr) ; */
+    /* grid-template-rows: auto ; */
+    grid-auto-rows: 5px;
+    grid-gap: 10px;
+    padding: 10px;
+    filter: drop-shadow(0 5px 2px rgb(185, 185, 185));
+    overflow: hidden;
+    transition: all .2s ease-in-out;
+    animation: resize .2s ease-in-out 0s 1 normal none;
+}
+
+.masonryItem{
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+@media (max-width: 1470px) {
+    .masonryLayout{
+        grid-template-columns: repeat(3, minmax(300px,1fr)) ;
+        transition: all .2s ease-in-out;
+    }
+}
+@media (max-width: 990px) {
+    .masonryLayout{
+        grid-template-columns: repeat(2, minmax(300px,1fr)) ;
+        transition: all .2s ease-in-out;
+    }
+}
+@media (max-width: 645px) {
+    .masonryLayout{
+        grid-template-columns: repeat(1, minmax(350px,1fr)) ;
+        transition: all .2s ease-in-out;
+    }
+}
+
+/* body{
+    counter-reset: masonryLayout
+} */
+/* .masonryItem::after{
+    
+    content: counter(masonryLayout);
+    counter-increment: masonryLayout;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    filter: drop-shadow(0 0 .1em black);
+    font-size: 50px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+
+.imageLayout{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.layoutPost.masonryItem{
+    /* max-width: 500px; */
+    height: 245px;
+}
+.layoutGallery.masonryItem{
+    /* max-width: 500px; */
+    height: 500px;
+}

@@ -4,7 +4,7 @@ import styles from './PageContainer.module.css'
 
 export const PageContainer = () => {
     
-    var [allItems,setAllItems]= useState({})
+    var [allItems,setAllItems]= useState([])
     console.log(allItems)
     function resizeGridItem(item){
         const grid = document.getElementsByClassName(`${styles.masonryLayout}`)[0];
@@ -27,7 +27,7 @@ export const PageContainer = () => {
     }
     
     useEffect(()=>{
-        window.onload = resizeAllGridItems();
+        document.onload = resizeAllGridItems();
         window.addEventListener("resize", resizeAllGridItems);
     },[resizeAllGridItems])
   return (

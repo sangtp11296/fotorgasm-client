@@ -148,7 +148,6 @@
 }
 .postSocial{
     display: inline-block;
-    padding-right: 12px;
 }
 .likeBtn{
     background-color: white;
@@ -158,4 +157,5 @@
 .postSocial span{
     color: gray;
     font: 200 11px 'Noto Sans SC', sans-serif;
+    padding-right: 12px;
 }

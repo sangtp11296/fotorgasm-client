@@ -3,15 +3,15 @@ import Gallery from '../Posts/Gallery';
 import Standard from '../Posts/Standard';
 import styles from './PageContainer.module.css'
 
-
 export default class PageContainer extends React.Component{
-  constructor(props){
-    super(props);
+  constructor(){
+    super();
     this.state = {
-      allItems: null}
+      allItems: []}
   }
   handleCallback = (data)=>{
     this.setState({allItems:data})
+    console.log(this.state.allItems)
   }
   // resizeGridItem(){
   //   const grid = document.getElementsByClassName(`${styles.masonryLayout}`)[0];
@@ -22,13 +22,15 @@ export default class PageContainer extends React.Component{
   //   item.style.gridRowEnd = "span "+rowSpan;
   // }
   render(){
-    <div className={styles.sectionContainer} id='page_section'>
-        <div className={styles.masonryLayout}>
-            <Standard postClassname={this.handleCallback} imgUrl={'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80'}/>
-            <Standard imgUrl={'https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'}/>
-            <Gallery></Gallery>
-        </div>
-    </div>
+    return(
+      <div className={styles.sectionContainer} id='page_section'>
+          <div className={styles.masonryLayout}>
+              <Standard postClassname={this.handleCallback} imgUrl={'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2321&q=80'}/>
+              <Standard imgUrl={'https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80'}/>
+              <Gallery></Gallery>
+          </div>
+      </div>
+    )
   }
 }
 // export default  PageContainer = (props) => {

@@ -21,6 +21,7 @@ export default class Standard extends React.Component{
     }
     getPostClassname = (e)=>{
         this.props.postsClassname(this.state.allPosts)
+        e.preventDefault()
     }
     render(){
         return (

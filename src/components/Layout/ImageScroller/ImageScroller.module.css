@@ -99,3 +99,26 @@
 /* .scrollerImageAuthor:hover{
     opacity: 1;
 } */
+@media (max-width: 990px) {
+    .imageScroller{
+        height: 100px;
+    }
+    .imageScroller a{
+        height: inherit;
+    }
+    .scrollerDescription{
+        min-width: 150px;
+    }
+    .scrollerDescription img{
+        max-height: 80px;
+    }
+    .scrollerContainer{
+        flex: 1;
+        height: 80px;
+        overflow: hidden;
+        white-space: nowrap;
+        box-sizing: border-box;
+        display: flex;
+        margin: 0;
+    }
+}

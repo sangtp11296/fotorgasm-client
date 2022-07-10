@@ -100,3 +100,65 @@
     padding: 13px;
     color: #fff;
 }
+
+@media (max-width: 390px) {
+    .coverContainer{
+        padding: 0;
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        border: none;
+        margin-right: auto;
+        margin-left: auto;
+        z-index: 0;
+    }
+    .articleSpotlight{
+        background-image: url("https://photos-optimized.lensculture.com/original/bb1be885-ed33-4160-ae7f-0f3431cce4c0.jpg");
+        height: 100vh !important;
+        max-height: auto;
+        min-height: auto;
+        background-repeat: repeat;
+        background-attachment: fixed;
+        background-position: top;
+        background-size: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+    }
+    .articleCoverTitle{
+        margin: 10px;
+        color: #fff;
+        width: 100%;
+        text-align: center;
+    }
+    .titleWrapper{
+        max-width: 100%;
+        min-width: 0px;
+        display: inline-block;
+        position: relative;
+    }
+    .category{
+        color: darkgray;
+        filter: drop-shadow(0 0 0.5rem white);
+        font: 600 20px 'Noto Sans SC', sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 8px;
+    }
+    .title{
+        font: 500 20px 'Josefin Sans', sans-serif;
+        line-height: 25px;
+        margin: 5px 0 5px;
+    }
+    .summary , .authorText em p{
+        display: none;
+    }
+    .readmoreLink{
+        display: none;
+    }
+    .continueReading{
+        display: none;
+    }
+}

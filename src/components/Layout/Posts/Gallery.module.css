@@ -1,0 +1,102 @@
+.masonryItem{
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    height: 500px;
+    box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 8%) ;
+    transition: all .5s ease;
+    margin:0;
+    /* padding:4px; */
+}
+.masonryItem.layoutPost:hover{
+    box-shadow: 8px 8px 10px 0 rgb(0 0 0 / 20%) ;
+    transform: scale(1.01);
+    transition: all .5s ease
+}
+.triangleHolder{
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 52px solid transparent;
+    border-right: 52px solid white;
+    text-align: center;
+    z-index: 2;
+}
+.featuredTrangleHolder svg{
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+    color: #fff;
+    font-size: 14px;
+    height: 20px;
+    width: 20px;
+}
+.featuredTrangleHolder svg path{
+    stroke: black;
+    fill: black;
+}
+.carouselWrapper{
+    width: 100%;
+    height: 100%;
+}
+.slideCarousel{
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.outerWrapper{
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.imageWrapper{
+    left: 0px;
+    display: block;
+    height: 100%;
+    transition: all .8s ease-in-out;
+    /* transform: translate3d(0px,0px,0px); */
+}
+.imageItem{
+    float: left;
+    height: 100%;
+}
+.imageBackground{
+    opacity: 1;
+    height: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.imagePagination{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+.pagination{
+    position: relative;
+    margin: 0 auto;
+    height: 100%;
+    line-height: 8px;
+}
+.currentImage{
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    vertical-align: middle;
+    border-radius: 50%;
+    margin: 0 10px;
+    background-color: whitesmoke;
+    transition: all .3 ease;
+    cursor: pointer;
+}
+.currentImage.active{
+    transform: scale(2);
+}

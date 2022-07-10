@@ -5,13 +5,14 @@
     /* grid-template-columns: repeat(4, 1fr) ; */
     /* grid-template-rows: auto ; */
     /* grid-auto-rows: 5px; */
-    grid-auto-rows: 250px;
+    grid-auto-rows: 500px;
     grid-gap: 10px;
     padding: 10px;
     filter: drop-shadow(0 5px 2px rgb(185, 185, 185));
     overflow: hidden;
     transition: all .2s ease-in-out;
     animation: resize .2s ease-in-out 0s 1 normal none;
+    min-width: 390px;
 }
 
 .masonryItem{
@@ -25,13 +26,13 @@
         transition: all .2s ease-in-out;
     }
 }
-@media (max-width: 990px) {
+@media (max-width: 1065px) {
     .masonryLayout{
         grid-template-columns: repeat(2, minmax(300px,1fr)) ;
         transition: all .2s ease-in-out;
     }
 }
-@media (max-width: 645px) {
+@media (max-width: 720px) {
     .masonryLayout{
         grid-template-columns: repeat(1, minmax(350px,1fr)) ;
         transition: all .2s ease-in-out;

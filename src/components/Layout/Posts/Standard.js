@@ -6,22 +6,18 @@ import styles from './Standard.module.css'
 export default class Standard extends React.Component{
     constructor(props){
         super(props);
-        this.state={
+        this.state = {
             isLiked: false,
             imgUrl: this.props.imgUrl,
-            allPosts: []
+            postClassname: document.getElementsByClassName(`${styles.masonryItem}`)
         }
+        this.sendPostClassname=this.sendPostClassname.bind(this)
     }
     componentDidMount(){
-        this.setState({allPosts : document.getElementsByClassName(`${styles.masonryItem}`)});
+        this.sendPostClassname()
     }
-    componentWillUnmount(){
-        console.log(this.state)
-        
-    }
-    getPostClassname = (e)=>{
-        this.props.postsClassname(this.state.allPosts)
-        e.preventDefault()
+    sendPostClassname(){
+        this.props.postClassname(this.state.postClassname)
     }
     render(){
         return (

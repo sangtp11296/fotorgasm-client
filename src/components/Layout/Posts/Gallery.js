@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom'
 import styles from './Gallery.module.css'
 import styled from 'styled-components'
 
-const ImageWrapper = styled.div`
-  ${props => console.log(props.imgPos)}
-  transform: translate3d(${props => -props.imgPos}px, 0px, 0px );
-`
+const ImageWrapper = styled.div.attrs(
+  ({imgPos}) => ({
+    style: {
+      transform: 'translate3d(' + -imgPos + 'px, 0px, 0px'
+    }
+  })
+)``
+// `
+//   transform: translate3d(${props => -props.imgPos}px, 0px, 0px );
+// `
 const Gallery = (props) => {
   const targetRef = useRef()
   const [click,isClicked] = useState(0)
@@ -15,17 +21,18 @@ const Gallery = (props) => {
   function getBoxWidth(){
     const boxWidth = document.getElementsByClassName(`${styles.masonryItem}`)
     setBoxWidth(boxWidth[0].clientWidth)
-    // setImgPos(click*boxWidth)
   }
   useLayoutEffect(() => {
     props.postClassname(targetRef.current)
     if (targetRef.current){
       setBoxWidth(targetRef.current.clientWidth)
       window.addEventListener('resize',getBoxWidth)
-      // return () => window.removeEventListener('resize',getBoxWidth)
+      return () => window.removeEventListener('resize',getBoxWidth)
     }
   }, [])
-  
+  useEffect(()=>{
+    setImgPos(boxWidth*click)
+  },[click,boxWidth])
   return (
     <div className={`${styles.masonryItem} ${styles.layoutPost}`} ref={targetRef}>
       <div className={styles.featuredTrangleHolder}>
@@ -55,13 +62,13 @@ const Gallery = (props) => {
           </div>
           <div className={styles.imagePagination}>
             <div className={styles.pagination}>
-              <div className={`${styles.currentImage} ${click==0?styles.active:''}`} onClick={()=>{isClicked(0);console.log(click,'click');setImgPos(boxWidth*click)}}>
+              <div className={`${styles.currentImage} ${click==0?styles.active:''}`} onClick={()=>{isClicked(0)}}>
                 <span></span>
               </div>
-              <div className={`${styles.currentImage} ${click==1?styles.active:''}`} onClick={()=>{isClicked(1);console.log(click,'click');setImgPos(boxWidth*click)}}>
+              <div className={`${styles.currentImage} ${click==1?styles.active:''}`} onClick={()=>{isClicked(1)}}>
                 <span></span>
               </div>
-              <div className={`${styles.currentImage} ${click==2?styles.active:''}`} onClick={()=>{isClicked(2);console.log(click,'click');setImgPos(boxWidth*click)}}>
+              <div className={`${styles.currentImage} ${click==2?styles.active:''}`} onClick={()=>{isClicked(2)}}>
                 <span></span>
               </div>
             </div>

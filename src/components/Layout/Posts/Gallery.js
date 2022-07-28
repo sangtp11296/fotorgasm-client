@@ -3,29 +3,26 @@ import { Link } from 'react-router-dom'
 import styles from './Gallery.module.css'
 import styled from 'styled-components'
 
-
+const ImageWrapper = styled.div`
+  ${props => console.log(props.imgPos)}
+  transform: translate3d(${props => -props.imgPos}px, 0px, 0px );
+`
 const Gallery = (props) => {
   const targetRef = useRef()
-  const  [click,isClicked] = useState(1)
+  const [click,isClicked] = useState(0)
   const [boxWidth,setBoxWidth] = useState('')
-  const [postClassname, setPostClassname] = useState(document.getElementsByClassName(`${styles.masonryItem}`));
-  useEffect(
-    sendPostClassname
-  , []);
-
-  function sendPostClassname(){
-    props.postClassname(postClassname)
-  }
-
+  const [imgPos,setImgPos] = useState(0)
   function getBoxWidth(){
     const boxWidth = document.getElementsByClassName(`${styles.masonryItem}`)
     setBoxWidth(boxWidth[0].clientWidth)
+    // setImgPos(click*boxWidth)
   }
   useLayoutEffect(() => {
+    props.postClassname(targetRef.current)
     if (targetRef.current){
       setBoxWidth(targetRef.current.clientWidth)
       window.addEventListener('resize',getBoxWidth)
-      return () => window.removeEventListener('resize',getBoxWidth)
+      // return () => window.removeEventListener('resize',getBoxWidth)
     }
   }, [])
   
@@ -38,7 +35,7 @@ const Gallery = (props) => {
       <div className={styles.carouselWrapper}>
         <div className={styles.slideCarousel}>
           <div className={styles.outerWrapper}>
-            <div className={styles.imageWrapper} style={{width:`${boxWidth*3}px`}}>
+            <ImageWrapper className={styles.imageWrapper} style={{width:`${boxWidth*3}px`}} imgPos={imgPos} >
               <div className={styles.imageItem} style={{width:`${boxWidth}px`}}>
                 <div className={styles.imageBackground} style={{backgroundImage:`url('https://images.unsplash.com/photo-1568849676085-51415703900f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80')`}}>
                   <Link to='post/:id'></Link>
@@ -54,17 +51,17 @@ const Gallery = (props) => {
                   <Link to='post/:id'></Link>
                 </div>
               </div>
-            </div>
+            </ImageWrapper>
           </div>
           <div className={styles.imagePagination}>
             <div className={styles.pagination}>
-              <div className={`${styles.currentImage} ${click==1?styles.active:''}`} onClick={()=>isClicked(1)}>
+              <div className={`${styles.currentImage} ${click==0?styles.active:''}`} onClick={()=>{isClicked(0);console.log(click,'click');setImgPos(boxWidth*click)}}>
                 <span></span>
               </div>
-              <div className={`${styles.currentImage} ${click==2?styles.active:''}`} onClick={()=>isClicked(2)}>
+              <div className={`${styles.currentImage} ${click==1?styles.active:''}`} onClick={()=>{isClicked(1);console.log(click,'click');setImgPos(boxWidth*click)}}>
                 <span></span>
               </div>
-              <div className={`${styles.currentImage} ${click==3?styles.active:''}`} onClick={()=>isClicked(3)}>
+              <div className={`${styles.currentImage} ${click==2?styles.active:''}`} onClick={()=>{isClicked(2);console.log(click,'click');setImgPos(boxWidth*click)}}>
                 <span></span>
               </div>
             </div>

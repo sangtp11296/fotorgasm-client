@@ -76,7 +76,7 @@
 }
 .imagePagination{
     position: absolute;
-    bottom: 20px;
+    bottom: 10px;
     width: 100%;
     text-align: center;
 }
@@ -85,10 +85,11 @@
     margin: 0 auto;
     height: 100%;
     line-height: 8px;
+    padding: 10px
 }
 .currentImage{
-    width: 4px;
-    height: 4px;
+    width: 10px;
+    height: 10px;
     display: inline-block;
     vertical-align: middle;
     border-radius: 50%;
@@ -96,7 +97,28 @@
     background-color: whitesmoke;
     transition: all .3 ease;
     cursor: pointer;
+    opacity: .5;
 }
 .currentImage.active{
-    transform: scale(2);
+    transform: scale(1.5);
+    opacity: 1;
 }
+/* body{
+    counter-reset: masonryLayout
+}
+.masonryItem::after{
+    
+    content: counter(masonryLayout);
+    counter-increment: masonryLayout;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: white;
+    filter: drop-shadow(0 0 .1em black);
+    font-size: 50px;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */

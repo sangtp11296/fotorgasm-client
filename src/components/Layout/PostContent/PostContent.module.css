@@ -1,0 +1,17 @@
+.postCat{
+    margin-bottom: 10px;
+    color: darkgray;
+    text-transform: uppercase;
+    font: 600 10px 'Noto Sans SC', sans-serif;
+    letter-spacing: 3px;
+}
+.postCat a{
+    text-decoration: none;
+    color: inherit;
+}
+.postTitle{
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font: 400 15px 'Josefin Sans', sans-serif;
+    line-height: 120%;
+}

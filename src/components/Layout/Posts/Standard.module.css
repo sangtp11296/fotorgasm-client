@@ -33,6 +33,10 @@
     /* max-width: 500px; */
     height: 245px;
 }
+.masonryItem.active{
+    grid-column: auto / span 2;
+    height: 1000px !important;
+}
 .imageContainer{
     left: 50%;
     height: 100%;
@@ -44,6 +48,12 @@
     /* transform: translateX(-50%); */
     transition: background-size 3s cubic-bezier(.18,.89,.32,1.48);
     background-repeat: no-repeat;
+    cursor: pointer;
+}
+.imageContainer.active{
+    left: 0% !important;
+    width: 100% !important;
+    height: 1000px !important;
 }
 .imageContainer a{
     content: '';
@@ -63,7 +73,9 @@
     transition: left .25s ease-in-out;
     box-sizing: border-box;
     padding: 16px;
-
+}
+.descriptionContainer.active{
+    display: none;
 }
 .descriptionContainer::after{
     content: '';
@@ -109,6 +121,10 @@
     text-transform: uppercase;
     font: 400 15px 'Josefin Sans', sans-serif;
     line-height: 120%;
+}
+.postTitle:hover{
+    text-shadow: 2px 2px 15px gray;
+
 }
 .postTitle a{
     text-decoration: none;

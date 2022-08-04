@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
+import PostContent from '../PostContent/PostContent';
 import styles from './Standard.module.css'
 
 
@@ -8,7 +9,8 @@ export default class Standard extends React.Component{
         super(props);
         this.state = {
             isLiked: false,
-            imgUrl: this.props.imgUrl
+            imgUrl: this.props.imgUrl,
+            open: false
         }
         this.targetRef = React.createRef()
     }
@@ -17,17 +19,18 @@ export default class Standard extends React.Component{
     }
     render(){
         return (
-            <div className={`${styles.masonryItem} ${styles.layoutPost}`} ref={this.targetRef}>
-                <div className={styles.imageContainer} style={{backgroundImage:`url(${this.state.imgUrl})`}}>
-                    <Link to='/post:id'></Link>
+            <div className={`${styles.masonryItem} ${styles.layoutPost} ${this.state.open? styles.active:''}`} ref={this.targetRef} onClick={()=>{this.setState({open:!this.state.open}),setTimeout(this.props.resizeHandle(true),1000)}}>
+                <div className={`${styles.imageContainer} ${this.state.open? styles.active:''}`} style={{backgroundImage:`url(${this.state.imgUrl})`}}>
+                    {/* <Link to='/post:id'></Link> */}
                 </div>
-                <div className={styles.descriptionContainer}>
+                <div className={`${styles.descriptionContainer} ${this.state.open? styles.active:''}`}>
                     <div className={styles.postSum}>
                         <div className={styles.postCat}>
                             <Link to='/cat'>Photography</Link>
                         </div>
                         <div className={styles.postTitle}>
-                            <Link to='/post:id'>The easiest way to break out on top</Link></div>
+                            <Link to='/post:id'>The easiest way to break out on top</Link>
+                        </div>
                         <div className={styles.postDes}>The easiest way to break out on top This section contains many common flower varieties that can often be found</div>
                     </div>
                     <Link to='/post:id' className={styles.readMore}>
@@ -45,9 +48,9 @@ export default class Standard extends React.Component{
                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24"><path d="M12 3c5.514 0 10 3.685 10 8.213 0 5.04-5.146 8.159-9.913 8.159-2.027 0-3.548-.439-4.548-.712l-4.004 1.196 1.252-2.9c-.952-1-2.787-2.588-2.787-5.743 0-4.528 4.486-8.213 10-8.213zm0-2c-6.628 0-12 4.573-12 10.213 0 2.39.932 4.591 2.427 6.164l-2.427 5.623 7.563-2.26c1.585.434 3.101.632 4.523.632 7.098.001 11.914-4.931 11.914-10.159 0-5.64-5.372-10.213-12-10.213z"/></svg>
                             <span>100</span>
                             </button>
-                            
                         </div>
                     </div>
+                    {this.state.open? <PostContent/>:''}
                 </div>
             </div>
       )

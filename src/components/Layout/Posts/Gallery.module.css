@@ -7,12 +7,16 @@
     box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 8%) ;
     transition: all .5s ease;
     margin:0;
+    cursor: pointer;
     /* padding:4px; */
 }
 .masonryItem.layoutPost:hover{
     box-shadow: 8px 8px 10px 0 rgb(0 0 0 / 20%) ;
     transform: scale(1.01);
     transition: all .5s ease
+}
+.masonryItem.active{
+    grid-column: 1 / span 2;
 }
 .triangleHolder{
     position: absolute;

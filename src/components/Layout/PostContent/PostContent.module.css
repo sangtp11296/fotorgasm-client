@@ -1,5 +1,27 @@
+.fullTextContainer{
+    opacity: 1;
+    transition: height .5s ease-out 0s;
+    /* height: 2080px; */
+    width: 100%;
+    overflow: hidden;
+    background: white;
+    /* box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 20%) ; */
+    padding-bottom: 0;
+    margin-bottom: 0;
+    box-shadow: none;
+}
+.postArticle{
+    display: block;
+    box-shadow: none;
+    background-color: white;
+    margin-bottom: 25px;
+    position: relative;
+}
+.postContent{
+    padding: 34px 42px 12px;
+}
 .postCat{
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     color: darkgray;
     text-transform: uppercase;
     font: 600 10px 'Noto Sans SC', sans-serif;
@@ -14,4 +36,56 @@
     text-transform: uppercase;
     font: 400 15px 'Josefin Sans', sans-serif;
     line-height: 120%;
+}
+.postTitle a{
+    text-decoration: none;
+    color: black;
+}
+.postText{
+    /* color: darkgray; */
+    font: 300 14px'Montserrat', sans-serif;
+    word-spacing: 2px;
+    text-align: left;
+}
+.postInfoContainer{
+    position: relative;
+    display: table;
+    table-layout: fixed;
+    height: 100%;
+    width: 100%;
+}
+.postInfo{
+    text-align: left;
+    padding: 34px 0 0;
+    position: relative;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    text-align: center;
+    font: 200 12px 'Noto Sans SC', sans-serif;
+}
+.postDate{
+    display: inline-block;
+    padding-right: 12px;
+    text-transform: uppercase;
+    
+    color: gray;
+    word-spacing: 2px;
+}
+.postSocial{
+    display: inline-block;
+}
+.postSocial button{
+    padding-right: 12px;
+    background-color: white;
+    color: darkgray;
+    font-size: 13px;
+    
+}
+.postSocial svg{
+    opacity: .35;
+    height: 11px;
+    width: 11px;
+    margin-right: 5px;
 }

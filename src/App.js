@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Write from './Pages/EditorPage/Write';
 import Home from "./Pages/Home/Home";
 
 class App extends React.Component{
@@ -10,6 +11,7 @@ class App extends React.Component{
               <Route path='/' element={<Home/>}>
                 <Route path='/post' element={<Home/>}/>
               </Route>
+              <Route path='/write' element={<Write/>}/>
             </Routes>
           </Router>
     );

@@ -40,7 +40,7 @@ export default class Header extends React.Component{
                 <div className={styles.topNav}>
                     <div className={styles.logo}>
                         <Link to='/' className={styles.mainLogo}>
-                            <img alt='s-room' style={{height:40}} src='/images/brand/S-Room-Logo.png'></img>
+                            <img alt='s-room' style={{height:50}} src='/images/brand/fotorgasm-brand-name-white.png'></img>
                         </Link>
                     </div>
                     <HamButton handleToggle={this.openMenu} stateOpen={this.state.isOpen}></HamButton>

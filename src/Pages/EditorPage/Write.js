@@ -85,6 +85,17 @@ function Write() {
         <div className={styles.textSide}>
             <form className={styles.textForm} >
                 <div className={styles.textField}>
+                    <label>Post Type<span className={styles.textDanger}>*</span></label>
+                    <select name='post_type' placeholder='Select Post Type...' className={styles.textInput}  onChange={e=>{setSection(e.target.value)}}>
+                        <option value='none' defaultValue className={styles.items}>Select Post Type...</option>
+                        <option value='standard' className={styles.items}>standard</option>
+                        <option value='gallary' className={styles.items}>gallary</option>
+                        <option value='quote' className={styles.items}>quote</option>
+                        <option value='video' className={styles.items}>video</option>
+                        <option value='audio' className={styles.items}>audio</option>
+                    </select>
+                </div>
+                <div className={styles.textField}>
                     <label>Title of the Post<span className={styles.textDanger}>*</span></label>
                     <input name='title' type='text' required maxLength='500' className={styles.textInput} autoFocus={true} placeholder='Title' onChange={e=>{setTitle(e.target.value)}}/>
                 </div>

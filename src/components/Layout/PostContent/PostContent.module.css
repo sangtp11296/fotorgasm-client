@@ -1,7 +1,7 @@
 .fullTextContainer{
     opacity: 1;
     transition: height .5s ease-out 0s;
-    /* height: 2080px; */
+    height: 100%;
     width: 100%;
     overflow: hidden;
     background: white;

@@ -23,6 +23,9 @@
   border-width: 0;
   box-sizing: border-box;
   }
+  body{
+    background-color: var(--background-color);
+  }
   a{
     text-decoration: none;
   }
@@ -49,7 +52,14 @@
   }
   :root{
     --main-brand-color-theme: #2585fd;
-    --background-color: rgba(213, 236, 255, 0.479);
+    --background-color: #121212;
+    --surface: #1e1e1e;
+    --primary: #64b5f6;
+    --secondary: #ff7043;
+    --on-background: #f5f5f5;
+    --on-surface: #bcbcbc;
+    --on-primary: #000000;
+
     --blue: #007bff;
     --indigo: #6610f2;
     --purple: #6f42c1;
@@ -63,8 +73,6 @@
     --white: #fff;
     --gray: #6c757d;
     --gray-dark: #343a40;
-    --primary: #007bff;
-    --secondary: #6c757d;
     --success: #28a745;
     --info: #17a2b8;
     --warning: #ffc107;

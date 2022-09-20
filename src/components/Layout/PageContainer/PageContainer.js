@@ -25,9 +25,13 @@ export default function PageContainer (props) {
     allItems = [...new Set(allItems)]
     setTimeout(()=>resizeAllGridItems(),0)
   },[allItems])
-  useEffect(() => {
-    setTimeout(()=>resizeAllGridItems(),800)
-  }, [allItems])
+
+  useEffect(()=>{
+    addEventListener('resize',resizeAllGridItems);
+    return () =>{
+      removeEventListener('resize', resizeAllGridItems)
+    }
+  },[resizeAllGridItems])
   
   return(
           <div className={styles.sectionContainer} id='page_section'>

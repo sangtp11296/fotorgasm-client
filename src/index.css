@@ -51,13 +51,21 @@
     background-color: rgb(150, 150, 150);
   }
   :root{
-    --main-brand-color-theme: #2585fd;
     --background-color: #121212;
-    --surface: #1e1e1e;
-    --primary: #64b5f6;
-    --secondary: #ff7043;
+    --surface-01: #1e1e1e;
+    --surface-02: #232323;
+    --surface-03: #252525;
+    --surface-04: #272727;
+    --surface-06: #2c2c2c;
+    --surface-08: #2f2f2f;
+    --surface-12: #333333;
+    --surface-16: #353535;
+    --surface-24: #383838;
+    --brand: #008dfc;
+    --primary: #4caeff;
+    --secondary: #ffab4f;
     --on-background: #f5f5f5;
-    --on-surface: #bcbcbc;
+    --on-surface: #f5f5f5;
     --on-primary: #000000;
 
     --blue: #007bff;

@@ -25,7 +25,6 @@ const Gallery = (props) => {
 
   // Get prop.postClassname
   useLayoutEffect(() => {
-    console.log(targetRef.current);
     props.postClassname(targetRef.current)
     if (targetRef.current){
       setBoxWidth(targetRef.current.clientWidth)

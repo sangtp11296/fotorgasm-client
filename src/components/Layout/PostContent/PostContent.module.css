@@ -4,7 +4,7 @@
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: white;
+    background: inherit;
     /* box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 20%) ; */
     padding-bottom: 0;
     margin-bottom: 0;
@@ -13,7 +13,7 @@
 .postArticle{
     display: block;
     box-shadow: none;
-    background-color: white;
+    background-color: inherit;
     margin-bottom: 25px;
     position: relative;
 }
@@ -21,10 +21,10 @@
     padding: 34px 42px 12px;
 }
 .postCat{
-    margin-bottom: 5px;
-    color: darkgray;
+    margin-bottom: 10px;
+    color: var(--primary);
     text-transform: uppercase;
-    font: 600 10px 'Noto Sans SC', sans-serif;
+    font: 600 15px 'Noto Sans SC', sans-serif;
     letter-spacing: 3px;
 }
 .postCat a{
@@ -34,18 +34,20 @@
 .postTitle{
     margin-bottom: 10px;
     text-transform: uppercase;
-    font: 400 15px 'Josefin Sans', sans-serif;
+    font: 400 25px 'Josefin Sans', sans-serif;
     line-height: 120%;
 }
 .postTitle a{
     text-decoration: none;
-    color: black;
+    color: var(--on-surface);
 }
 .postText{
     /* color: darkgray; */
     font: 300 14px'Montserrat', sans-serif;
     word-spacing: 2px;
     text-align: left;
+    color: var(--on-surface);
+    opacity: .8;
 }
 .postInfoContainer{
     position: relative;
@@ -53,8 +55,9 @@
     table-layout: fixed;
     height: 100%;
     width: 100%;
+    
 }
-.postInfo{
+.postInfo:first-child{
     text-align: left;
     padding: 34px 0 0;
     position: relative;
@@ -62,30 +65,75 @@
     height: 100%;
     width: 100%;
     vertical-align: middle;
-    text-align: center;
     font: 200 12px 'Noto Sans SC', sans-serif;
+    opacity: .6;
+}
+.postInfo:last-child{
+    text-align: right;
+    padding: 34px 0 0;
+    position: relative;
+    display: table-cell;
+    height: 100%;
+    width: 100%;
+    vertical-align: middle;
+    font: 200 12px 'Noto Sans SC', sans-serif;
+    opacity: .6;
 }
 .postDate{
     display: inline-block;
     padding-right: 12px;
     text-transform: uppercase;
     
-    color: gray;
+    color: var(--on-surface);
     word-spacing: 2px;
 }
 .postSocial{
     display: inline-block;
 }
 .postSocial button{
+    display: inline-flex;
+    vertical-align: middle;
     padding-right: 12px;
-    background-color: white;
-    color: darkgray;
+    background-color: inherit;
+    color: var(--on-surface);
     font-size: 13px;
-    
+    padding-bottom: 2px;
+}
+.postInfo:last-child button{
+    display: inline-block;
+    padding-bottom: 3px;
+    padding-right: 0px;
+    padding-left: 5px;
 }
 .postSocial svg{
-    opacity: .35;
-    height: 11px;
-    width: 11px;
+    stroke: var(--on-surface);
+    height: 14px;
+    width: 14px;
     margin-right: 5px;
+}
+.fbBtn svg {
+    stroke: var(--on-surface);
+    fill: var(--on-surface);
+}
+.insBtn svg {
+    stroke: var(--on-surface);
+    fill: var(--on-surface);
+    margin-right: 0;
+}
+.tagHolder{
+    position: relative;
+    text-align: left;
+    padding: 0px 44px;
+}
+.tagHolder span{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--on-surface);
+    box-sizing: border-box;
+    font: 500 14px 'Baloo 2', cursive;
+    color: var(--on-surface);
+    opacity: .6;
 }

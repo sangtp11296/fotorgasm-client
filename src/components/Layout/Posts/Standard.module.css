@@ -37,16 +37,15 @@
     background: center center;
     background-size: cover;
     transform: translateX(-50%);
-    transition: background-size 3s cubic-bezier(.18,.89,.32,1.48);
     background-repeat: no-repeat;
     cursor: pointer;
-    transition: left .3s cubic-bezier(.18,.89,.32,1.48);
+    transition: all .3s cubic-bezier(.18,.89,.32,1.48);
 }
 .imageContainer.active{
     left: 50% !important;
     width: 100% !important;
     height: 500px !important;
-    transition: left 0.4s ease-out 0s;
+    transition: left .4s ease-out 0s;
 }
 .imageContainer a{
     content: '';
@@ -63,7 +62,7 @@
     background-color: var(--surface-02);
     top: 0;
     left: 0;
-    transition: left .25s ease-in-out;
+    transition: left .25s ease-in-out .2s;
     box-sizing: border-box;
     padding: 16px;
 }

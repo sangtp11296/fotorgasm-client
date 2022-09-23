@@ -43,7 +43,7 @@
 }
 .postText{
     /* color: darkgray; */
-    font: 300 14px'Montserrat', sans-serif;
+    font: 300 14px 'Montserrat', sans-serif;
     word-spacing: 2px;
     text-align: left;
     color: var(--on-surface);
@@ -107,6 +107,7 @@
 }
 .postSocial svg{
     stroke: var(--on-surface);
+    stroke-width: 2px;
     height: 14px;
     width: 14px;
     margin-right: 5px;
@@ -116,6 +117,10 @@
     fill: var(--on-surface);
 }
 .insBtn svg {
+    stroke: var(--on-surface);
+    fill: var(--on-surface);
+}
+.twiBtn svg {
     stroke: var(--on-surface);
     fill: var(--on-surface);
     margin-right: 0;
@@ -136,4 +141,16 @@
     font: 500 14px 'Baloo 2', cursive;
     color: var(--on-surface);
     opacity: .6;
+}
+
+@media (max-width: 800px) {
+    .postCat{
+        font: 600 13px 'Noto Sans SC', sans-serif;
+    }
+    .postTitle{
+        font: 400 20px 'Josefin Sans', sans-serif;
+    }
+    .postText{
+        font: 300 12px 'Montserrat', sans-serif !important;
+    }
 }

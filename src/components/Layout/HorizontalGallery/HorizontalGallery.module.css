@@ -3,5 +3,33 @@
     position: relative;
     color: white;
     height: 100%;
-    width: auto;
+}
+.imgWrapper{
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    display: inline-block;
+}
+.imgContent{
+    position: relative;
+    display: block;
+}
+.imgDesc{
+    position: absolute;
+    opacity: 0;
+}
+.imgWrapper:hover .imgDesc{
+    opacity: 100%;
+}
+.imgDesc p{
+    max-width: 250px;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: 15px;
+}
+.imgCover{
+    display: inline-block;
+}
+.imgCover img{
+    width: 43vh
 }

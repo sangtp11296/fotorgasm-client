@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../../components/Layout/Header/Header'
+import HorizontalGallery from '../../components/Layout/HorizontalGallery/HorizontalGallery';
 import ImageScroller from '../../components/Layout/ImageScroller/ImageScroller'
 import PageContainer from '../../components/Layout/PageContainer/PageContainer';
 import PageCover from '../../components/Layout/PageCover/PageCover'
@@ -12,10 +13,11 @@ export default class Home extends React.Component {
   render(){
     return (
       <div>
-          <Header/>
-          <PageCover jumpCallback={this.jumpFunction}/>
+          {/* <Header/> */}
+          <HorizontalGallery/>
+          {/* <PageCover jumpCallback={this.jumpFunction}/>
           <ImageScroller  />
-          <PageContainer/>
+          <PageContainer/> */}
       </div>
     )
   }

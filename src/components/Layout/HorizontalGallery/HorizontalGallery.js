@@ -59,7 +59,7 @@ function HorizontalGallery() {
       let nPosRight = 0;
       let nPosBottom = 0;
       
-      if (x = 0){
+      // if (x = 0){
         // Store used area for next positioning with rectangle posts
         if(allImageCover[x].getBoundingClientRect().width > allImageCover[x].getBoundingClientRect().height){
           if(allImageCover[x].getBoundingClientRect().right > allImageDesc[x].getBoundingClientRect().right){
@@ -75,24 +75,24 @@ function HorizontalGallery() {
           setPosRight(allPosR=>[...allPosR,allImageCover[x].getBoundingClientRect().right]);
           setPosBottom(allPosY=>[...allPosY,allImageDesc[x].getBoundingClientRect().bottom]);
         }
-      }
+      // }
 
-      if(x > 0){
-         // Store used area for next positioning with rectangle posts
-        if(allImageCover[x].getBoundingClientRect().width > allImageCover[x].getBoundingClientRect().height){
-          // Generate random position Left
-          nPosLeft = Math.random() * ((allImageCover[x].getBoundingClientRect().right + 10) - allImageCover[x].getBoundingClientRect().right) + allImageCover[x].getBoundingClientRect().right;
-          setPosLeft(allPosX=>[...allPosX,nPosLeft]);
+      // if(x > 0){
+      //    // Store used area for next positioning with rectangle posts
+      //   if(allImageCover[x].getBoundingClientRect().width > allImageCover[x].getBoundingClientRect().height){
+      //     // Generate random position Left
+      //     nPosLeft = Math.random() * ((allImageCover[x].getBoundingClientRect().right + 10) - allImageCover[x].getBoundingClientRect().right) + allImageCover[x].getBoundingClientRect().right;
+      //     setPosLeft(allPosX=>[...allPosX,nPosLeft]);
         
-          // Generate random position top
-          const remainTop = offset - allImageCapt[x].getBoundingClientRect().bottom - 10
-          if (remainTop>= allImageCapt[x+1])
-          setPosTop(allPosY=>[...allPosY,allImageCapt[x].getBoundingClientRect().bottom]);
+      //     // Generate random position top
+      //     const remainTop = offset - allImageCapt[x].getBoundingClientRect().bottom - 10
+      //     if (remainTop>= allImageCapt[x+1])
+      //     setPosTop(allPosY=>[...allPosY,allImageCapt[x].getBoundingClientRect().bottom]);
       
-          else setPosLeft(allPosX=>[...allPosX,allImageDesc[x].getBoundingClientRect().right]);
-            // Store used area for next positioning with other posts
-        }
-      }
+      //     else setPosLeft(allPosX=>[...allPosX,allImageDesc[x].getBoundingClientRect().right]);
+      //       // Store used area for next positioning with other posts
+      //   }
+      // }
       
     }
   }

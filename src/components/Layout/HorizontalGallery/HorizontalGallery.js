@@ -33,10 +33,14 @@ function HorizontalGallery() {
   var [allImageCover, setAllImageCover] = useState([])
   var [allImageDesc, setAllImageDesc] = useState([])
   var [allImageCapt, setAllImageCapt] = useState([])
-  const [posT, setPosT] = useState([100])
-  const [posL, setPosL] = useState([300])
-  const [posB, setPosB] = useState([])
-  const [posR, setPosR] = useState([])
+  // const [posT, setPosT] = useState([100])
+  // const [posL, setPosL] = useState([300])
+  // const [posB, setPosB] = useState([])
+  // const [posR, setPosR] = useState([])
+  var posT = [100];
+  var posL = [300];
+  var posB = [];
+  var posR = [];
 
   useLayoutEffect(() => {
     console.log('layout')
@@ -49,63 +53,80 @@ function HorizontalGallery() {
     allImageCapt = [...new Set(allImageCapt)]
     console.log(allImageCover,'allImageCover in useEff')
     
-    positionUpdate();
+    // positionUpdate();
     
   }, [allImageCover])
 
   // Function update next position for next post
-  function positionUpdate(){
-    for (let x = 0; x < allImageCover.length; x++){
+  const positionUpdate = (x) => {
+    // for (x = 0; x < allImageCover.length; x++){
 
-      console.log(allImageCover[x],'in function')
-      const offset = 1311;
-
+      console.log('set posR, posB')
       // Store posR vs posB of previous post
       if(allImageCover[x].getBoundingClientRect().right > allImageDesc[x].getBoundingClientRect().right){
-        setPosR(items=>[...items, allImageCover[x].getBoundingClientRect().right]);
+        // setPosR(items=>[...items, allImageCover[x].getBoundingClientRect().right]);
+        // setPosB(items=>[...items,allImageCapt[x].getBoundingClientRect().bottom]);
+        posR.push(allImageCover[x].getBoundingClientRect().right)
+        posB.push(allImageCapt[x].getBoundingClientRect().bottom)
       }
       else {
-        setPosR(items=>[...items, allImageDesc[x].getBoundingClientRect().right]);
+        // setPosR(items=>[...items, allImageDesc[x].getBoundingClientRect().right]);
+        // setPosB(items=>[...items,allImageCapt[x].getBoundingClientRect().bottom]);
+        posR.push(allImageDesc[x].getBoundingClientRect().right)
+        posB.push(allImageCapt[x].getBoundingClientRect().bottom)
       }
-      setPosB(items=>[...items,allImageCapt[x].getBoundingClientRect().bottom]);
-
+      console.log(posR,posB)
       // Generate next position for next post
+      const offset = 1311;
       console.log(posB[x-1],'posB')
       const remainHeight = offset - posB[x-1] - 10
       console.log(remainHeight,'remainH')
       // Generate top position for rectangle post
       if(allImageCover[x].getBoundingClientRect().width > allImageCover[x].getBoundingClientRect().height){
         if (remainHeight >= (allImageCapt[x].getBoundingClientRect().height + allImageCover[x].getBoundingClientRect().height)){
-          setPosT(items=>[...items, Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5)])
-          console.log(posR[x-1],'posR')
-          setPosL(items=>[...items, Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))])
+          // setPosT(items=>[...items, Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5)])
+          // setPosL(items=>[...items, Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))])
+          posT.push(Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5))
+          posL.push(Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width)))
         }
         else{
-          setPosL(items=>[...items, Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5))])
-          setPosT(items=>[...items, Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageCapt[x].getBoundingClientRect().height)]) // for rectangle post
+          // setPosL(items=>[...items, Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5))])
+          // setPosT(items=>[...items, Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageCapt[x].getBoundingClientRect().height)]) // for rectangle post
+          posL.push(Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5)))
+          posT.push(Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageCapt[x].getBoundingClientRect().height))
         }
       }
       // Generate top position for other post
       else {
         if (remainHeight >=(allImageCover[x].getBoundingClientRect().height + allImageDesc[x].getBoundingClientRect().height)){
-          setPosT(items=>[...items, Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5)])
-          setPosL(items=>[...items, Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))])
+          // setPosT(items=>[...items, Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5)])
+          // setPosL(items=>[...items, Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))])
+          posT.push(Math.random()*((posB[x-1]+10) - (posB[x-1]+5))+(posB[x-1]+5))
+          posL.push(Math.random()*(posR[x-1] - (posR[x-1]-allImageCover[x-1].getBoundingClientRect().width))+((posR[x-1]-allImageCover[x-1].getBoundingClientRect().width)))
         }
         else{
-          setPosL(items=>[...items, Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5))])
-          setPosT(items=>[...items, Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageDesc[x].getBoundingClientRect().height)]) // for other post
+          // setPosL(items=>[...items, Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5))])
+          // setPosT(items=>[...items, Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageDesc[x].getBoundingClientRect().height)]) // for other post
+          posT.push(Math.random()*(offset - allImageCover[x].getBoundingClientRect().height - allImageDesc[x].getBoundingClientRect().height))
+          posL.push(Math.random()*(posR[x-1]+10 - (posR[x-1]+5))+((posR[x-1]+5)))
         }
       }
-    }
+    // }
   }
-  console.log(posT,posL,posR,posB)
+
+  const stylingFunction = (ind) =>{
+    
+  }
+  console.log(posT,'T',posL,'L',posR,'R',posB,'B')
   return (
     <div className={styles.fullpageWrapper}>
       {/* Mapping list of Images */}
       {images.map((item,ind) => {
         console.log(ind,'ind in render')
 
-        // Styling the post depending on isRect state
+        console.log('styling')
+        positionUpdate(ind)
+       // Styling the post depending on isRect state
         const wrapperStyle = {
           top: posT[ind] + 'px',
           left: posL[ind] + 'px'
@@ -192,11 +213,11 @@ function HorizontalGallery() {
                 </div>
               </div>
           </div>
-        )
+        )})
       }
-      )}
     </div>
   )
 }
+
 
 export default HorizontalGallery

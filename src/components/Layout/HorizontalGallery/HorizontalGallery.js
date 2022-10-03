@@ -42,10 +42,8 @@ function HorizontalGallery() {
     desc: [],
     capt: []
   })
-  var posT = [100];
-  var posL = [300];
-  var posB = [];
-  var posR = [];
+  var postPoss = [];
+
   useLayoutEffect(() => {
     console.log('layout')
     setAllPosts({
@@ -56,71 +54,98 @@ function HorizontalGallery() {
     // setAllImageCover(document.getElementsByClassName(`${styles.imgCover}`))
     // setAllImageDesc(document.getElementsByClassName(`${styles.imgDesc}`))
     // setAllImageCapt(document.getElementsByClassName(`imgCapt`))
-  }, [])
-  console.log(allPosts)
-  // Filter and Store unique elements
-  // allImageCover = [...new Set(allImageCover)]
-  // allImageDesc = [...new Set(allImageDesc)]
-  // allImageCapt = [...new Set(allImageCapt)]
+
+  }, [allPosts.image])
   
   // Function update next position for next post
   const positionUpdate = (x) => {
-    console.log('set posR'+[x], 'posB'+[x])
+    console.log('set aPoint'+[x], 'bPoint'+[x])
     const offset = 1311;
-    if(allPosts.image[x+1]){
-      console.log(allPosts.image[0].getBoundingClientRect().width,'width')
-      console.log(allPosts.capt[0].getBoundingClientRect())
-      // Store posR vs posB of previous post
-      if(allPosts.image[x].getBoundingClientRect().right > allPosts.desc[x].getBoundingClientRect().right){
-        // setPosR(items=>[...items, allImageCover[x].getBoundingClientRect().right]);
-        // setPosB(items=>[...items,allImageCapt[x].getBoundingClientRect().bottom]);
-        posR.push(allPosts.image[x].getBoundingClientRect().right)
-        posB.push(allPosts.capt[x].getBoundingClientRect().bottom)
-      }
-      else {
-        // setPosR(items=>[...items, allImageDesc[x].getBoundingClientRect().right]);
-        // setPosB(items=>[...items,allImageCapt[x].getBoundingClientRect().bottom]);
-        posR.push(allPosts.desc[x].getBoundingClientRect().right)
-        posB.push(allPosts.capt[x].getBoundingClientRect().bottom)
-      }
-      console.log(posR[x],'R',posB[x],'B')
-      // Generate next position for next post
-      const remainHeight = offset - posB[x] - 10
-      console.log(remainHeight,'remainH')
-      // Generate top position for rectangle post
-      if(allPosts.image[x+1].getBoundingClientRect().width > allPosts.image[x+1].getBoundingClientRect().height){
-        if (remainHeight >= (allPosts.capt[x+1].getBoundingClientRect().height + allPosts.image[x+1].getBoundingClientRect().height)){
-          posT.push(Math.random()*((posB[x]+10) - (posB[x]+5))+(posB[x]+5))
-          posL.push(Math.random()*(posR[x] - (posR[x]-allPosts.image[x].getBoundingClientRect().width))+((posR[x]-allPosts.image[x].getBoundingClientRect().width)))
+    var top;
+    var bot;
+    var left;
+    var right;
+
+    if(allPosts.image[0]){
+      // Store a, b point of the rectangle posts
+      if(allPosts.image[0].getBoundingClientRect().width>allPosts.image[0].getBoundingClientRect().height){
+        if(allPosts.image[0].getBoundingClientRect().right > allPosts.desc[0].getBoundingClientRect().right){
+            top = allPosts.image[0].getBoundingClientRect().top
+            left = allPosts.desc[0].getBoundingClientRect().left
+            right = allPosts.image[0].getBoundingClientRect().right
+            bot = allPosts.capt[0].getBoundingClientRect().bottom
         }
-        else{
-          posL.push(Math.random()*(posR[x]+10 - (posR[x]+5))+((posR[x]+5)))
-          posT.push(Math.random()*(offset - allPosts.image[x+1].getBoundingClientRect().height - allPosts.capt[x+1].getBoundingClientRect().height)) // for rectangle post
+        else {
+          top = allPosts.image[0].getBoundingClientRect().top
+          left = allPosts.image[0].getBoundingClientRect().left
+          right = allPosts.desc[0].getBoundingClientRect().right
+          bot = allPosts.capt[0].getBoundingClientRect().bottom
         }
       }
-      // Generate top position for other post
-      else {
-        if (remainHeight >=(allPosts.image[x+1].getBoundingClientRect().height + allPosts.desc[x+1].getBoundingClientRect().height)){
-          posT.push(Math.random()*((posB[x]+10) - (posB[x]+5))+(posB[x]+5))
-          posL.push(Math.random()*(posR[x] - (posR[x]-allPosts.image[x].getBoundingClientRect().width))+((posR[x]-allPosts.image[x].getBoundingClientRect().width)))
+      // Store a, b point of other posts
+      else{
+        top = allPosts.image[0].getBoundingClientRect().top
+        left = allPosts.capt[0].getBoundingClientRect().left
+        right = allPosts.image[0].getBoundingClientRect().right
+        bot = allPosts.desc[0].getBoundingClientRect().bottom
+      }
+      postPoss.push({top, left, bot, right})
+      console.log(postPoss)
+    }
+    while(!checkValid(top, left, bot, right)){
+      // Generate position for rectangle post type
+      if(!allPosts.image[0] && allPosts.image[x]){
+        if(allPosts.image[x].getBoundingClientRect().width > allPosts.image[x].getBoundingClientRect().height){
+          if(allPosts.image[x].getBoundingClientRect().right > allPosts.desc[x].getBoundingClientRect().right){
+            top = Math.random()*(offset-allPosts.image[x].getBoundingClientRect().height)
+            left = Math.random()*(postPoss[x-1].right + 20) - allPosts.desc.getBoundingClientRect().width
+            bot = postPoss[x].top + allPosts.image[x].getBoundingClientRect().height + allPosts.capt.getBoundingClientRect().height
+            right = postPoss[x].left + allPosts.desc[x].getBoundingClientRect().width + allPosts.image.getBoundingClientRect().width
+          }
+          else{
+            top = Math.random()*(offset-allPosts.image[x].getBoundingClientRect().height)
+            left = Math.random()*(postPoss[x-1].right + 20)
+            bot = postPoss[x].top + allPosts.image[x].getBoundingClientRect().height + allPosts.capt[x].getBoundingClientRect().height
+            right = postPoss[x].left + allPosts.desc[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
+          }
         }
-        else{
-          posT.push(Math.random()*(offset - allPosts.image[x+1].getBoundingClientRect().height - allPosts.desc[x+1].getBoundingClientRect().height)) // for other post
-          posL.push(Math.random()*(posR[x]+10 - (posR[x]+5))+((posR[x]+5)))
+      }
+      // Generate position for other post type
+      else{
+        top = Math.random()*(offset-allPosts.image[x].getBoundingClientRect().height)
+        left = Math.random()*(postPoss[x-1].right + 20) - allPosts.capt.getBoundingClientRect().width
+        bot = postPoss[x].top + allPosts[x].image.getBoundingClientRect().height + allPosts.desc.getBoundingClientRect().height
+        right = postPoss[x].left + allPosts.capt.getBoundingClientRect().width + allPosts.image.getBoundingClientRect().width
+      }
+      if (checkValid(top, left, bot, right)) break;
+    }
+    postPoss.push({top, left, bot, right});
+    
+  }
+  // Check if aPoint and bPoint valid
+  function checkValid(t, l, b, r){
+    for (let postPos of postPoss){
+      if (t > postPos.top && t < postPos.bot && l > postPos.left && l < postPos.right){
+        return false
+      }
+      else{
+        if (b > postPos.top && b < postPos.bot && r > postPos.left && r < postPos.right){
+          return false
         }
+        else return true
       }
     }
-    console.log(posT,'T',posL,'L',posR,'R',posB,'B')
   }
   return (
     <div className={styles.fullpageWrapper}>
       {/* Mapping list of Images */}
       {images.map((item,ind) => {
         console.log(ind,'ind in render')
+        positionUpdate(ind)
        // Styling the post depending on isRect state
         const wrapperStyle = {
-          top: posT[ind] + 'px',
-          left: posL[ind] + 'px'
+          top: aPoint.top[ind] + 'px',
+          left: aPoint.left[ind] + 'px'
         }
         const captStyle = {}
         
@@ -187,8 +212,6 @@ function HorizontalGallery() {
             }
           }
         }
-        console.log('styling')
-        // positionUpdate(ind)
         return(
           <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
               <div className={styles.imgContent}>
@@ -205,7 +228,6 @@ function HorizontalGallery() {
                     <img src={item.img} style={{width:`${imageWidth[ind]}vh`}}></img>
                 </div>
               </div>
-              {positionUpdate(ind)}
           </div>
         )})
       }

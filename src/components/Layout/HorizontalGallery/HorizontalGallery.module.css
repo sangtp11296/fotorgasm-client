@@ -1,14 +1,19 @@
 .fullpageWrapper{
-    display: block;
+    /* display: block; */
     position: relative;
     color: white;
-    height: 1311px;
-    min-height: 1311px;
-    overflow: hidden;
+    height: 100vh;
+    min-width: 100vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    /*transform: rotate(-90deg) translateY(-100vh);
+    transform-origin: right top; */
 }
 .imgWrapper{
     position: absolute;
     display: inline-block;
+    /* transform: rotate(90deg);
+    transform-origin: left top; */
 }
 .imgWrapper:first-child{
     top: 100px !important;

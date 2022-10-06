@@ -12,70 +12,56 @@ const images = [
   {
     img: 'https://images.unsplash.com/photo-1582370930143-4c547062f8bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3772&q=80'
   },
-  // {
-  //   img: 'https://images.unsplash.com/photo-1589482338352-c3ab369b4b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3872&q=80'
-  // },
-  // {
-  //   img: 'https://images.unsplash.com/photo-1617119552150-ecc899f6562c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2624&q=80'
-  // },
-  // {
-  //   img: 'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80'
-  // }
+  {
+    img: 'https://images.unsplash.com/photo-1589482338352-c3ab369b4b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3872&q=80'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1617119552150-ecc899f6562c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2624&q=80'
+  },
+  {
+    img: 'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80'
+  }
 ]
+
 var imageWidth = [];
 for (let x = 0; x<images.length; x++){
-  imageWidth.push(Math.random()*(43-30)+30)
+  imageWidth.push(Math.random()*(43-25)+25)
 } 
 
 function HorizontalGallery() {
-  // var [allImageCover, setAllImageCover] = useState([])
-  // var [allImageDesc, setAllImageDesc] = useState([])
-  // var [allImageCapt, setAllImageCapt] = useState([])
   var [allPosts, setAllPosts] = useState({
     image: [],
     desc: [],
     capt: []
+    // image: document.getElementsByClassName(`${styles.imgCover}`),
+    // desc: document.getElementsByClassName(`${styles.imgDesc}`),
+    // capt: document.getElementsByClassName(`imgCapt`)
   })
-  var postPoss = [];
+  let postPoss = [];
 
   useLayoutEffect(() => {
-    console.log('layout')
     setAllPosts({
       image: document.getElementsByClassName(`${styles.imgCover}`),
       desc: document.getElementsByClassName(`${styles.imgDesc}`),
       capt: document.getElementsByClassName(`imgCapt`)
-    })
-    // setAllImageCover(document.getElementsByClassName(`${styles.imgCover}`))
-    // setAllImageDesc(document.getElementsByClassName(`${styles.imgDesc}`))
-    // setAllImageCapt(document.getElementsByClassName(`imgCapt`))
-
+    });
   }, [allPosts.image])
-  
+
   // Function update next position for next post
   const positionUpdate = (x) => {
-    console.log('set aPoint'+[x], 'bPoint'+[x])
     const offset = 1311;
-    var top;
-    var bot;
-    var left;
-    var right;
+    var top = 0;
+    var bot = 0;
+    var left = 0;
+    var right = 0;
 
     if(x == 0){
       // Store a, b point of the rectangle posts
       if(allPosts.image[0].getBoundingClientRect().width>allPosts.image[0].getBoundingClientRect().height){
-        console.log(allPosts.image[0].getBoundingClientRect().right > allPosts.desc[0].getBoundingClientRect().right)
-        if(allPosts.image[0].getBoundingClientRect().right > allPosts.desc[0].getBoundingClientRect().right){
-            top = allPosts.image[0].getBoundingClientRect().top
-            left = allPosts.desc[0].getBoundingClientRect().left
-            right = allPosts.image[0].getBoundingClientRect().right
-            bot = allPosts.capt[0].getBoundingClientRect().bottom
-        }
-        else {
-          top = allPosts.image[0].getBoundingClientRect().top
-          left = allPosts.image[0].getBoundingClientRect().left
-          right = allPosts.desc[0].getBoundingClientRect().right
-          bot = allPosts.capt[0].getBoundingClientRect().bottom
-        }
+        top = allPosts.image[0].getBoundingClientRect().top
+        left = allPosts.image[0].getBoundingClientRect().left
+        right = allPosts.desc[0].getBoundingClientRect().right
+        bot = allPosts.capt[0].getBoundingClientRect().bottom
       }
       // Store a, b point of other posts
       else{
@@ -87,32 +73,24 @@ function HorizontalGallery() {
       postPoss.push({top, left, bot, right})
     }
     else{
-      while(!top && !left && !bot && !right || !checkValid(top, left, bot, right)){
+      while(!top && !left && !bot && !right || !checkValid(top, left, bot, right, postPoss)){
         // Generate position for rectangle post type
-        if(!allPosts.image[0] && allPosts.image[x]){
+        if(allPosts.image[x]){
           if(allPosts.image[x].getBoundingClientRect().width > allPosts.image[x].getBoundingClientRect().height){
-            if(allPosts.image[x].getBoundingClientRect().right > allPosts.desc[x].getBoundingClientRect().right){
-              top = Math.floor(Math.random()*(offset - allPosts.image[x].getBoundingClientRect().height - allPosts.capt[x].getBoundingClientRect().height))
-              left = Math.floor(Math.random()*(postPoss[x-1].right + 20) - allPosts.desc[x].getBoundingClientRect().width)
-              bot = top + allPosts.image[x].getBoundingClientRect().height + allPosts.capt[x].getBoundingClientRect().height
-              right = left + allPosts.desc[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
-            }
-            else{
-              top = Math.floor(Math.random()*(offset - allPosts.image[x].getBoundingClientRect().height - allPosts.capt[x].getBoundingClientRect().height))
-              left = Math.floor(Math.random()*(postPoss[x-1].right + 20))
-              bot = top + allPosts.image[x].getBoundingClientRect().height + allPosts.capt[x].getBoundingClientRect().height
-              right = left + allPosts.desc[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
-            }
+            top = Math.floor(Math.random()*(offset - allPosts.image[x].getBoundingClientRect().height - allPosts.capt[x].getBoundingClientRect().height))
+            left = Math.floor(Math.random()*((Math.max(...postPoss.map(r => r.right)) + 200) - (Math.max(...postPoss.map(r => r.right)) - 300)) + (Math.max(...postPoss.map(r => r.right)) - 300))
+            bot = top + allPosts.image[x].getBoundingClientRect().height + allPosts.capt[x].getBoundingClientRect().height
+            right = left + allPosts.desc[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
+          }
+          // Generate position for other post type
+          else{
+            top = Math.floor(Math.random()*(offset - allPosts.image[x].getBoundingClientRect().height - allPosts.desc[x].getBoundingClientRect().height))
+            left = Math.floor(Math.random()*((Math.max(...postPoss.map(r => r.right)) + 200) - (Math.max(...postPoss.map(r => r.right)) - 300)) + (Math.max(...postPoss.map(r => r.right)) - 300)) + allPosts.capt[x].getBoundingClientRect().width
+            bot = top + allPosts.image[x].getBoundingClientRect().height + allPosts.desc[x].getBoundingClientRect().height
+            right = left + allPosts.capt[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
           }
         }
-        // Generate position for other post type
-        else{
-          top = Math.floor(Math.random()*(offset - allPosts.image[x].getBoundingClientRect().height - allPosts.desc[x].getBoundingClientRect().height))
-          left = Math.floor(Math.random()*(postPoss[x-1].right + 100)) - allPosts.capt[x].getBoundingClientRect().width
-          bot = top + allPosts.image[x].getBoundingClientRect().height + allPosts.desc[x].getBoundingClientRect().height
-          right = left + allPosts.capt[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
-        }
-        if (top && left && bot && right && checkValid(top, left, bot, right)) {
+        if (top && left && bot && right && checkValid(top, left, bot, right, postPoss)) {
           postPoss.push({top, left, bot, right});
           break;
         }
@@ -121,34 +99,31 @@ function HorizontalGallery() {
     console.log(postPoss)
   }
   // Check if aPoint and bPoint valid
-  function checkValid(t, l, b, r){
-    for (let postPos of postPoss){
-      if (t > postPos.top && t < postPos.bot){
-        return false
+  function checkValid(t, l, b, r, arr){
+    let state;
+    for (const postPos of arr){
+      // Overflow post
+      if (l > postPos.right || r < postPos.left || t > postPos.bot || b < postPos.top) {
+        state = true
       }
-      else if(l > postPos.left && l < postPos.right){
-        return false
+      else if (b > window.innerHeight){
+        state = false
       }
-      else if(b > postPos.top && b < postPos.bot){
-        return false
-      }
-      else if(r > postPos.left && r < postPos.right){
-        return false
-      }
-      else return true
+      else state = false
     }
+    if (state) return true
+    else return false
   }
   return (
     <div className={styles.fullpageWrapper}>
       {/* Mapping list of Images */}
       {images.map((item,ind) => {
         console.log(ind,'ind in render')
-        console.log(allPosts.image[ind])
         {allPosts.image[ind] ? positionUpdate(ind) : ''}
         // Styling the post depending on isRect state
         const wrapperStyle = {
-          top: `${!allPosts.image[ind] ? 0 : postPoss[ind].top}` + 'px',
-          left: `${!allPosts.image[ind] ? 0 : postPoss[ind].left}`+ 'px'
+          top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
+          left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
         }
         const captStyle = {}
         
@@ -177,15 +152,16 @@ function HorizontalGallery() {
             // Random position for description
             if (Math.random() < 0.5){
               descStyle.right = '0px',
+              descStyle.bottom = '0px',
               descStyle.transform = 'translateX(100%)',
               descStyle.textAlign ='left',
               descStyle.paddingLeft = '10px'
             }
             else {
-              descStyle.left = '0px',
-              descStyle.transform = 'translateX(-100%)',
-              descStyle.textAlign ='right',
-              descStyle.paddingRight = '10px'
+              descStyle.right = '0px',
+              descStyle.transform = 'translateX(100%)',
+              descStyle.textAlign ='left',
+              descStyle.paddingLeft = '10px'
             }
           }
           else {

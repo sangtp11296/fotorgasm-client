@@ -23,11 +23,12 @@ const images = [
   }
 ]
 
+
+
 var imageWidth = [];
 for (let x = 0; x<images.length; x++){
   imageWidth.push(Math.random()*(43-25)+25)
 } 
-
 function HorizontalGallery() {
   var [allPosts, setAllPosts] = useState({
     image: [],
@@ -37,6 +38,7 @@ function HorizontalGallery() {
     // desc: document.getElementsByClassName(`${styles.imgDesc}`),
     // capt: document.getElementsByClassName(`imgCapt`)
   })
+  console.log(imageWidth)
   let postPoss = [];
 
   useLayoutEffect(() => {
@@ -46,7 +48,7 @@ function HorizontalGallery() {
       capt: document.getElementsByClassName(`imgCapt`)
     });
   }, [allPosts.image])
-
+  
   // Function update next position for next post
   const positionUpdate = (x) => {
     const offset = 1311;
@@ -54,7 +56,7 @@ function HorizontalGallery() {
     var bot = 0;
     var left = 0;
     var right = 0;
-
+    
     if(x == 0){
       // Store a, b point of the rectangle posts
       if(allPosts.image[0].getBoundingClientRect().width>allPosts.image[0].getBoundingClientRect().height){
@@ -73,7 +75,7 @@ function HorizontalGallery() {
       postPoss.push({top, left, bot, right})
     }
     else{
-      while(!top && !left && !bot && !right || !checkValid(top, left, bot, right, postPoss)){
+      while(!top && !left && !bot && !right || !checkValid(top, left, bot, right)){
         // Generate position for rectangle post type
         if(allPosts.image[x]){
           if(allPosts.image[x].getBoundingClientRect().width > allPosts.image[x].getBoundingClientRect().height){
@@ -90,7 +92,7 @@ function HorizontalGallery() {
             right = left + allPosts.capt[x].getBoundingClientRect().width + allPosts.image[x].getBoundingClientRect().width
           }
         }
-        if (top && left && bot && right && checkValid(top, left, bot, right, postPoss)) {
+        if (top && left && bot && right && checkValid(top, left, bot, right)) {
           postPoss.push({top, left, bot, right});
           break;
         }
@@ -99,9 +101,9 @@ function HorizontalGallery() {
     console.log(postPoss)
   }
   // Check if aPoint and bPoint valid
-  function checkValid(t, l, b, r, arr){
+  function checkValid(t, l, b, r){
     let state;
-    for (const postPos of arr){
+    for (const postPos of postPoss){
       // Overflow post
       if (l > postPos.right || r < postPos.left || t > postPos.bot || b < postPos.top) {
         state = true
@@ -194,9 +196,6 @@ function HorizontalGallery() {
         return(
           <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
               <div className={styles.imgContent}>
-                {/* <ImgCapt className='imgCapt' key={ind} isRect={isRect} style={captStyle}>
-                  <a>Title<br/>Author</a>
-                </ImgCapt> */}
                 <div className='imgCapt' style={captStyle}>
                   <a>Title<br/>Author</a>
                 </div>

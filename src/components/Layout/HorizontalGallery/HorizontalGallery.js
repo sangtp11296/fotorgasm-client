@@ -3,33 +3,54 @@ import styles from './HorizontalGallery.module.css'
 
 
 const images = [
+  // {
+  //   img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
+  //   desc: 'aaaa',
+  //   author: 'author1'
+  // },
   {
-    img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80'
+    img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author1'
   },
   {
-    img: 'https://images.unsplash.com/photo-1563124488-159c05ebb7e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3024&q=80'
+    img: 'https://images.unsplash.com/photo-1563124488-159c05ebb7e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3024&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author2'
   },
   {
-    img: 'https://images.unsplash.com/photo-1582370930143-4c547062f8bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3772&q=80'
+    img: 'https://images.unsplash.com/photo-1582370930143-4c547062f8bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3772&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author3'
   },
   {
-    img: 'https://images.unsplash.com/photo-1589482338352-c3ab369b4b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3872&q=80'
+    img: 'https://images.unsplash.com/photo-1589482338352-c3ab369b4b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3872&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author4'
   },
   {
-    img: 'https://images.unsplash.com/photo-1617119552150-ecc899f6562c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2624&q=80'
+    img: 'https://images.unsplash.com/photo-1617119552150-ecc899f6562c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2624&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author5'
   },
   {
-    img: 'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80'
+    img: 'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
+    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
+    author: 'author6'
   }
 ]
 
-
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
+}
 
 var imageWidth = [];
-for (let x = 0; x<images.length; x++){
-  imageWidth.push(Math.random()*(43-25)+25)
-} 
+  for (let x = 0; x<images.length; x++){
+    imageWidth.push(Math.random()*(43-25)+25)
+  } 
+
 function HorizontalGallery() {
+  
   var [allPosts, setAllPosts] = useState({
     image: [],
     desc: [],
@@ -38,7 +59,7 @@ function HorizontalGallery() {
     // desc: document.getElementsByClassName(`${styles.imgDesc}`),
     // capt: document.getElementsByClassName(`imgCapt`)
   })
-  console.log(imageWidth)
+  const [fakeImages, setFakeImages] = useState([]);
   let postPoss = [];
 
   useLayoutEffect(() => {
@@ -48,7 +69,24 @@ function HorizontalGallery() {
       capt: document.getElementsByClassName(`imgCapt`)
     });
   }, [allPosts.image])
-  
+
+  async function test() {
+    console.log('start timer');
+    await delay(1000);
+    console.log('after 1 second');
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      // You'd want an exit condition here
+      console.log(fakeImages.length)
+      if(fakeImages.length<7){
+        setFakeImages(arr => [...arr, images[arr.length++]]);
+      }
+  }, 10);
+
+  }, [fakeImages]);
+
   // Function update next position for next post
   const positionUpdate = (x) => {
     const offset = 1311;
@@ -98,9 +136,8 @@ function HorizontalGallery() {
         }
       }
     }
-    console.log(postPoss)
   }
-  // Check if aPoint and bPoint valid
+  // Check if the generated position is valid
   function checkValid(t, l, b, r){
     let state;
     for (const postPos of postPoss){
@@ -119,10 +156,8 @@ function HorizontalGallery() {
   return (
     <div className={styles.fullpageWrapper}>
       {/* Mapping list of Images */}
-      {images.map((item,ind) => {
-        console.log(ind,'ind in render')
+      {fakeImages.map((item,ind) => {
         {allPosts.image[ind] ? positionUpdate(ind) : ''}
-        // Styling the post depending on isRect state
         const wrapperStyle = {
           top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
           left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
@@ -130,6 +165,7 @@ function HorizontalGallery() {
         const captStyle = {}
         
         const descStyle = {}
+        // Styling the post depending on isRect state
         if (allPosts.image[ind]){
           var width = allPosts.image[ind].getBoundingClientRect().width
           var height = allPosts.image[ind].getBoundingClientRect().height
@@ -197,13 +233,15 @@ function HorizontalGallery() {
           <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
               <div className={styles.imgContent}>
                 <div className='imgCapt' style={captStyle}>
-                  <a>Title<br/>Author</a>
+                  {/* <a>Title<br/>Author {ind}</a> */}
+                  {item?.author&& <a>Title<br/>{item?.author}</a>}
                 </div>
                 <div className={styles.imgDesc} style={descStyle}>
-                  <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p>
+                  {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
+                  <p>{item?.desc}</p>
                 </div>
                 <div className={styles.imgCover}>
-                    <img src={item.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+                    <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
                 </div>
               </div>
           </div>

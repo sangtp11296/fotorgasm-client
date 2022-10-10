@@ -1,13 +1,8 @@
-import React,{useEffect, useState, useLayoutEffect} from 'react'
+import React,{useEffect, useState, useLayoutEffect, useCallback} from 'react'
 import styles from './HorizontalGallery.module.css'
 
 
 const images = [
-  // {
-  //   img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
-  //   desc: 'aaaa',
-  //   author: 'author1'
-  // },
   {
     img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
     desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
@@ -40,52 +35,50 @@ const images = [
   }
 ]
 
-function delay(time) {
-  return new Promise(resolve => setTimeout(resolve, time));
-}
-
 var imageWidth = [];
   for (let x = 0; x<images.length; x++){
     imageWidth.push(Math.random()*(43-25)+25)
   } 
+  function HorizontalGallery() {
+    const [y, setY] = useState()
+    var [allPosts, setAllPosts] = useState({
+      image: [],
+      desc: [],
+      capt: []
+    })
+    const [tempImages, setTempImages] = useState([]);
+    let postPoss = [];
+    
+    useLayoutEffect(() => {
+      setAllPosts({
+        image: document.getElementsByClassName(`${styles.imgCover}`),
+        desc: document.getElementsByClassName(`${styles.imgDesc}`),
+        capt: document.getElementsByClassName(`imgCapt`)
+      });
+    }, [allPosts.image])
+    
+    useEffect(() => {
+      setTimeout(() => {
+        // You'd want an exit condition here
+        if(tempImages.length<7){
+          setTempImages(arr => [...arr, images[arr.length++]]);
+        }
+      }, 10);
+    }, [tempImages]);
 
-function HorizontalGallery() {
-  
-  var [allPosts, setAllPosts] = useState({
-    image: [],
-    desc: [],
-    capt: []
-    // image: document.getElementsByClassName(`${styles.imgCover}`),
-    // desc: document.getElementsByClassName(`${styles.imgDesc}`),
-    // capt: document.getElementsByClassName(`imgCapt`)
-  })
-  const [fakeImages, setFakeImages] = useState([]);
-  let postPoss = [];
-
-  useLayoutEffect(() => {
-    setAllPosts({
-      image: document.getElementsByClassName(`${styles.imgCover}`),
-      desc: document.getElementsByClassName(`${styles.imgDesc}`),
-      capt: document.getElementsByClassName(`imgCapt`)
-    });
-  }, [allPosts.image])
-
-  async function test() {
-    console.log('start timer');
-    await delay(1000);
-    console.log('after 1 second');
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      // You'd want an exit condition here
-      console.log(fakeImages.length)
-      if(fakeImages.length<7){
-        setFakeImages(arr => [...arr, images[arr.length++]]);
-      }
-  }, 10);
-
-  }, [fakeImages]);
+    // Style the scrollbar only show when scrolling
+    // useEffect(()=>{
+    //   const handleScroll = (e) => {
+    //     const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
+    //     elementStyle.classList.add(`${styles.scroll}`)
+    //     clearTimeout(timer);
+    //     const timer = setTimeout(()=>{
+    //       elementStyle.classList.remove(`${styles.scroll}`)
+    //     },100)
+    //   };
+    //   window.addEventListener("scroll", handleScroll)
+    //   return () => window.removeEventListener("scroll", handleScroll)
+    // },[])
 
   // Function update next position for next post
   const positionUpdate = (x) => {
@@ -154,99 +147,103 @@ function HorizontalGallery() {
     else return false
   }
   return (
-    <div className={styles.fullpageWrapper}>
-      {/* Mapping list of Images */}
-      {fakeImages.map((item,ind) => {
-        {allPosts.image[ind] ? positionUpdate(ind) : ''}
-        const wrapperStyle = {
-          top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
-          left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
-        }
-        const captStyle = {}
-        
-        const descStyle = {}
-        // Styling the post depending on isRect state
-        if (allPosts.image[ind]){
-          var width = allPosts.image[ind].getBoundingClientRect().width
-          var height = allPosts.image[ind].getBoundingClientRect().height
-          if (width>height){
-            // Random position for caption
-            if (Math.random() < 0.5){
+    <div className={styles.outerWrapper}>
+      <div className={styles.fullpageWrapper}>
+        {/* Mapping list of Images */}
+        {tempImages.map((item,ind) => {
+          {allPosts?.image[ind] && positionUpdate(ind)}
+          const wrapperStyle = {
+            // top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
+            // left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
+            top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
+            left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
+          }
+          const captStyle = {}
+          
+          const descStyle = {}
+          // Styling the post depending on isRect state
+          if (allPosts.image[ind]){
+            var width = allPosts.image[ind].getBoundingClientRect().width
+            var height = allPosts.image[ind].getBoundingClientRect().height
+            if (width>height){
+              // Random position for caption
+              if (Math.random() < 0.5){
+                captStyle.position = 'absolute',
+                captStyle.textTransform = 'uppercase',
+                captStyle.bottom = '0px',
+                captStyle.transform  = 'translateY(100%)',
+                captStyle.right = '0px',
+                captStyle.textAlign = 'right'
+              }
+              else {
+                captStyle.position = 'absolute',
+                captStyle.textTransform = 'uppercase',
+                captStyle.bottom = '0px',
+                captStyle.transform  = 'translateY(100%)',
+                captStyle.left = '0px',
+                captStyle.textAlign = 'left'
+              }
+              // Random position for description
+              if (Math.random() < 0.5){
+                descStyle.right = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateX(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingLeft = '10px'
+              }
+              else {
+                descStyle.right = '0px',
+                descStyle.transform = 'translateX(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingLeft = '10px'
+              }
+            }
+            else {
               captStyle.position = 'absolute',
               captStyle.textTransform = 'uppercase',
               captStyle.bottom = '0px',
-              captStyle.transform  = 'translateY(100%)',
-              captStyle.right = '0px',
-              captStyle.textAlign = 'right'
-            }
-            else {
-              captStyle.position = 'absolute',
-              captStyle.textTransform = 'uppercase',
-              captStyle.bottom = '0px',
-              captStyle.transform  = 'translateY(100%)',
-              captStyle.left = '0px',
-              captStyle.textAlign = 'left'
-            }
-            // Random position for description
-            if (Math.random() < 0.5){
-              descStyle.right = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateX(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingLeft = '10px'
-            }
-            else {
-              descStyle.right = '0px',
-              descStyle.transform = 'translateX(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingLeft = '10px'
+              // captStyle.transform = 'translateY(100%)',
+              captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
+              captStyle.textAlign = 'right',
+              captStyle.transformOrigin = 'left top',
+              captStyle.paddingBottom = '5px'
+              
+              // Random position for description
+              if (Math.random() < 0.5){
+                descStyle.right = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateY(100%)',
+                descStyle.textAlign ='right',
+                descStyle.paddingTop = '6px'
+              }
+              else {
+                descStyle.left = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateY(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingTop = '6px'
+              }
             }
           }
-          else {
-            captStyle.position = 'absolute',
-            captStyle.textTransform = 'uppercase',
-            captStyle.bottom = '0px',
-            // captStyle.transform = 'translateY(100%)',
-            captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
-            captStyle.textAlign = 'right',
-            captStyle.transformOrigin = 'left top',
-            captStyle.paddingBottom = '5px'
-            
-            // Random position for description
-            if (Math.random() < 0.5){
-              descStyle.right = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateY(100%)',
-              descStyle.textAlign ='right',
-              descStyle.paddingTop = '6px'
-            }
-            else {
-              descStyle.left = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateY(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingTop = '6px'
-            }
-          }
+          return(
+            <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
+                <div className={styles.imgContent}>
+                  <div className='imgCapt' style={captStyle}>
+                    {/* <a>Title<br/>Author {ind}</a> */}
+                    {item?.author && <a>Title<br/>{item?.author}</a>}
+                  </div>
+                  <div className={styles.imgDesc} style={descStyle}>
+                    {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
+                    <p>{item?.desc}</p>
+                  </div>
+                  <div className={styles.imgCover}>
+                      <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+                  </div>
+                </div>
+            </div>
+          )})
         }
-        return(
-          <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
-              <div className={styles.imgContent}>
-                <div className='imgCapt' style={captStyle}>
-                  {/* <a>Title<br/>Author {ind}</a> */}
-                  {item?.author&& <a>Title<br/>{item?.author}</a>}
-                </div>
-                <div className={styles.imgDesc} style={descStyle}>
-                  {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
-                  <p>{item?.desc}</p>
-                </div>
-                <div className={styles.imgCover}>
-                    <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
-                </div>
-              </div>
-          </div>
-        )})
-      }
+      </div>
     </div>
   )
 }

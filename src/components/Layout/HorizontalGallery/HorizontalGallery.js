@@ -147,103 +147,101 @@ var imageWidth = [];
     else return false
   }
   return (
-    <div className={styles.outerWrapper}>
-      <div className={styles.fullpageWrapper}>
-        {/* Mapping list of Images */}
-        {tempImages.map((item,ind) => {
-          {allPosts?.image[ind] && positionUpdate(ind)}
-          const wrapperStyle = {
-            // top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
-            // left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
-            top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
-            left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
-          }
-          const captStyle = {}
-          
-          const descStyle = {}
-          // Styling the post depending on isRect state
-          if (allPosts.image[ind]){
-            var width = allPosts.image[ind].getBoundingClientRect().width
-            var height = allPosts.image[ind].getBoundingClientRect().height
-            if (width>height){
-              // Random position for caption
-              if (Math.random() < 0.5){
-                captStyle.position = 'absolute',
-                captStyle.textTransform = 'uppercase',
-                captStyle.bottom = '0px',
-                captStyle.transform  = 'translateY(100%)',
-                captStyle.right = '0px',
-                captStyle.textAlign = 'right'
-              }
-              else {
-                captStyle.position = 'absolute',
-                captStyle.textTransform = 'uppercase',
-                captStyle.bottom = '0px',
-                captStyle.transform  = 'translateY(100%)',
-                captStyle.left = '0px',
-                captStyle.textAlign = 'left'
-              }
-              // Random position for description
-              if (Math.random() < 0.5){
-                descStyle.right = '0px',
-                descStyle.bottom = '0px',
-                descStyle.transform = 'translateX(100%)',
-                descStyle.textAlign ='left',
-                descStyle.paddingLeft = '10px'
-              }
-              else {
-                descStyle.right = '0px',
-                descStyle.transform = 'translateX(100%)',
-                descStyle.textAlign ='left',
-                descStyle.paddingLeft = '10px'
-              }
+    <div className={styles.fullpageWrapper}>
+      {/* Mapping list of Images */}
+      {tempImages.map((item,ind) => {
+        {allPosts?.image[ind] && positionUpdate(ind)}
+        const wrapperStyle = {
+          // top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
+          // left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
+          top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
+          left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
+        }
+        const captStyle = {}
+        
+        const descStyle = {}
+        // Styling the post depending on isRect state
+        if (allPosts.image[ind]){
+          var width = allPosts.image[ind].getBoundingClientRect().width
+          var height = allPosts.image[ind].getBoundingClientRect().height
+          if (width>height){
+            // Random position for caption
+            if (Math.random() < 0.5){
+              captStyle.position = 'absolute',
+              captStyle.textTransform = 'uppercase',
+              captStyle.bottom = '0px',
+              captStyle.transform  = 'translateY(100%)',
+              captStyle.right = '0px',
+              captStyle.textAlign = 'right'
             }
             else {
               captStyle.position = 'absolute',
               captStyle.textTransform = 'uppercase',
               captStyle.bottom = '0px',
-              // captStyle.transform = 'translateY(100%)',
-              captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
-              captStyle.textAlign = 'right',
-              captStyle.transformOrigin = 'left top',
-              captStyle.paddingBottom = '5px'
-              
-              // Random position for description
-              if (Math.random() < 0.5){
-                descStyle.right = '0px',
-                descStyle.bottom = '0px',
-                descStyle.transform = 'translateY(100%)',
-                descStyle.textAlign ='right',
-                descStyle.paddingTop = '6px'
-              }
-              else {
-                descStyle.left = '0px',
-                descStyle.bottom = '0px',
-                descStyle.transform = 'translateY(100%)',
-                descStyle.textAlign ='left',
-                descStyle.paddingTop = '6px'
-              }
+              captStyle.transform  = 'translateY(100%)',
+              captStyle.left = '0px',
+              captStyle.textAlign = 'left'
+            }
+            // Random position for description
+            if (Math.random() < 0.5){
+              descStyle.right = '0px',
+              descStyle.bottom = '0px',
+              descStyle.transform = 'translateX(100%)',
+              descStyle.textAlign ='left',
+              descStyle.paddingLeft = '10px'
+            }
+            else {
+              descStyle.right = '0px',
+              descStyle.transform = 'translateX(100%)',
+              descStyle.textAlign ='left',
+              descStyle.paddingLeft = '10px'
             }
           }
-          return(
-            <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
-                <div className={styles.imgContent}>
-                  <div className='imgCapt' style={captStyle}>
-                    {/* <a>Title<br/>Author {ind}</a> */}
-                    {item?.author && <a>Title<br/>{item?.author}</a>}
-                  </div>
-                  <div className={styles.imgDesc} style={descStyle}>
-                    {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
-                    <p>{item?.desc}</p>
-                  </div>
-                  <div className={styles.imgCover}>
-                      <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
-                  </div>
-                </div>
-            </div>
-          )})
+          else {
+            captStyle.position = 'absolute',
+            captStyle.textTransform = 'uppercase',
+            captStyle.bottom = '0px',
+            // captStyle.transform = 'translateY(100%)',
+            captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
+            captStyle.textAlign = 'right',
+            captStyle.transformOrigin = 'left top',
+            captStyle.paddingBottom = '5px'
+            
+            // Random position for description
+            if (Math.random() < 0.5){
+              descStyle.right = '0px',
+              descStyle.bottom = '0px',
+              descStyle.transform = 'translateY(100%)',
+              descStyle.textAlign ='right',
+              descStyle.paddingTop = '6px'
+            }
+            else {
+              descStyle.left = '0px',
+              descStyle.bottom = '0px',
+              descStyle.transform = 'translateY(100%)',
+              descStyle.textAlign ='left',
+              descStyle.paddingTop = '6px'
+            }
+          }
         }
-      </div>
+        return(
+          <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
+              <div className={styles.imgContent}>
+                <div className='imgCapt' style={captStyle}>
+                  {/* <a>Title<br/>Author {ind}</a> */}
+                  {item?.author && <a>Title<br/>{item?.author}</a>}
+                </div>
+                <div className={styles.imgDesc} style={descStyle}>
+                  {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
+                  <p>{item?.desc}</p>
+                </div>
+                <div className={styles.imgCover}>
+                    <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+                </div>
+              </div>
+          </div>
+        )})
+      }
     </div>
   )
 }

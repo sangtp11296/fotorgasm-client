@@ -1,6 +1,6 @@
-import React,{useEffect, useState, useLayoutEffect, useCallback} from 'react'
+import React,{useEffect, useState, useLayoutEffect, useRef} from 'react'
 import styles from './HorizontalGallery.module.css'
-
+import LocomotiveScroll from 'locomotive-scroll'
 
 const images = [
   {
@@ -38,47 +38,74 @@ const images = [
 var imageWidth = [];
   for (let x = 0; x<images.length; x++){
     imageWidth.push(Math.random()*(43-25)+25)
-  } 
-  function HorizontalGallery() {
-    const [y, setY] = useState()
-    var [allPosts, setAllPosts] = useState({
-      image: [],
-      desc: [],
-      capt: []
-    })
-    const [tempImages, setTempImages] = useState([]);
-    let postPoss = [];
-    
-    useLayoutEffect(() => {
-      setAllPosts({
-        image: document.getElementsByClassName(`${styles.imgCover}`),
-        desc: document.getElementsByClassName(`${styles.imgDesc}`),
-        capt: document.getElementsByClassName(`imgCapt`)
-      });
-    }, [allPosts.image])
-    
-    useEffect(() => {
-      setTimeout(() => {
-        // You'd want an exit condition here
-        if(tempImages.length<7){
-          setTempImages(arr => [...arr, images[arr.length++]]);
-        }
-      }, 10);
-    }, [tempImages]);
+  }
+function HorizontalGallery() {
+  const scrollRef = useRef();
+  var [allPosts, setAllPosts] = useState({
+    image: [],
+    desc: [],
+    capt: []
+  })
+  const [tempImages, setTempImages] = useState([]);
+  let postPoss = [];
+  
+  useLayoutEffect(() => {
+    setAllPosts({
+      image: document.getElementsByClassName(`${styles.imgCover}`),
+      desc: document.getElementsByClassName(`${styles.imgDesc}`),
+      capt: document.getElementsByClassName(`imgCapt`)
+    });
+  }, [allPosts.image])
+  
+  useEffect(() => {
+    setTimeout(() => {
+      // You'd want an exit condition here
+      if(tempImages.length<7){
+        setTempImages(arr => [...arr, images[arr.length++]]);
+      }
+    }, 10);
+  }, [tempImages]);
 
-    // Style the scrollbar only show when scrolling
-    // useEffect(()=>{
-    //   const handleScroll = (e) => {
-    //     const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
-    //     elementStyle.classList.add(`${styles.scroll}`)
-    //     clearTimeout(timer);
-    //     const timer = setTimeout(()=>{
-    //       elementStyle.classList.remove(`${styles.scroll}`)
-    //     },100)
-    //   };
-    //   window.addEventListener("scroll", handleScroll)
-    //   return () => window.removeEventListener("scroll", handleScroll)
-    // },[])
+  useEffect(() => {
+    const scroll = new LocomotiveScroll({
+      el: scrollRef.current,
+      smooth: true,
+      direction: 'horizontal'
+    })
+  })
+
+  // useEffect(() => {
+  //   const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
+  //   elementStyle.addEventListener('wheel', (ev) => {
+  //     ev.preventDefault(); // stop scrolling in another direction
+  //     elementStyle.scrollLeft += (ev.deltaY + ev.deltaX)
+  //   })
+  
+  //   return () => {
+  //     elementStyle.removeEventListener('wheel', (ev) => {
+  //       ev.preventDefault(); // stop scrolling in another direction
+  //       elementStyle.scrollLeft += (ev.deltaY + ev.deltaX)
+  //     })
+  //   }
+  // }, [])
+  
+  // Style the scrollbar only show when scrolling and horizontal scroll
+  // useEffect(()=>{
+  //   const handleScroll = (e) => {
+  //     const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
+  //     elementStyle.addEventListener('wheel', (ev) => {
+  //       ev.preventDefault(); // stop scrolling in another direction
+  //       elementStyle.scrollLeft += (ev.deltaY + ev.deltaX)
+  //     })
+      // elementStyle.classList.add(`${styles.scroll}`)
+      // clearTimeout(timer);
+      // const timer = setTimeout(()=>{
+      //   elementStyle.classList.remove(`${styles.scroll}`)
+      // },100)
+  //   };
+  //   window.addEventListener("scroll", handleScroll)
+  //   return () => window.removeEventListener("scroll", handleScroll)
+  // },[])
 
   // Function update next position for next post
   const positionUpdate = (x) => {
@@ -147,13 +174,11 @@ var imageWidth = [];
     else return false
   }
   return (
-    <div className={styles.fullpageWrapper}>
+    <div className={styles.fullpageWrapper} ref={scrollRef}>
       {/* Mapping list of Images */}
       {tempImages.map((item,ind) => {
         {allPosts?.image[ind] && positionUpdate(ind)}
         const wrapperStyle = {
-          // top: `${allPosts.image[ind] ? postPoss[ind].top : (allPosts.image[0] ? 100 : '')}` + 'px',
-          // left: `${allPosts.image[ind] ? postPoss[ind].left : (allPosts.image[0] ? 100 : '')}` + 'px',
           top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
           left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
         }
@@ -228,11 +253,9 @@ var imageWidth = [];
           <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
               <div className={styles.imgContent}>
                 <div className='imgCapt' style={captStyle}>
-                  {/* <a>Title<br/>Author {ind}</a> */}
                   {item?.author && <a>Title<br/>{item?.author}</a>}
                 </div>
                 <div className={styles.imgDesc} style={descStyle}>
-                  {/* <p>When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?</p> */}
                   <p>{item?.desc}</p>
                 </div>
                 <div className={styles.imgCover}>

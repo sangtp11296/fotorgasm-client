@@ -1,17 +1,15 @@
 
 .fullpageWrapper{
-    /* display: block; */
-    position: relative;
-    color: white;
-    height: 100vh;
-    min-width: 100vw;
-    overflow-x: auto;
-    overflow-y: unset;
     /* padding-bottom: 10px;
     padding-right: 10px;
     box-sizing: content-box; */
-    /*transform: rotate(-90deg) translateY(-100vh);
-    transform-origin: right top; */
+    height: 100vh;
+    min-width: 100vw;
+    display: block;
+    position: relative;
+    color: white;
+    overflow-x: auto;
+    overflow-y: hidden;
 }
 .fullpageWrapper.scroll{
     padding-bottom: 0px;
@@ -19,11 +17,10 @@
 .imgWrapper{
     position: absolute;
     display: inline-block;
-    /* transform: rotate(90deg);
-    transform-origin: left top; */
+    
 }
 .imgWrapper:first-child{
-    top: 100px !important;
+    top: 100px !important; 
     left: 100px !important;
 }
 

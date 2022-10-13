@@ -6,7 +6,7 @@ import {useSmoothScroll} from "./useSmoothScroll";
  * @param scrollDuration How long it takes to scroll to the next click (transition)
  * @returns A ref to pass to the container
  */
-export default function useHorizontalScroll<T extends HTMLElement = HTMLElement>(
+export function useHorizontalScroll<T extends HTMLElement = HTMLElement>(
     scrollDuration: number = 200
 ) {
     const elRef = useRef<T | null>(null);

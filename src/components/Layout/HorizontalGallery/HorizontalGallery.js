@@ -1,6 +1,6 @@
-import React,{useEffect, useState, useLayoutEffect, useRef} from 'react'
+import React, {useEffect, useState, useLayoutEffect, useRef} from 'react'
 import styles from './HorizontalGallery.module.css'
-import LocomotiveScroll from 'locomotive-scroll'
+import {useHorizontalScroll} from '../../Functions/HorizontalScroll/useHorizontalScroll'
 
 const images = [
   {
@@ -40,7 +40,7 @@ var imageWidth = [];
     imageWidth.push(Math.random()*(43-25)+25)
   }
 function HorizontalGallery() {
-  const scrollRef = useRef();
+  const scrollLeft = useHorizontalScroll();
   var [allPosts, setAllPosts] = useState({
     image: [],
     desc: [],
@@ -66,13 +66,6 @@ function HorizontalGallery() {
     }, 10);
   }, [tempImages]);
 
-  useEffect(() => {
-    const scroll = new LocomotiveScroll({
-      el: scrollRef.current,
-      smooth: true,
-      direction: 'horizontal'
-    })
-  })
 
   // useEffect(() => {
   //   const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
@@ -174,97 +167,97 @@ function HorizontalGallery() {
     else return false
   }
   return (
-    <div className={styles.fullpageWrapper} ref={scrollRef}>
-      {/* Mapping list of Images */}
-      {tempImages.map((item,ind) => {
-        {allPosts?.image[ind] && positionUpdate(ind)}
-        const wrapperStyle = {
-          top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
-          left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
-        }
-        const captStyle = {}
-        
-        const descStyle = {}
-        // Styling the post depending on isRect state
-        if (allPosts.image[ind]){
-          var width = allPosts.image[ind].getBoundingClientRect().width
-          var height = allPosts.image[ind].getBoundingClientRect().height
-          if (width>height){
-            // Random position for caption
-            if (Math.random() < 0.5){
+    <div className={styles.fullpageWrapper} ref={scrollLeft}>
+        {/* Mapping list of Images */}
+        {tempImages.map((item,ind) => {
+          {allPosts?.image[ind] && positionUpdate(ind)}
+          const wrapperStyle = {
+            top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
+            left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
+          }
+          const captStyle = {}
+          
+          const descStyle = {}
+          // Styling the post depending on isRect state
+          if (allPosts.image[ind]){
+            var width = allPosts.image[ind].getBoundingClientRect().width
+            var height = allPosts.image[ind].getBoundingClientRect().height
+            if (width>height){
+              // Random position for caption
+              if (Math.random() < 0.5){
+                captStyle.position = 'absolute',
+                captStyle.textTransform = 'uppercase',
+                captStyle.bottom = '0px',
+                captStyle.transform  = 'translateY(100%)',
+                captStyle.right = '0px',
+                captStyle.textAlign = 'right'
+              }
+              else {
+                captStyle.position = 'absolute',
+                captStyle.textTransform = 'uppercase',
+                captStyle.bottom = '0px',
+                captStyle.transform  = 'translateY(100%)',
+                captStyle.left = '0px',
+                captStyle.textAlign = 'left'
+              }
+              // Random position for description
+              if (Math.random() < 0.5){
+                descStyle.right = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateX(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingLeft = '10px'
+              }
+              else {
+                descStyle.right = '0px',
+                descStyle.transform = 'translateX(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingLeft = '10px'
+              }
+            }
+            else {
               captStyle.position = 'absolute',
               captStyle.textTransform = 'uppercase',
               captStyle.bottom = '0px',
-              captStyle.transform  = 'translateY(100%)',
-              captStyle.right = '0px',
-              captStyle.textAlign = 'right'
-            }
-            else {
-              captStyle.position = 'absolute',
-              captStyle.textTransform = 'uppercase',
-              captStyle.bottom = '0px',
-              captStyle.transform  = 'translateY(100%)',
-              captStyle.left = '0px',
-              captStyle.textAlign = 'left'
-            }
-            // Random position for description
-            if (Math.random() < 0.5){
-              descStyle.right = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateX(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingLeft = '10px'
-            }
-            else {
-              descStyle.right = '0px',
-              descStyle.transform = 'translateX(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingLeft = '10px'
+              // captStyle.transform = 'translateY(100%)',
+              captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
+              captStyle.textAlign = 'right',
+              captStyle.transformOrigin = 'left top',
+              captStyle.paddingBottom = '5px'
+              
+              // Random position for description
+              if (Math.random() < 0.5){
+                descStyle.right = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateY(100%)',
+                descStyle.textAlign ='right',
+                descStyle.paddingTop = '6px'
+              }
+              else {
+                descStyle.left = '0px',
+                descStyle.bottom = '0px',
+                descStyle.transform = 'translateY(100%)',
+                descStyle.textAlign ='left',
+                descStyle.paddingTop = '6px'
+              }
             }
           }
-          else {
-            captStyle.position = 'absolute',
-            captStyle.textTransform = 'uppercase',
-            captStyle.bottom = '0px',
-            // captStyle.transform = 'translateY(100%)',
-            captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
-            captStyle.textAlign = 'right',
-            captStyle.transformOrigin = 'left top',
-            captStyle.paddingBottom = '5px'
-            
-            // Random position for description
-            if (Math.random() < 0.5){
-              descStyle.right = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateY(100%)',
-              descStyle.textAlign ='right',
-              descStyle.paddingTop = '6px'
-            }
-            else {
-              descStyle.left = '0px',
-              descStyle.bottom = '0px',
-              descStyle.transform = 'translateY(100%)',
-              descStyle.textAlign ='left',
-              descStyle.paddingTop = '6px'
-            }
-          }
+          return(
+            <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
+                <div className={styles.imgContent}>
+                  <div className='imgCapt' style={captStyle}>
+                    {item?.author && <a>Title<br/>{item?.author}</a>}
+                  </div>
+                  <div className={styles.imgDesc} style={descStyle}>
+                    <p>{item?.desc}</p>
+                  </div>
+                  <div className={styles.imgCover}>
+                      <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+                  </div>
+                </div>
+            </div>
+          )})
         }
-        return(
-          <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
-              <div className={styles.imgContent}>
-                <div className='imgCapt' style={captStyle}>
-                  {item?.author && <a>Title<br/>{item?.author}</a>}
-                </div>
-                <div className={styles.imgDesc} style={descStyle}>
-                  <p>{item?.desc}</p>
-                </div>
-                <div className={styles.imgCover}>
-                    <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
-                </div>
-              </div>
-          </div>
-        )})
-      }
     </div>
   )
 }

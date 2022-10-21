@@ -1,6 +1,7 @@
-import React, {useEffect, useState, useLayoutEffect, useRef} from 'react'
+import React, {useEffect, useState, useLayoutEffect, useRef, useCallback} from 'react'
 import styles from './HorizontalGallery.module.css'
 import {useHorizontalScroll} from '../../Functions/HorizontalScroll/useHorizontalScroll'
+import {useFetch} from '../../Functions/useFetch/useFetch'
 
 const images = [
   {
@@ -34,13 +35,8 @@ const images = [
     author: 'author6'
   }
 ]
-
 var imageWidth = [];
-  for (let x = 0; x<images.length; x++){
-    imageWidth.push(Math.random()*(43-25)+25)
-  }
-function HorizontalGallery() {
-  const scrollLeft = useHorizontalScroll();
+function HorizontalGallery(props) {
   var [allPosts, setAllPosts] = useState({
     image: [],
     desc: [],
@@ -48,7 +44,28 @@ function HorizontalGallery() {
   })
   const [tempImages, setTempImages] = useState([]);
   let postPoss = [];
+
+  const scrollLeft = useHorizontalScroll();
+
+  const [pageNum, setPageNum] = useState(1)
+  const {isLoading, error, photos, hasMore} = useFetch('blackandwhite', pageNum);
+  const observer = useRef();
+  const lastPhotoElement = useCallback(
+    (node) => {
+      if (isLoading) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if(entries[0].isIntersecting && hasMore) {
+          setPageNum((prev) => prev + 1)
+        }
+      });
+      if (node) observer.current.observer(node);
+    },
+    [isLoading, hasMore],
+  );
+  console.log(photos)
   
+
   useLayoutEffect(() => {
     setAllPosts({
       image: document.getElementsByClassName(`${styles.imgCover}`),
@@ -56,31 +73,25 @@ function HorizontalGallery() {
       capt: document.getElementsByClassName(`imgCapt`)
     });
   }, [allPosts.image])
+
+  // Random images' width in the first render
+  
+  useEffect(()=>{
+    for (let x = 0; x<photos.length; x++){
+      imageWidth.push(Math.random()*(43-25)+25)
+    }
+  },[photos])
   
   useEffect(() => {
     setTimeout(() => {
-      // You'd want an exit condition here
-      if(tempImages.length<7){
-        setTempImages(arr => [...arr, images[arr.length++]]);
+      if(tempImages.length<(photos.length)){
+        setTempImages(arr => [...arr, photos[arr.length++]]);
+        console.log('temp',tempImages)
       }
+      // You'd want an exit condition here
     }, 10);
   }, [tempImages]);
 
-
-  // useEffect(() => {
-  //   const elementStyle = document.getElementsByClassName(`${styles.fullpageWrapper}`)[0]
-  //   elementStyle.addEventListener('wheel', (ev) => {
-  //     ev.preventDefault(); // stop scrolling in another direction
-  //     elementStyle.scrollLeft += (ev.deltaY + ev.deltaX)
-  //   })
-  
-  //   return () => {
-  //     elementStyle.removeEventListener('wheel', (ev) => {
-  //       ev.preventDefault(); // stop scrolling in another direction
-  //       elementStyle.scrollLeft += (ev.deltaY + ev.deltaX)
-  //     })
-  //   }
-  // }, [])
   
   // Style the scrollbar only show when scrolling and horizontal scroll
   // useEffect(()=>{
@@ -220,8 +231,8 @@ function HorizontalGallery() {
               captStyle.textTransform = 'uppercase',
               captStyle.bottom = '0px',
               // captStyle.transform = 'translateY(100%)',
-              captStyle.transform = 'rotate(-90deg) translate(-50%, -100%)',
-              captStyle.textAlign = 'right',
+              captStyle.transform = 'rotate(-90deg) translate(-13%, -100%)',
+              captStyle.textAlign = 'left',
               captStyle.transformOrigin = 'left top',
               captStyle.paddingBottom = '5px'
               
@@ -243,16 +254,29 @@ function HorizontalGallery() {
             }
           }
           return(
+            // <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
+            //     <div className={styles.imgContent}>
+            //       <div className='imgCapt' style={captStyle}>
+            //         {item?.author && <a>Title<br/>{item?.author}</a>}
+            //       </div>
+            //       <div className={styles.imgDesc} style={descStyle}>
+            //         <p>{item?.desc}</p>
+            //       </div>
+            //       <div className={styles.imgCover}>
+            //           <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+            //       </div>
+            //     </div>
+            // </div>
             <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
                 <div className={styles.imgContent}>
                   <div className='imgCapt' style={captStyle}>
-                    {item?.author && <a>Title<br/>{item?.author}</a>}
+                    {item?.user && <a>item.user.instagram_username<br/>{item?.user.name}</a>}
                   </div>
                   <div className={styles.imgDesc} style={descStyle}>
-                    <p>{item?.desc}</p>
+                    <p>{item?.alt_description}</p>
                   </div>
                   <div className={styles.imgCover}>
-                      <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
+                      <img src={item?.urls.full} style={{width:`${imageWidth[ind]}vh`}}></img>
                   </div>
                 </div>
             </div>

@@ -27,11 +27,11 @@
 .imgContent{
     position: relative;
     display: block;
-    
 }
 .imgDesc{
     position: absolute;
-    /* opacity: 0; */
+    opacity: 0;
+    transition: all .3s ease-in-out;
 }
 .imgWrapper:hover .imgDesc{
     opacity: 100%;

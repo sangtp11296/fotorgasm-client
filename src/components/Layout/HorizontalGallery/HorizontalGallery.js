@@ -3,95 +3,64 @@ import styles from './HorizontalGallery.module.css'
 import {useHorizontalScroll} from '../../Functions/HorizontalScroll/useHorizontalScroll'
 import {useFetch} from '../../Functions/useFetch/useFetch'
 
-const images = [
-  {
-    img: 'https://images.unsplash.com/photo-1583144584182-1717fab24b1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author1'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1563124488-159c05ebb7e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3024&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author2'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1582370930143-4c547062f8bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3772&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author3'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1589482338352-c3ab369b4b61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3872&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author4'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1617119552150-ecc899f6562c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2624&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author5'
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1468657988500-aca2be09f4c6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3870&q=80',
-    desc: 'When love has carried us above all things, into the Divine Dark, we receive in peace the Incomprehensible Light, enfolding us and penetrating us. What is this Light, if it be not a contemplation of the Infinite, and an intuition of Eternity?',
-    author: 'author6'
-  }
-]
 var imageWidth = [];
-function HorizontalGallery(props) {
+
+function HorizontalGallery() {
+
   var [allPosts, setAllPosts] = useState({
     image: [],
     desc: [],
     capt: []
   })
-  const [tempImages, setTempImages] = useState([]);
-  let postPoss = [];
-
+  
   const scrollLeft = useHorizontalScroll();
-
+  
   const [pageNum, setPageNum] = useState(1)
   const {isLoading, error, photos, hasMore} = useFetch('blackandwhite', pageNum);
+  const [tempImages, setTempImages] = useState([]);
+
+  // Infinite scroll
   const observer = useRef();
   const lastPhotoElement = useCallback(
     (node) => {
       if (isLoading) return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if(entries[0].isIntersecting && hasMore) {
+        if (entries[0].isIntersecting && hasMore) {
           setPageNum((prev) => prev + 1)
         }
       });
-      if (node) observer.current.observer(node);
+      if (node) observer.current.observe(node);
     },
     [isLoading, hasMore],
   );
-  console.log(photos)
   
+  // Random images' width in the first render
+  useEffect(()=>{
+    for (let x = imageWidth.length; x<photos.length; x++){
+      imageWidth.push(Math.random()*(43-25)+25)
+    }
+  },[photos])
 
-  useLayoutEffect(() => {
+  useEffect(() => {
+    setTimeout(() => {
+      // You'd want an exit condition here
+      if(tempImages.length<(photos.length)){
+        setTempImages(arr => [...arr, photos[arr.length++]]);
+      }
+    }, 10);
+  });
+
+  useEffect(() => {
     setAllPosts({
       image: document.getElementsByClassName(`${styles.imgCover}`),
       desc: document.getElementsByClassName(`${styles.imgDesc}`),
       capt: document.getElementsByClassName(`imgCapt`)
     });
-  }, [allPosts.image])
+  }, [tempImages])
 
-  // Random images' width in the first render
   
-  useEffect(()=>{
-    for (let x = 0; x<photos.length; x++){
-      imageWidth.push(Math.random()*(43-25)+25)
-    }
-  },[photos])
   
-  useEffect(() => {
-    setTimeout(() => {
-      if(tempImages.length<(photos.length)){
-        setTempImages(arr => [...arr, photos[arr.length++]]);
-        console.log('temp',tempImages)
-      }
-      // You'd want an exit condition here
-    }, 10);
-  }, [tempImages]);
-
   
   // Style the scrollbar only show when scrolling and horizontal scroll
   // useEffect(()=>{
@@ -112,6 +81,7 @@ function HorizontalGallery(props) {
   // },[])
 
   // Function update next position for next post
+  var postPoss = [];
   const positionUpdate = (x) => {
     const offset = 1311;
     var top = 0;
@@ -177,11 +147,14 @@ function HorizontalGallery(props) {
     if (state) return true
     else return false
   }
+  
+  console.log(photos.length)
+  console.log("postPoss",postPoss.length,postPoss)
   return (
     <div className={styles.fullpageWrapper} ref={scrollLeft}>
         {/* Mapping list of Images */}
         {tempImages.map((item,ind) => {
-          {allPosts?.image[ind] && positionUpdate(ind)}
+          allPosts?.image[ind] && positionUpdate(ind)
           const wrapperStyle = {
             top: `${allPosts.image[ind] ? postPoss[ind].top : ''}` + 'px',
             left: `${allPosts.image[ind] ? postPoss[ind].left : ''}` + 'px',
@@ -253,34 +226,42 @@ function HorizontalGallery(props) {
               }
             }
           }
-          return(
-            // <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
-            //     <div className={styles.imgContent}>
-            //       <div className='imgCapt' style={captStyle}>
-            //         {item?.author && <a>Title<br/>{item?.author}</a>}
-            //       </div>
-            //       <div className={styles.imgDesc} style={descStyle}>
-            //         <p>{item?.desc}</p>
-            //       </div>
-            //       <div className={styles.imgCover}>
-            //           <img src={item?.img} style={{width:`${imageWidth[ind]}vh`}}></img>
-            //       </div>
-            //     </div>
-            // </div>
-            <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
-                <div className={styles.imgContent}>
-                  <div className='imgCapt' style={captStyle}>
-                    {item?.user && <a>item.user.instagram_username<br/>{item?.user.name}</a>}
+
+          if (photos.length === ind + 1){
+            return(
+              <div key={ind} ref={lastPhotoElement} className={styles.imgWrapper} style={wrapperStyle}>
+                  <div className={styles.imgContent}>
+                    <div className='imgCapt' style={captStyle}>
+                      {item?.user && <a>item.user.instagram_username<br/>{item?.user.name}</a>}
+                    </div>
+                    <div className={styles.imgDesc} style={descStyle}>
+                      <p>{item?.alt_description}</p>
+                    </div>
+                    <div className={styles.imgCover}>
+                        <img src={item?.urls.full} style={{width:`${imageWidth[ind]}vh`}}></img>
+                    </div>
                   </div>
-                  <div className={styles.imgDesc} style={descStyle}>
-                    <p>{item?.alt_description}</p>
+              </div>
+            )
+          }
+          else{
+            return(
+              <div key={ind} className={styles.imgWrapper} style={wrapperStyle}>
+                  <div className={styles.imgContent}>
+                    <div className='imgCapt' style={captStyle}>
+                      {item?.user && <a>item.user.instagram_username<br/>{item?.user.name}</a>}
+                    </div>
+                    <div className={styles.imgDesc} style={descStyle}>
+                      <p>{item?.alt_description}</p>
+                    </div>
+                    <div className={styles.imgCover}>
+                        <img src={item?.urls.full} style={{width:`${imageWidth[ind]}vh`}}></img>
+                    </div>
                   </div>
-                  <div className={styles.imgCover}>
-                      <img src={item?.urls.full} style={{width:`${imageWidth[ind]}vh`}}></img>
-                  </div>
-                </div>
-            </div>
-          )})
+              </div>
+            )
+          }
+        })
         }
     </div>
   )

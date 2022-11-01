@@ -48,7 +48,7 @@ function HorizontalGallery() {
       if(tempImages.length<(photos.length)){
         setTempImages(arr => [...arr, photos[arr.length++]]);
       }
-    }, 10);
+    }, 1000);
   });
 
   useEffect(() => {

@@ -30,7 +30,10 @@ function Write() {
         if (title,type,photographer,categories,desc,cover,content){
             let res;
             try{
-                res = await axios.post()
+                res = await axios.post('/posts', newPost);
+            } catch(err) {
+                setError(true)
+                throw new Error(err)
             }
         }
     }

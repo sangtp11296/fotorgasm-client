@@ -1,0 +1,98 @@
+.homePage{
+    background-image: var(--background-color);
+    width: 100vw;
+    height: 100vh;
+}
+.profileContainer{
+    display: block;
+    margin: 0 auto 0;
+    max-width: 935px;
+}
+.profileInfo{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    width: 100%;
+    margin-bottom: 40px;
+    align-items: stretch;
+}
+.profileAvatar{
+    margin-right: 30px;
+    flex-grow: 1;
+    flex-basis: 0;
+    flex-shrink: 0;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* background-clip: padding-box;
+    border: 5px solid transparent;
+    background-color: var(--background-color);
+    border-radius: 100%;
+    box-sizing: content-box; */
+    cursor: pointer;
+}
+/* .profileAvatar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin: -5px;
+    background-image: var(--brand);
+    border-radius: inherit;
+    
+} */
+.logoBrand{
+    height: 150px;
+    width: 150px;
+}
+.profileMain{
+    flex-grow: 2;
+    flex-basis: 30px;
+    flex-shrink: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    /* justify-content: center; */
+}
+.profileName{
+    color: var(--on-background);
+    font-family: 'Neue Helvetica';
+    font-weight: 400;
+    font-size: 20px;
+    margin-top: 10px;
+}
+.profileDesc{
+    color: var(--on-background-matte);
+    /* opacity: .8; */
+    margin-top: 15px;
+    font-family: 'Neue Helvetica';
+    font-weight: 300;
+    font-size: 20px;
+}
+.profileAvatar .ringOne{
+    position: absolute;
+    fill:none;
+    stroke:url('#linearRing1');
+    stroke-linecap: round;
+    stroke-width: 3;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+    /* filter: url(#glowRing); */
+    animation: stroke-draw 3s ease-in 1 normal;
+    /* animation: stroke-draw 5s linear 2 alternate;  */
+} 
+@keyframes stroke-draw {
+    0%{
+        stroke-dasharray: 15;
+        transform: rotate(-200deg);
+        /* fill: var(--background-color); */
+        filter: url(#glowRing);
+    }
+    100%{
+        fill: transparent;
+        stroke-dasharray: 1;
+    }
+}

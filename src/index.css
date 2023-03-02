@@ -3,8 +3,8 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    font: 'Montserrat', sans-serif;
-    font-size: 100%;
+    font-family: 'Neue Helvetica';
+    font-weight: 400;
 
     /* font-family: 'Baloo 2', cursive;
       font-family: 'Baloo Tammudu 2', cursive;
@@ -18,7 +18,51 @@
       font-family: 'Quicksand', sans-serif;
       font-family: 'Raleway', sans-serif;
       font-family: 'Roboto Mono', monospace;
-      font-family: 'Varela Round', sans-serif; */
+      font-family: 'Varela Round', sans-serif;
+      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Italianno', cursive; */
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-light.ttf);
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-ultra-light.ttf);
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Neue Helvetica';
+    src: url(./fonts/NeueHelvatica/helvetica-neue-italic.ttf);
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
   }
   *, *::before, *::after {
   border-width: 0;
@@ -63,10 +107,12 @@
     --surface-16: #353535;
     --surface-24: #383838;
     --brand: #008dfc;
+    --brand: linear-gradient(90deg, rgba(116,0,184,1) 0%, rgba(105,48,195,1) 11%, rgba(94,96,206,1) 22%, rgba(83,144,217,1) 33%, rgba(78,168,222,1) 44%, rgba(72,191,227,1) 55%, rgba(86,207,225,1) 66%, rgba(100,223,223,1) 77%, rgba(114,239,221,1) 88%, rgba(128,255,219,1) 100%);;
     --primary: #4caeff;
     --secondary: #ffab4f;
-    --on-background: #f5f5f5;
-    --on-surface: #f5f5f5;
+    --on-background: #CED4DA;
+    --on-surface: #CED4DA;
+    --on-background-matte: #ADB5BD;
     --on-primary: #000000;
 
     --blue: #007bff;

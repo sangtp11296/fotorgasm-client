@@ -21,7 +21,7 @@ export default class Home extends React.Component {
             <div className={styles.profileAvatar}>
               <svg className={styles.ringOne} viewBox="0 0 100 100" height='150px' width='150px' xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve">  
                 <defs>
-                  <linearGradient id='linearRing1' x1="0%" y1="100%" x2="100%" y2="0%">
+                  <linearGradient id='linearRing1' x1="100%" y1="0%" x2="0%" y2="100%">
                     <stop offset="0%" stopColor='#F72585' />
                     <stop offset="11%" stopColor='#B5179E'/>
                     <stop offset="22%" stopColor='#7209B7'/>

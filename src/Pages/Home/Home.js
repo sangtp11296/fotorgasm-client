@@ -6,6 +6,7 @@ import PageContainer from '../../components/Layout/PageContainer/PageContainer';
 import PageCover from '../../components/Layout/PageCover/PageCover'
 import styles from './Home.module.css'
 import '../../fonts/NeueHelvatica/helvetica-neue-regular.ttf'
+import { Link } from 'react-router-dom';
 
 export default class Home extends React.Component {
 
@@ -38,14 +39,39 @@ export default class Home extends React.Component {
                 </defs>
                 <circle cx="50" cy="50" r="47"></circle>
               </svg>
-              <img className={styles.logoBrand} src='/images/brand/fotorgasm-logo-no-ring.png'></img>
+              <img className={styles.logoBrand} src='/images/brand/portrait.png'></img>
             </div>
             <div className={styles.profileMain}>
               <div className={styles.profileName}>
-                <span>fotorgasm</span>
+                <span>@</span>fotorgasm
               </div>
               <div className={styles.profileDesc}>
-                a part-time dreamer finds orgaSm in the world of madness
+                <h3>Trần Phúc Sang • Trà • Yuki • 陈福创</h3>
+                A part-time dreamer <span>•</span> Photographer <span>•</span> Musician <span>•</span> Listener<br/>↳ finds orgaSm in the world of madness<br/>
+                <Link className={styles.hashTag} to=''>#fotorgasm</Link>
+              </div>
+              <div className={styles.socialMenu}>
+                <a href='https://www.instagram.com/the.fotorgasm/'>
+                  <i className="fab fa-instagram fa-lg"></i>
+                </a>
+                <a href='https://www.facebook.com/sang.tra.11296/'>
+                  <i className="fab fa-facebook fa-lg"></i>
+                </a>
+                <a href='https://open.spotify.com/user/21yfttjxbypianq4yjlpw6bba?si=df0070d916dc41da'>
+                  <i className="fab fa-spotify fa-lg"></i>
+                </a>
+                <a href='https://www.youtube.com/@fotorgasm'>
+                  <i className="fab fa-youtube fa-lg"></i>
+                </a>
+                <a href='https://soundcloud.com/yuki-tra-11296'>
+                  <i class="fab fa-soundcloud"></i>
+                </a>
+                <a href='https://steamcommunity.com/id/nguoidibanmua/'>
+                  <i className="fab fa-steam-symbol fa-lg"></i>
+                </a>
+                <a href='https://steamcommunity.com/id/nguoidibanmua/'>
+                  <i className="fas fa-envelope fa-lg"></i>
+                </a>
               </div>
             </div>
           </div>

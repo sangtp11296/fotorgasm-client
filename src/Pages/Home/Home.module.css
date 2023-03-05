@@ -10,6 +10,7 @@
     height: inherit;
     margin: 0 auto 0;
     max-width: 935px;
+    flex-direction: column;
 }
 .profileInfo{
     display: flex;
@@ -129,4 +130,38 @@
         fill: transparent;
         stroke-dasharray: 1;
     }
+}
+
+.pageMenu{
+    height: 130px;
+    width: 100%;
+    margin-bottom: 44px;
+}
+.menuContainer{
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    vertical-align: baseline;
+    justify-content: space-between;
+    align-items: center;
+}
+.button{
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--on-background-matte);
+    cursor: pointer;
+}
+.button:hover{
+    background-color: var(--on-background);
+
+}
+.menuList{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
 }

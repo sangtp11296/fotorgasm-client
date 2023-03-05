@@ -1,12 +1,15 @@
 import React from 'react'
-import Header from '../../components/Layout/Header/Header'
-import HorizontalGallery from '../../components/Layout/HorizontalGallery/HorizontalGallery';
-import ImageScroller from '../../components/Layout/ImageScroller/ImageScroller'
-import PageContainer from '../../components/Layout/PageContainer/PageContainer';
-import PageCover from '../../components/Layout/PageCover/PageCover'
 import styles from './Home.module.css'
 import '../../fonts/NeueHelvatica/helvetica-neue-regular.ttf'
 import { Link } from 'react-router-dom';
+import films from '../../images/menu/on Films.png'
+import something from '../../images/menu/on Something.png'
+import vinyls from '../../images/menu/on Vinyls.png'
+import moods from '../../images/menu/on Moods.png'
+import memories from '../../images/menu/on Memories.png'
+import running from '../../images/menu/on Running.png'
+import music from '../../images/menu/on Music.png'
+import reading from '../../images/menu/on Reading.png'
 
 export default class Home extends React.Component {
 
@@ -47,36 +50,94 @@ export default class Home extends React.Component {
               </div>
               <div className={styles.profileDesc}>
                 <h3>Trần Phúc Sang • Trà • Yuki • 陈福创</h3>
-                A part-time dreamer <span>•</span> Photographer <span>•</span> Musician <span>•</span> Listener<br/>↳ finds orgaSm in the world of madness<br/>
+                A part-time <b>D</b>reamer <span>•</span> <b>P</b>hotographer <span>•</span> <b>M</b>usician <span>•</span> <b>L</b>istener<br/>↳ finds orgaSm in the world of madness<br/>
                 <Link className={styles.hashTag} to=''>#fotorgasm</Link>
               </div>
               <div className={styles.socialMenu}>
-                <a href='https://www.instagram.com/the.fotorgasm/'>
+                <a target="_blank" href='https://www.instagram.com/the.fotorgasm/'>
                   <i className="fab fa-instagram fa-lg"></i>
                 </a>
-                <a href='https://www.facebook.com/sang.tra.11296/'>
+                <a target="_blank" href='https://www.facebook.com/sang.tra.11296/'>
                   <i className="fab fa-facebook fa-lg"></i>
                 </a>
-                <a href='https://open.spotify.com/user/21yfttjxbypianq4yjlpw6bba?si=df0070d916dc41da'>
+                <a target="_blank" href='https://open.spotify.com/user/21yfttjxbypianq4yjlpw6bba?si=df0070d916dc41da'>
                   <i className="fab fa-spotify fa-lg"></i>
                 </a>
-                <a href='https://www.youtube.com/@fotorgasm'>
+                <a target="_blank" href='https://www.youtube.com/@fotorgasm'>
                   <i className="fab fa-youtube fa-lg"></i>
                 </a>
-                <a href='https://soundcloud.com/yuki-tra-11296'>
+                <a target="_blank" href='https://soundcloud.com/yuki-tra-11296'>
                   <i class="fab fa-soundcloud"></i>
                 </a>
-                <a href='https://steamcommunity.com/id/nguoidibanmua/'>
+                <a target="_blank" href='https://steamcommunity.com/id/nguoidibanmua/'>
                   <i className="fab fa-steam-symbol fa-lg"></i>
                 </a>
-                <a href='https://steamcommunity.com/id/nguoidibanmua/'>
+                <a target="_blank" href='https://steamcommunity.com/id/nguoidibanmua/'>
                   <i className="fas fa-envelope fa-lg"></i>
                 </a>
               </div>
             </div>
           </div>
-          <div className={styles.pageMenu}></div>
-          <div className={styles.socialMenu}></div>
+          <div className={styles.pageMenu}>
+            <div className={styles.menuContainer}>
+              <button className={styles.button}>
+                <i className="fas fa-chevron-left fa-lg"></i>
+              </button>
+              <ul className={styles.menuList}>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Films' src={films} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Films</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Something' src={something} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Something</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Vinyls' src={vinyls} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Vinyls</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Moods' src={moods} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Moods</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Memories' src={memories} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Memories</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Running' src={running} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Running</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Music' src={music} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Music</div>
+                  </div>
+                </li>
+                <li className={styles.menuItem}>
+                  <div className={styles.itemWrapper}>
+                    <img alt='on Reading' src={reading} height={77} width={77}/>
+                    <div className={styles.menuTitle}>on Reading</div>
+                  </div>
+                </li>
+              </ul>
+              <button className={styles.button}>
+                <i className="fas fa-chevron-right fa-lg"></i>
+              </button>
+            </div>
+          </div>
         </div>
           {/* <Header/> */}
           {/* <HorizontalGallery/> */}

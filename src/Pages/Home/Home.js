@@ -1,14 +1,7 @@
 import React from 'react'
 import styles from './Home.module.css'
 import { Link } from 'react-router-dom';
-import films from '../../images/menu/on Films.png'
-import something from '../../images/menu/on Something.png'
-import vinyls from '../../images/menu/on Vinyls.png'
-import moods from '../../images/menu/on Moods.png'
-import memories from '../../images/menu/on Memories.png'
-import running from '../../images/menu/on Running.png'
-import music from '../../images/menu/on Music.png'
-import reading from '../../images/menu/on Reading.png'
+
 import SlickMenu from '../../components/Layout/SlickMenu/SlickMenu';
 
 export default function Home(){
@@ -78,9 +71,10 @@ export default function Home(){
           </div>
           <div className={styles.pageMenu}>
             <div className={styles.menuContainer}>
-              <button className={styles.button}>
+            <SlickMenu></SlickMenu>
+              {/* <button className={styles.button}>
                 <i className="fas fa-chevron-left fa-lg"></i>
-              </button>
+              </button> */}
               {/* <div className={styles.menuWrapper}>
                 <ul className={styles.menuList}>
                   <li className={styles.menuItem}>
@@ -165,13 +159,13 @@ export default function Home(){
                   </li>
                 </ul>
               </div> */}
-              <SlickMenu/>
-              <button className={styles.button} onClick>
+              {/* <button className={styles.button} onClick>
                 <i className="fas fa-chevron-right fa-lg"></i>
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
+        
           {/* <Header/> */}
           {/* <HorizontalGallery/> */}
           {/* <PageCover jumpCallback={this.jumpFunction}/>

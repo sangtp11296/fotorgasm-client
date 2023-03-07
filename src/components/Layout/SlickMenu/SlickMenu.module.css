@@ -1,7 +1,4 @@
-.menuWrapper{
-    overflow: hidden;
-    padding-left: 10px;
-}
+
 .menuList{
     display: flex;
     flex-direction: row;
@@ -51,3 +48,4 @@
     white-space: nowrap;
     max-width: 100%;
 }
+

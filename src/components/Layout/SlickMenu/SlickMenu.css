@@ -28,7 +28,9 @@
 }
 .custom-arrow:hover{
     background-color: var(--on-background);
-
+}
+.custom-arrow:hover i{
+    color: var(--background-color);
 }
 .custom-prev-arrow{
     left: -25px;

@@ -107,16 +107,16 @@
     --surface-12: #333333;
     --surface-16: #353535;
     --surface-24: #383838;
-    --brand: #008dfc;
-    --brand: linear-gradient(90deg, rgba(116,0,184,1) 0%, rgba(105,48,195,1) 11%, rgba(94,96,206,1) 22%, rgba(83,144,217,1) 33%, rgba(78,168,222,1) 44%, rgba(72,191,227,1) 55%, rgba(86,207,225,1) 66%, rgba(100,223,223,1) 77%, rgba(114,239,221,1) 88%, rgba(128,255,219,1) 100%);
-    --hashtag: rgb(147, 184, 229);
+    --hashtag: rgba(72,149,239,1);
+    --brand: linear-gradient(45deg, rgba(72,149,239,1) -1%, rgba(247,37,133,1) 0%, rgba(181,23,158,1) 11%, rgba(114,9,183,1) 22%, rgba(86,11,173,1) 33%, rgba(72,12,168,1) 44%, rgba(58,12,163,1) 55%, rgba(63,55,201,1) 66%, rgba(67,97,238,1) 77%, rgba(72,149,239,1) 88%, rgba(72,149,239,1) 100%);
     --primary: #4caeff;
     --secondary: #ffab4f;
-    --on-background: #CED4DA;
+    --on-background: #e7e7e7;
     --on-surface: #CED4DA;
-    --on-background-matte: #ADB5BD;
+    --on-background-matte: #adb5bdb8;
     --on-background-light: #ffffff60;
     --on-primary: #000000;
+    --on-separate:  #dbe2e928;
 
     --blue: #007bff;
     --indigo: #6610f2;

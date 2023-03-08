@@ -31,14 +31,29 @@
     width: 87px;
     height: 87px;
     border: 1px solid var(--on-background-light);
+    /* position: relative;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    background-color: var(--background-color);
+    border-radius: 100%;
+    box-sizing: content-box; */
 }
+/* .outerCircle::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    margin: -2px;
+    background-image: var(--brand);
+    border-radius: inherit;
+} */
 .menuTitle{
     padding-top: 15px;
     text-align: center;
     line-height: 16px;
     min-width: 0;
     margin-bottom: 0;
-    color: var(--on-background-matte);
+    color: var(--on-background);
     font-family: 'Neue Helvetica';
     font-size: 12px;
     font-weight: 500;

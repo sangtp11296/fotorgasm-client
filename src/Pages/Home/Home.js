@@ -3,6 +3,7 @@ import styles from './Home.module.css'
 import { Link } from 'react-router-dom';
 
 import SlickMenu from '../../components/Layout/SlickMenu/SlickMenu';
+import PostGrid from '../../components/Layout/PostGrid/PostGrid';
 
 export default function Home(){
   const scrollMenu = () =>{
@@ -71,99 +72,10 @@ export default function Home(){
           </div>
           <div className={styles.pageMenu}>
             <div className={styles.menuContainer}>
-            <SlickMenu></SlickMenu>
-              {/* <button className={styles.button}>
-                <i className="fas fa-chevron-left fa-lg"></i>
-              </button> */}
-              {/* <div className={styles.menuWrapper}>
-                <ul className={styles.menuList}>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Films' src={films} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Films</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Something' src={something} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Something</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Vinyls' src={vinyls} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Vinyls</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Moods' src={moods} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Moods</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Memories' src={memories} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Memories</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Running' src={running} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Running</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Music' src={music} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Music</div>
-                      </div>
-                    </div>
-                  </li>
-                  <li className={styles.menuItem}>
-                    <div className={styles.itemWrapper}>
-                      <div className={styles.itemPad}>
-                        <div className={styles.outerCircle}>
-                          <img alt='on Reading' src={reading} height={77} width={77}/>
-                        </div>
-                        <div className={styles.menuTitle}>on Reading</div>
-                      </div>
-                    </div>
-                  </li>
-                </ul>
-              </div> */}
-              {/* <button className={styles.button} onClick>
-                <i className="fas fa-chevron-right fa-lg"></i>
-              </button> */}
+              <SlickMenu/>
             </div>
           </div>
+          <PostGrid/>
         </div>
         
           {/* <Header/> */}

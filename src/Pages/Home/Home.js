@@ -59,7 +59,7 @@ export default function Home(){
                   <i className="fab fa-youtube fa-lg"></i>
                 </a>
                 <a target="_blank" href='https://soundcloud.com/yuki-tra-11296'>
-                  <i class="fab fa-soundcloud"></i>
+                  <i className="fab fa-soundcloud"></i>
                 </a>
                 <a target="_blank" href='https://steamcommunity.com/id/nguoidibanmua/'>
                   <i className="fab fa-steam-symbol fa-lg"></i>

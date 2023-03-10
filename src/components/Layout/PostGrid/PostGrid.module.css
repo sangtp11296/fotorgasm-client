@@ -24,3 +24,6 @@
 .postSort i{
     scale: .8;
 }
+.postGrid{
+    width: 100%;
+}

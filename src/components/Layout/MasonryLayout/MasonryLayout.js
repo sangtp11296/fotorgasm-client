@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import styles from './MasonryLayout.module.css'
-import axios from 'axios'
-function MasonryLayout({images}) {
 
+
+function MasonryLayout({images}) {
   return (
     <div className={styles.gridContainer}>
         {images.map((img) => {
             if(img.width >= img.height){
                 return(
                     <div className={`${styles.mediaType} ${styles.postBlog}`} key={img.id}>
+                        <div className={`${styles.catPost} ${styles.bubble}`}>
+                            <span>on Videos</span>
+                        </div>
                         <img src={img.urls.regular} alt={img.alt_description} />
                     </div>
                 )

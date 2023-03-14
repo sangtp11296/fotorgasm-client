@@ -6,31 +6,36 @@ import axios from 'axios';
 
 function PostGrid() {
     const [click, isClicked] = useState('blog')
-    const [images, setImages] = useState([]);
+    const [photos, setPhotos] = useState([]);
     const [page, setPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
-
-    const loadMoreImages = () => {
-        setPage(page + 1);
-    };
     useEffect(() => {
-        const fetchImages = async () => {
-            const response = await axios.get(
-                `https://api.unsplash.com/photos/random?count=5&page=${page}`,
-                {
-                    headers: {
-                        Authorization: `Client-ID oToAvK2epPDap7yqFnLiUzugpJ2Za7bOuPgu2Crq_QE`,
-                    }
-                }
-            );
-            if (response.data.length === 0) {
-                setHasMore(false);
+        // Load initial set of photos
+        loadPhotos();
+      }, []);
+    
+      const loadPhotos = () => {
+        axios.get(`https://api.unsplash.com/photos?page=${page}&client_id=oToAvK2epPDap7yqFnLiUzugpJ2Za7bOuPgu2Crq_QE`)
+          .then(response => {
+            const data = response.data;
+            // Check if we've already cached this page of data
+            const cachedData = sessionStorage.getItem(`page_${page}`);
+            if (cachedData) {
+              // If we have, use the cached data instead of the response from the API
+              setPhotos([...photos, ...JSON.parse(cachedData)]);
             } else {
-                setImages(prevImages => [...prevImages, ...response.data]);
+              // If we haven't, store the response data in the cache and use it
+              sessionStorage.setItem(`page_${page}`, JSON.stringify(data));
+              setPhotos([...photos, ...data]);
             }
-        };
-        fetchImages()
-    }, [page])
+            setPage(page + 1);
+          })
+          .catch(error => {
+            console.log(error);
+            setHasMore(false);
+          });
+      };
+
   return (
     <>
         <div className={styles.postCatalog}>
@@ -53,13 +58,13 @@ function PostGrid() {
         </div>
         <div className={styles.postGrid}>
             <InfiniteScroll 
-                dataLength={images.length}
-                next={loadMoreImages}
+                dataLength={photos.length}
+                next={loadPhotos}
                 hasMore={hasMore}
                 loader={<h4>Loading...</h4>}
                 style={{ overflow: 'hidden' }}
             >
-                <MasonryLayout images={images}/>
+                <MasonryLayout images={photos}/>
 
             </InfiniteScroll>
         </div>

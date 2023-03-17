@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import SlickMenu from '../../components/Layout/SlickMenu/SlickMenu';
 import PostGrid from '../../components/Layout/PostGrid/PostGrid';
+import ScrollToTop from '../../components/Layout/Button/ScrollToTop';
 
 export default function Home(){
   const scrollMenu = () =>{
@@ -11,6 +12,7 @@ export default function Home(){
   }
   return (
     <div className={styles.homePage}>
+      <ScrollToTop/>
         <div className={styles.profileContainer}>
           <div className={styles.profileInfo}>
             <div className={styles.profileAvatar}>

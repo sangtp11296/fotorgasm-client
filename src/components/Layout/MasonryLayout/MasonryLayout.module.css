@@ -9,6 +9,10 @@
 .postBlog{
     cursor: pointer;
 }
+.postBlog:hover .fullScreen{
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
 .mediaType{
     border: none;
     position: relative;
@@ -72,7 +76,7 @@
 
 /* Media Type */
 .mediaType .postInfo{
-    top: 65%;
+    top: 68%;
 }
 .mediaType .postOverlay{
     height: 50%;
@@ -94,7 +98,7 @@
 }
 .postInfo{
     z-index: 1;
-    top: 75%;
+    top: 81%;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -117,11 +121,16 @@
     display: flex;
     align-items: center;
 }
+.postCat img{
+    box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.153);
+    border-radius: 100%;
+}
 .postCat span{
     padding-left: 5px;
     color: var(--on-background);
     font-size: 12px;
     font-weight: 300;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.285);
 }
 .postInfo .titlePost{
     width: 100%;
@@ -129,6 +138,7 @@
     padding-bottom: 2px;
 }
 .postInfo .titlePost h1{
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.285);
     color: var(--on-background);
     font-size: 15px;
     font-weight: 500;
@@ -137,9 +147,19 @@
     color: var(--on-background-matte);
     font-size: 13px;
     font-weight: 300;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
+    
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+}
+.standardType .postDesc{
+    height: 35px;
+    -webkit-line-clamp: 2;
+}
+.mediaType .postDesc{
+    -webkit-line-clamp: 1;
 }
 
 /* Post Social */
@@ -161,6 +181,7 @@
     margin-top: 10px;
 }
 .postSocial button:hover svg path{
+    transition: all .1s ease-out;
     fill: rgba(72,149,239,1);
     stroke: rgba(72,149,239,1);
 }
@@ -168,6 +189,19 @@
     height: 20px;
 }
 .postSocial button svg path{
+    transition: all .1s ease-out;
     fill: none
     /* stroke-width: 1; */
+}
+.fullScreen{
+    position: absolute;
+    background-color: transparent;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+.fullScreen svg{
+    height: 20px;
 }

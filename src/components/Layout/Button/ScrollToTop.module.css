@@ -1,7 +1,8 @@
 .scrollToTop{
+    z-index: 2;
     position: fixed;
     bottom: 30px;
-    right: 400px;
+    right: 15%;
     border: 2px solid var(--on-background);
     border-radius: 100%;
     padding: 5px;

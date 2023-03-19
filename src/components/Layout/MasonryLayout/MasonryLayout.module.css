@@ -13,6 +13,10 @@
     opacity: 1;
     transition: all .2s ease-in-out;
 }
+.postBlog.active{
+    grid-column: 1 / -1;
+    grid-row: span 9;
+}
 .mediaType{
     border: none;
     position: relative;

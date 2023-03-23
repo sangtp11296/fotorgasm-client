@@ -143,12 +143,21 @@ function Write() {
             removeProviders: [ 'instagram', 'twitter', 'googleMaps', 'flickr', 'facebook' ]
         }
     };
+    const handleCoverImageUpload = (event) =>{
+        const file = event.target.files[0]
+        setCover(file)
+        const image = new Image();
+        image.onload = () => {
+            console.log(`Image resolution: ${image.naturalWidth} x ${image.naturalHeight}`)
+        };
+        image.src = URL.createObjectURL(file);
+    }
   return (
     <div className={styles.writePage}>
         <div className={styles.writeForm} style={{display:"flex"}}>
             <div className={styles.imageSide}>
                 <h5>Cover Image</h5>
-                {cover? <div className={styles.uploadImage} style={{backgroundColor:'transparent'}}>
+                {cover ? <div className={styles.uploadImage} style={{backgroundColor:'transparent'}}>
                             <img className={styles.coverPhoto} alt='' src={URL.createObjectURL(cover)}/>
                             <i className={`${styles.xIcon} fas fa-times fa-2x`} onClick={e=>{setCover(null)}}/>
                         </div> : 
@@ -157,7 +166,7 @@ function Write() {
                                 <i  className="fas fa-camera-retro"></i>
                             </label>
                             <label htmlFor='fileInput' className={styles.uploadBtn}>Upload Image</label>
-                            <input type='file' id='fileInput' required style={{display:'none'}} onChange={e=>{setCover(e.target.files[0])}}/>
+                            <input type='file' id='fileInput' required style={{display:'none'}} onChange={handleCoverImageUpload}/>
                         </div>
                         }
                 <div className={styles.notice}>
@@ -168,7 +177,7 @@ function Write() {
                     </ul>
                 </div>
             </div>
-            <div className={styles.textSide}>
+            {/* <div className={styles.textSide}>
                 <form className={styles.textForm} onSubmit={handleSubmit}>
                     <div className={styles.textField}>
                         <label>Post Type<span className={styles.textDanger}>*</span></label>
@@ -228,8 +237,9 @@ function Write() {
                     </div>
                     {error ? <div><h5 style={{color:'red',textAlign:'right'}}>Something went wrong! Please check again...</h5></div>:null}
                 </form>
-            </div>
+            </div> */}
         </div>
+        <div className={styles.previewSection}></div>
     </div>
   )
 }

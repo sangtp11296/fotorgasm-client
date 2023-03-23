@@ -1,21 +1,30 @@
 label{
     color: white
 }
-.writeFrom{
+.writePage{
+    display: flex;
+}
+.previewSection{
+    width: 75vw;
+    background-color: #f5f5f5;
+}
+.writeForm{
     margin: 0;
     display: flex;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    width: 25vw;
 }
+
 .imageSide{
-    padding: 0 8px;
+    padding: 20px 8px;
     position: relative;
-    width: 40%;
 }
 h5{
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: .09px;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 1.2;
     margin-bottom: .5rem;
 }

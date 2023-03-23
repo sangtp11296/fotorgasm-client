@@ -91,11 +91,10 @@ function MasonryLayout({images}) {
         ];
     const [myRefs, setMyRefs] = useState([]);
     function clickToOpen(ind) {
-        myRefs[ind].scrollIntoView({behavior:'smooth'}) 
         // remove any existing active classes
         myRefs.forEach(ref => ref.classList.remove(`${styles.active}`));
         myRefs[ind].classList.add(`${styles.active}`)
-        console.log(myRefs[ind].classList)
+        myRefs[ind].scrollIntoView({behavior:'smooth'}) 
     }
     // useLayoutEffect(()=>{
     //     const parentElements = document.querySelectorAll(`.${styles.titleParent}`);

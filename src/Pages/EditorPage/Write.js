@@ -12,6 +12,7 @@ function Write() {
     const [desc,setDesc] = useState('');
     const [tag, setTag] = useState([])
     const [cover,setCover] = useState(null);
+    const [coverWH, setCoverWH] = useState({width:0, height:0})
     const [content,setContent] = useState('');
     const [error,setError] = useState(false);
 
@@ -148,6 +149,7 @@ function Write() {
         setCover(file)
         const image = new Image();
         image.onload = () => {
+            setCoverWH({width:image.naturalWidth, height:image.naturalHeight})
             console.log(`Image resolution: ${image.naturalWidth} x ${image.naturalHeight}`)
         };
         image.src = URL.createObjectURL(file);
@@ -161,7 +163,7 @@ function Write() {
                             <img className={styles.coverPhoto} alt='' src={URL.createObjectURL(cover)}/>
                             <i className={`${styles.xIcon} fas fa-times fa-2x`} onClick={e=>{setCover(null)}}/>
                         </div> : 
-                        <div className={styles.uploadImage} style={{width:'375px', height:'211px'}}>
+                        <div className={styles.uploadImage} style={{width:'460px', height:'460px'}}>
                             <label htmlFor='fileInput' className={styles.icon}>
                                 <i  className="fas fa-camera-retro"></i>
                             </label>
@@ -173,7 +175,7 @@ function Write() {
                     For better design, please use:
                     <ul>
                         <li>Minimum width image size is 1080</li>
-                        <li>The best ratio is 16:9</li>
+                        <li>{`Image resolution: ${coverWH.width} x ${coverWH.height}`}</li>
                     </ul>
                 </div>
             </div>

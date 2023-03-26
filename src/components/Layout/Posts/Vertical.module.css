@@ -5,15 +5,25 @@
     opacity: 1;
     transition: all .2s ease-in-out;
 }
-.standardType.active{
+.postBlog.active{
     grid-column: 1 / -1;
     grid-row: span 9;
 }
-.standardType{
-    grid-column: span 2;
-    grid-row: span 3;
-    /* grid-column: span 3;
-    grid-row: span 5; */
+.verticalType{
+    border: none;
+    position: relative;
+    
+    grid-column: span 3;
+    grid-row: span 2;
+    /* grid-column: span 6;
+    grid-row: span 2; */
+}
+/* vertical Type */
+.verticalType .postInfo{
+    top: 68%;
+}
+.verticalType .postOverlay{
+    height: 50%;
 }
 .postCover{
     border-radius: 15px;
@@ -94,9 +104,8 @@
     -webkit-box-orient: vertical;
     display: -webkit-box;
 }
-.standardType .postDesc{
-    height: 35px;
-    -webkit-line-clamp: 2;
+.verticalType .postDesc{
+    -webkit-line-clamp: 1;
 }
 .postSocial{
     display: flex;

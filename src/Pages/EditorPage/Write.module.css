@@ -15,7 +15,6 @@ label{
     flex-direction: column;
     min-width: 500px;
 }
-
 .imageSide{
     padding: 20px 8px;
     position: relative;
@@ -28,6 +27,17 @@ h5{
     line-height: 1.2;
     margin-bottom: .5rem;
 }
+.coverGrid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 120.713px;
+    width: 392.14px;
+    grid-gap: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
 .uploadImage{
     max-height: 460px;
     max-width: 460px;

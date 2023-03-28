@@ -9,14 +9,10 @@ import running from '../../../images/menu/on Running.png'
 import music from '../../../images/menu/on Music.png'
 import reading from '../../../images/menu/on Reading.png'
 
-const Standard = (({image, title, onClick, setRef, isActive}) => {
-    const myRefs = createRef();
-    useEffect(() =>{
-        setRef(myRefs)
-    },[]) 
-    console.log(isActive)
+const Standard = (({image, alt, title, onClick, setRef, isActive}) => {
+    console.log(image)
   return (
-    <div ref={myRefs} onClick={onClick} className={`${isActive? styles.active : ''} ${styles.standardType} ${styles.postBlog}`}>
+    <div onClick={onClick} ref={setRef} className={`${isActive? styles.active : ''} ${styles.standardType} ${styles.postBlog}`}>
         <button className={styles.fullScreen}>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -27,14 +23,14 @@ const Standard = (({image, title, onClick, setRef, isActive}) => {
                 </g>
             </svg>
         </button>
-        <img className={styles.postCover} src={image.urls.regular} alt={image.alt_description} />
+        <img className={styles.postCover} src={image} alt={alt} />
         <div className={styles.postInfo}>
             <div className={`${styles.postCat}`}>
                 <img alt='on Vinyls' src={vinyls} height={25} width={25}/>
                 <span>on Films</span>
             </div>
             <div className={styles.titlePost}>
-                <h1>{title[Math.floor(Math.random() * title.length)]}</h1>
+                <h1>{title}</h1>
             </div>
             <div className={styles.postDesc}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.

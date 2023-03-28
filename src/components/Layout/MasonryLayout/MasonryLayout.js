@@ -10,7 +10,7 @@ import music from '../../../images/menu/on Music.png'
 import reading from '../../../images/menu/on Reading.png'
 import ScrollToTop from '../Button/ScrollToTop'
 import Standard from '../Posts/Standard'
-import Vertical from '../Posts/Vertical'
+import Horizontal from '../Posts/Horizontal'
 
 
 function MasonryLayout({images}) {
@@ -91,47 +91,30 @@ function MasonryLayout({images}) {
         "中庸",
         "荀子"
         ];
-    const childRefs = images.map(() => createRef())
-    // const childRefs = useRef([])
-    const [activeRef, setActivRef] = useState()
-    const [selectedRef, setSelectedRef] = useState();
+    const childRefs = images.map(() => createRef());
+    const [activeRef, setActivRef] = useState();
     
     const clickToOpen = (ind) => {
-        // remove any existing active classes
-        // myRefs.forEach(ref => ref.classList.remove(`${styles.active}`));
-        // myRefs[ind].classList.add(`${styles.active}`)
-        // myRefs[ind].scrollIntoView({behavior:'smooth'})
-        // console.log(ind,'ind')
-        // childRefs[ind].current.scrollIntoView({
-        //     behavior: "smooth",
-        //     block: "start"
-        // });
         setActivRef(ind)
-        // setTimeout(()=>{
-        //     if (selectedRef.current !== undefined && selectedRef.current !== null){
-                
-        //         selectedRef.current.scrollIntoView({
-        //             behavior: "smooth",
-        //             block: "start"
-        //         });
-        //     }
-        // }, 500);
     };
-    const handleSetRef = useCallback((ref,ind) => {
-        setSelectedRef(ref);
-        clickToOpen(ind)
-      }, []);
+    useEffect(()=>{
+        if(childRefs[activeRef]){
+            childRefs[activeRef].current.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    },[activeRef]);
     return (
         <div className={styles.gridContainer}>
         {images.map((img,ind) => {
             if(img.width > img.height){
                 return(
-                    <Vertical key={ind} image={img} title={title} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    <Horizontal key={ind} image={img} title={title} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                 )
             } else if(img.width<img.height){
                 return(
-                    <Standard key={ind} image={img} title={title} isActive={activeRef===ind} setRef={(ref) => {console.log('Mounted',ref);
-                        handleSetRef(ref,ind)}} />
+                    <Standard key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                 ) 
             } else {
                 return(

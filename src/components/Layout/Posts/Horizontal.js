@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Vertical.module.css'
+import styles from './Horizontal.module.css'
 import films from '../../../images/menu/on Films.png'
 import something from '../../../images/menu/on Something.png'
 import vinyls from '../../../images/menu/on Vinyls.png'
@@ -9,9 +9,9 @@ import running from '../../../images/menu/on Running.png'
 import music from '../../../images/menu/on Music.png'
 import reading from '../../../images/menu/on Reading.png'
 
-function Vertical({image, title, onClick, setRef, isActive}) {
+function Horizontal({image, title, onClick, setRef, isActive}) {
   return (
-    <div onClick={onClick} ref={setRef} className={`${isActive? styles.active : ''} ${styles.verticalType} ${styles.postBlog}`}>
+    <div onClick={onClick} ref={setRef} className={`${isActive? styles.active : ''} ${styles.horizontalType} ${styles.postBlog}`}>
         <button className={styles.fullScreen}>
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -58,4 +58,4 @@ function Vertical({image, title, onClick, setRef, isActive}) {
   )
 }
 
-export default Vertical
+export default Horizontal

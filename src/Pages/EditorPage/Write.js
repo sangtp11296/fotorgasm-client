@@ -3,6 +3,7 @@ import styles from './Write.module.css'
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import axios from 'axios';
+import Standard from '../../components/Layout/Posts/Standard';
 
 function Write() {
     const [type, setType] = useState('')
@@ -159,18 +160,23 @@ function Write() {
         <div className={styles.writeForm} style={{display:"flex"}}>
             <div className={styles.imageSide}>
                 <h5>Cover Image</h5>
-                {cover ? <div className={styles.uploadImage} style={{backgroundColor:'transparent'}}>
-                            <img className={styles.coverPhoto} alt='' src={URL.createObjectURL(cover)}/>
-                            <i className={`${styles.xIcon} fas fa-times fa-2x`} onClick={e=>{setCover(null)}}/>
-                        </div> : 
-                        <div className={styles.uploadImage} style={{width:'460px', height:'460px'}}>
-                            <label htmlFor='fileInput' className={styles.icon}>
-                                <i  className="fas fa-camera-retro"></i>
-                            </label>
-                            <label htmlFor='fileInput' className={styles.uploadBtn}>Upload Image</label>
-                            <input type='file' id='fileInput' required style={{display:'none'}} onChange={handleCoverImageUpload}/>
-                        </div>
-                        }
+                {cover && coverWH.width<coverWH.height ?
+                    <div className={styles.coverGrid} style={{display:'grid'}}>
+                        <Standard image={URL.createObjectURL(cover)}/>
+                    </div>
+                    // <div className={styles.uploadImage} style={{backgroundColor:'transparent'}}>
+                    //     <img className={styles.coverPhoto} alt='' src={URL.createObjectURL(cover)}/>
+                    //     <i className={`${styles.xIcon} fas fa-times fa-2x`} onClick={e=>{setCover(null)}}/>
+                    // </div> 
+                    : 
+                    <div className={styles.uploadImage} style={{width:'460px', height:'460px'}}>
+                        <label htmlFor='fileInput' className={styles.icon}>
+                            <i  className="fas fa-camera-retro"></i>
+                        </label>
+                        <label htmlFor='fileInput' className={styles.uploadBtn}>Upload Image</label>
+                        <input type='file' id='fileInput' required style={{display:'none'}} onChange={handleCoverImageUpload}/>
+                    </div>
+                    }
                 <div className={styles.notice}>
                     For better design, please use:
                     <ul>

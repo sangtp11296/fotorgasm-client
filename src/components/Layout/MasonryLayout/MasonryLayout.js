@@ -11,6 +11,7 @@ import reading from '../../../images/menu/on Reading.png'
 import ScrollToTop from '../Button/ScrollToTop'
 import Standard from '../Posts/Standard'
 import Horizontal from '../Posts/Horizontal'
+import Square from '../Posts/Square'
 
 
 function MasonryLayout({images}) {
@@ -109,12 +110,20 @@ function MasonryLayout({images}) {
         <div className={styles.gridContainer}>
         {images.map((img,ind) => {
             if(img.width > img.height){
-                return(
-                    <Horizontal key={ind} image={img} title={title} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
-                )
+                const rand = Math.random() < 0.5
+                if(rand){
+                    return(
+                        <Horizontal key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    )
+                }
+                else{
+                    return(
+                        <Square key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    )
+                }
             } else if(img.width<img.height){
                 return(
-                    <Standard key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    <Standard key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={`Vinyls`} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                 ) 
             } else {
                 return(

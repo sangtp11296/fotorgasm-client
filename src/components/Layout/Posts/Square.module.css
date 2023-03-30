@@ -5,15 +5,13 @@
     opacity: 1;
     transition: all .2s ease-in-out;
 }
-.standardType.active{
+.squareType.active{
     grid-column: 1 / -1;
     grid-row: span 9;
 }
-.standardType{
+.squareType{
     grid-column: span 3;
-    grid-row: span 5;
-    /* grid-column: span 3;
-    grid-row: span 5; */
+    grid-row: span 3;
 }
 .postCover{
     border-radius: 15px;
@@ -95,7 +93,7 @@
     -webkit-box-orient: vertical;
     display: -webkit-box;
 }
-.standardType .postDesc{
+.squareType .postDesc{
     height: 35px;
     -webkit-line-clamp: 2;
 }

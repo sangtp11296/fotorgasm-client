@@ -4,12 +4,14 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import Editor from 'ckeditor5-custom-build/build/ckeditor';
 import axios from 'axios';
 import Standard from '../../components/Layout/Posts/Standard';
+import Horizontal from '../../components/Layout/Posts/Horizontal';
+import Square from '../../components/Layout/Posts/Square';
 
 function Write() {
-    const [type, setType] = useState('')
+    const [format, setFormat] = useState('')
     const [title,setTitle] = useState('');
-    const [photographer,setPhotographer] = useState('');
-    const [categories,setCats] = useState('');
+    const [author,setAuthor] = useState('');
+    const [cats,setCats] = useState('');
     const [desc,setDesc] = useState('');
     const [tag, setTag] = useState([])
     const [cover,setCover] = useState(null);
@@ -24,12 +26,12 @@ function Write() {
             title,
             slug: toSlug(title),
             desc,
-            categories,
-            photographer,
+            cats,
+            author,
             content,
             covername: Date.now() + '_' + toSlug(title)
         }
-        if (title,type,photographer,categories,desc,cover,content){
+        if (title,format,author,cats,desc,cover,content){
             let res;
             try{
                 res = await axios.post('/posts', newPost);
@@ -151,7 +153,6 @@ function Write() {
         const image = new Image();
         image.onload = () => {
             setCoverWH({width:image.naturalWidth, height:image.naturalHeight})
-            console.log(`Image resolution: ${image.naturalWidth} x ${image.naturalHeight}`)
         };
         image.src = URL.createObjectURL(file);
     }
@@ -162,12 +163,20 @@ function Write() {
                 <h5>Cover Image</h5>
                 {cover && coverWH.width<coverWH.height ?
                     <div className={styles.coverGrid} style={{display:'grid'}}>
-                        <Standard image={URL.createObjectURL(cover)}/>
+                        <Standard image={URL.createObjectURL(cover)} title={title} cat={cats} desc={desc}/>
+                        <i className={`${styles.xIcon} fas fa-times fa-lg`} onClick={e=>{setCover(null)}}/>
+                    </div> :
+                    cover && coverWH.width>coverWH.height ?
+                    <div className={styles.coverGrid} style={{display:'grid'}}>
+                        <Horizontal image={URL.createObjectURL(cover)} title={title}/>
+                        <i className={`${styles.xIcon} fas fa-times fa-lg`} onClick={e=>{setCover(null)}}/>
                     </div>
-                    // <div className={styles.uploadImage} style={{backgroundColor:'transparent'}}>
-                    //     <img className={styles.coverPhoto} alt='' src={URL.createObjectURL(cover)}/>
-                    //     <i className={`${styles.xIcon} fas fa-times fa-2x`} onClick={e=>{setCover(null)}}/>
-                    // </div> 
+                    : 
+                    cover && coverWH.width===coverWH.height ?
+                    <div className={styles.coverGrid} style={{display:'grid'}}>
+                        <Square image={URL.createObjectURL(cover)} title={title}/>
+                        <i className={`${styles.xIcon} fas fa-times fa-lg`} onClick={e=>{setCover(null)}}/>
+                    </div>
                     : 
                     <div className={styles.uploadImage} style={{width:'460px', height:'460px'}}>
                         <label htmlFor='fileInput' className={styles.icon}>
@@ -185,67 +194,70 @@ function Write() {
                     </ul>
                 </div>
             </div>
-            {/* <div className={styles.textSide}>
+            <div className={styles.textSide}>
                 <form className={styles.textForm} onSubmit={handleSubmit}>
                     <div className={styles.textField}>
-                        <label>Post Type<span className={styles.textDanger}>*</span></label>
-                        <select name='post_type' placeholder='Select Post Type...' className={styles.textInput}  onChange={e=>{setType(e.target.value)}}>
-                            <option value='none' defaultValue className={styles.items}>Select Post Type...</option>
-                            <option value='standard' className={styles.items}>standard</option>
-                            <option value='gallary' className={styles.items}>gallary</option>
-                            <option value='quote' className={styles.items}>quote</option>
+                        <label>Post Format<span className={styles.textDanger}> *</span></label>
+                        <select name='post_format' placeholder='Select Post Format...' className={styles.textInput}  onChange={e=>{setFormat(e.target.value)}}>
+                            <option value='none' defaultValue className={styles.items}>Select Post Format...</option>
+                            <option value='blog' className={styles.items}>blog</option>
+                            <option value='gallery' className={styles.items}>gallery</option>
+                            <option value='story' className={styles.items}>story</option>
                             <option value='video' className={styles.items}>video</option>
                             <option value='audio' className={styles.items}>audio</option>
                         </select>
                     </div>
                     <div className={styles.textField}>
-                        <label>Title of the Post<span className={styles.textDanger}>*</span></label>
+                        <label>Title of the Post<span className={styles.textDanger}> *</span></label>
                         <input name='title' type='text' required maxLength='500' className={styles.textInput} autoFocus={true} placeholder='Title' onChange={e=>{setTitle(e.target.value)}}/>
                     </div>
                     <div className={styles.textField}>
-                        <label>Photographer's Name</label>
-                        <input name='photographer' type='text' maxLength='500' className={styles.textInput} placeholder='Photographer Name...' onChange={e=>{setPhotographer(e.target.value)}}/>
+                        <label>Author</label>
+                        <input name='author' type='text' maxLength='500' className={styles.textInput} placeholder='Author...' onChange={e=>{setAuthor(e.target.value)}}/>
                     </div>
                     <div className={styles.textField}>
-                        <label>Categories<span className={styles.textDanger}>*</span></label>
+                        <label>Categories<span className={styles.textDanger}> *</span></label>
                         <select name='category' placeholder='Select category...' className={styles.textInput}  onChange={e=>{setCats(e.target.value)}}>
                             <option value='none' defaultValue className={styles.items}>Select section...</option>
-                            <option value='photography' className={styles.items}>photography</option>
-                            <option value='explore' className={styles.items}>explore</option>
-                            <option value='photographers' className={styles.items}>photographers</option>
-                            <option value='challenge' className={styles.items}>challenge</option>
-                            <option value='book' className={styles.items}>book</option>
-                            <option value='music' className={styles.items}>music</option>
-                            <option value='life' className={styles.items}>life</option>
+                            <option value='Fotography' className={styles.items}>Fotography</option>
+                            <option value='Films' className={styles.items}>Films</option>
+                            <option value='Something' className={styles.items}>Something</option>
+                            <option value='Vinyls' className={styles.items}>Vinyls</option>
+                            <option value='Moods' className={styles.items}>Moods</option>
+                            <option value='Memories' className={styles.items}>Memories</option>
+                            <option value='Running' className={styles.items}>Running</option>
+                            <option value='Music' className={styles.items}>Music</option>
+                            <option value='Reading' className={styles.items}>Reading</option>
                         </select>
                     </div>
                     <div className={styles.textField}>
-                        <label>Tags<span className={styles.textDanger}>*</span></label>
+                        <label>Tags<span className={styles.textDanger}> *</span></label>
                         <input name='tags' type='text' className={styles.textInput}  onChange={e=>{setTag(e.target.value.split(' '))}}/>
                     </div>
                     <div className={styles.textField}>
-                        <label>Description<span className={styles.textDanger}>*</span></label>
+                        <label>Description<span className={styles.textDanger}> *</span></label>
                         <textarea name='description' type='text' className={styles.textInput} placeholder='Description'  onChange={e=>{setDesc(e.target.value)}}></textarea>
                     </div>
-                    <div className={styles.textField}>
-                        <label>Main Content<span className={styles.textDanger}>*</span></label>
-                        <CKEditor
-                            editor={ Editor }
-                            config={ editorConfiguration }
-                            onChange={ ( event, editor ) => {
-                                const data = editor.getData();
-                                // console.log( { event, editor, data } );
-                                setContent(data)
-                            } }
-                        />
-                    </div>
+                    
                     <div className={styles.submit}>
                         <button className={styles.uploadBtn}>Preview</button>
                         <button className={styles.uploadBtn} type='submit'>Submit</button>
                     </div>
                     {error ? <div><h5 style={{color:'red',textAlign:'right'}}>Something went wrong! Please check again...</h5></div>:null}
                 </form>
-            </div> */}
+            </div>
+        </div>
+        <div className={styles.textEditor}>
+            <h5>Main Content<span className={styles.textDanger}> *</span></h5>
+            <CKEditor
+                editor={ Editor }
+                config={ editorConfiguration }
+                onChange={ ( event, editor ) => {
+                    const data = editor.getData();
+                    // console.log( { event, editor, data } );
+                    setContent(data)
+                } }
+            />
         </div>
         <div className={styles.previewSection}></div>
     </div>

@@ -168,13 +168,13 @@ function Write() {
                     </div> :
                     cover && coverWH.width>coverWH.height ?
                     <div className={styles.coverGrid} style={{display:'grid'}}>
-                        <Horizontal image={URL.createObjectURL(cover)} title={title}/>
+                        <Horizontal image={URL.createObjectURL(cover)} title={title} cat={cats} desc={desc}/>
                         <i className={`${styles.xIcon} fas fa-times fa-lg`} onClick={e=>{setCover(null)}}/>
                     </div>
                     : 
                     cover && coverWH.width===coverWH.height ?
                     <div className={styles.coverGrid} style={{display:'grid'}}>
-                        <Square image={URL.createObjectURL(cover)} title={title}/>
+                        <Square image={URL.createObjectURL(cover)} title={title} cat={cats} desc={desc}/>
                         <i className={`${styles.xIcon} fas fa-times fa-lg`} onClick={e=>{setCover(null)}}/>
                     </div>
                     : 

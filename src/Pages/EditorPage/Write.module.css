@@ -6,20 +6,24 @@ label{
     flex-direction: row;
 }
 .previewSection{
-    width: 75vw;
+    width: 40%;
     background-color: #f5f5f5;
 }
 .writeForm{
     margin: 0;
-    display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
-    min-width: 450px;
+    min-width: 320px;
+    width: 20%;
+}
+.textEditor{
+    width: 40%;
+    margin-top: 20px;
+    margin-right: 20px;
 }
 .imageSide{
     padding: 20px 8px;
     position: relative;
-    width: 20vw;
+    width: 100%;
     min-width: 305px;
 }
 h5{
@@ -109,8 +113,7 @@ h5{
 .textSide{
     padding: 0 8px;
     position: relative;
-    width: 20vw;
-    min-width: 305px;
+    width: 100%;
 }
 .textField:first-child{
     margin-top:0;
@@ -146,10 +149,7 @@ h5{
 .textInput:focus{
     outline: none;
 }
-.textEditor{
-    margin-top: 20px;
-    margin-right: 20px;
-}
+
 textarea{
     overflow: auto;
     resize: vertical;

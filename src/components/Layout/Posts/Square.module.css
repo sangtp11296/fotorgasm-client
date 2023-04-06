@@ -1,13 +1,15 @@
-.postBlog{
-    cursor: pointer;
-}
+
 .postBlog:hover .fullScreen{
+    opacity: 1;
+    transition: all .2s ease-in-out;
+}
+.postBlog:hover .minorScreen{
     opacity: 1;
     transition: all .2s ease-in-out;
 }
 .squareType.active{
     grid-column: 1 / -1;
-    grid-row: span 9;
+    grid-row: auto / span 2;
 }
 .squareType{
     grid-column: span 3;
@@ -28,7 +30,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    cursor: pointer;
 }
 .postBlog:hover .postOverlay{
     transition: all .2s ease-in-out;
@@ -127,7 +128,7 @@
     fill: none
     /* stroke-width: 1; */
 }
-.fullScreen{
+.fullScreen, .minorScreen{
     position: absolute;
     background-color: transparent;
     right: 10px;
@@ -138,4 +139,7 @@
 }
 .fullScreen svg{
     height: 20px;
+}
+.minorScreen svg{
+    height: 25px;
 }

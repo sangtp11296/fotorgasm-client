@@ -96,7 +96,9 @@ function MasonryLayout({images}) {
     const [activeRef, setActivRef] = useState();
     
     const clickToOpen = (ind) => {
-        setActivRef(ind)
+        if (activeRef!=ind){
+            setActivRef(ind);
+        } else setActivRef(null);
     };
     useEffect(()=>{
         if(childRefs[activeRef]){

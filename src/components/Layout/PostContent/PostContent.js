@@ -16,10 +16,24 @@ function PostContent() {
             </div>
             <div className={styles.postTextContainer}>
               <div className={styles.postText}>
-                Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication, display, or distribution—from clerical workers and newsletter writers to anyone self-publishing materials.
+                <h1>My Beach Adventure</h1>
+                <p>Welcome to my blog post! Today, I'm going to take you on a journey with me to the beach. I love the beach because it's a place where I can relax and escape from the stresses of everyday life. </p>
+                <p>As soon as I arrived at the beach, I was struck by how beautiful it was. The sand was so soft and the water was crystal clear. It was a perfect day to spend at the beach.</p>
+                <img src="https://plus.unsplash.com/premium_photo-1673970474453-7c49815647ee?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Beach"/>
+                <p className="caption">Photo by Oliver Sjöström on Unsplash</p>
+                <h2>Beach Activities</h2>
+                <p>One of my favorite things to do at the beach is to go swimming in the ocean. As I waded into the ocean, I felt a sense of excitement wash over me. The water was a little chilly at first, but as I dove deeper, I felt the coolness become refreshing against my skin. The waves were gentle, lapping against me as I floated on my back, staring up at the blue sky above. It was peaceful, and I felt as though I was in my own little world, surrounded by the vastness of the ocean.</p>
+                <img src="https://images.unsplash.com/photo-1680676960765-f18115aa7390?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80" alt="Swimming"/>
+                <p className="caption">Photo by Jakob Owens on Unsplash</p>
+                <p>I also love to build sandcastles on the beach. It's a fun way to unleash my creativity and create something beautiful out of sand.</p>
+                <img src="https://images.unsplash.com/photo-1680484006397-64f3fcd8fc14?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80" alt="Sandcastle"/>
+                <p className="caption">Photo by Stephanie LeBlanc on Unsplash</p>
+                <p>Finally, I always make sure to take a long walk on the beach at sunset. There's nothing quite like watching the sun go down over the ocean.</p>
+                <img src="https://plus.unsplash.com/premium_photo-1673971700988-346588461fa7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" alt="Sunset"/>
+                <p className="caption">Photo by Jeremy Bishop on Unsplash</p>
+                <h2>Conclusion</h2>
+                <p>Overall, my day at the beach was amazing. It's a place where I can go to escape from the world and just enjoy the beauty of nature. I hope you enjoyed reading about my adventure!</p>
 
-                Typography is the work of typesetters, compositors, typographers, graphic designers, art directors, manga artists, comic book artists, graffiti artists, and now—anyone who arranges words, letters, numbers, and symbols for publication or display.
-                Until the Digital Age, typography was a specialized occupation. Digitization opened up typography to new generations of previously unrelated designers and lay users, and David Jury, head of graphic design at Colchester Institute in England, states that “typography is now something everybody does. As the capability to create typography has become ubiquitous, the application of principles and best practices developed over generations of skilled workers and professionals has diminished. Ironically, at a time when scientific techniques.
               </div>
               <div className={styles.postInfoContainer}>
                 <div className={styles.postInfo}>

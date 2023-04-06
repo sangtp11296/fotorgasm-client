@@ -20,6 +20,9 @@
 .postContent{
     padding: 34px 42px 12px;
 }
+.postContent img{
+    height: 400px;
+}
 .postCat{
     margin-bottom: 10px;
     color: var(--primary);

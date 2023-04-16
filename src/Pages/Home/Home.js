@@ -12,7 +12,6 @@ export default function Home(){
   }
   return (
     <div className={styles.homePage}>
-      <ScrollToTop/>
         <div className={styles.profileContainer}>
           <div className={styles.profileInfo}>
             <div className={styles.profileAvatar}>
@@ -79,13 +78,13 @@ export default function Home(){
           </div>
           <PostGrid/>
         </div>
-        
+        <ScrollToTop/>
           {/* <Header/> */}
           {/* <HorizontalGallery/> */}
           {/* <PageCover jumpCallback={this.jumpFunction}/>
           <ImageScroller  />
           <PageContainer/> */}
-      </div>
+    </div>
   )
 }
 

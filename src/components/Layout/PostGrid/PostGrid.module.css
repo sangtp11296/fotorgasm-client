@@ -25,6 +25,7 @@
     scale: .8;
 }
 .postGrid{
+    position: relative;
     width: 100%;
     display: flex;
     justify-content: center;

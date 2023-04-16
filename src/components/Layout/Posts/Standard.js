@@ -1,7 +1,6 @@
 import React, { createRef, useRef, useEffect } from 'react'
 import styles from './Standard.module.css'
 import PostContent from '../PostContent/PostContent';
-import ColorThief from 'colorthief/dist/color-thief'
 import { Link } from 'react-router-dom';
 
 const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, postId}) => {
@@ -13,15 +12,6 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
         onClick();
         window.history.pushState({},'','/')
     }
-    const colorThief = new ColorThief();
-    const img = document.getElementsByClassName(`${styles.coverImage} ${styles.active}`)
-    // const img = document.querySelector('#coverImage');
-    useEffect(() => {
-        if (img.length >0){
-            // const color = colorThief.getColor(img[0]);
-            // const rgbaColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.5)`;
-        }
-    },[isActive])
     return (
     <div style={{cursor:`${isActive?'':'pointer'}`}} onClick={isActive ? null : handleOnModal} ref={setRef} className={`${isActive? styles.active : ''} ${styles.standardType} ${styles.postBlog}`}>
         <div className={`${styles.postCover} ${isActive ? styles.active : ''}`}>

@@ -92,6 +92,8 @@ function MasonryLayout({images}) {
         "中庸",
         "荀子"
         ];
+    const desc = 'lkasjf lkjflkj;flkjdlak ighore gfdg lkjfglkj flkfdjglj hdgl dlkgj ldkgjlkdfjglkfjglkergjerlg  lek jglej glerkjg elrkgj lkdf glfkg hgj hk'
+    const cat = ['Films','Something','Vinyls','Moods','Memories','Running','Music','Reading'];
     const childRefs = images.map(() => createRef());
     const [activeRef, setActivRef] = useState();
     
@@ -109,23 +111,23 @@ function MasonryLayout({images}) {
         }
     },[activeRef]);
     return (
-        <div className={styles.gridContainer}>
+    <div className={styles.gridContainer}>
         {images.map((img,ind) => {
             if(img.width > img.height){
                 const rand = Math.random() < 0.5
                 if(rand){
                     return(
-                        <Horizontal key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <Horizontal desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                     )
                 }
                 else{
                     return(
-                        <Square key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                     )
                 }
             } else if(img.width<img.height){
                 return(
-                    <Standard key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={`Vinyls`} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    <Standard desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                 ) 
             } else {
                 return(

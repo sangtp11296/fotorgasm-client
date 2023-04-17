@@ -2,6 +2,7 @@ import React, { createRef, useRef, useEffect } from 'react'
 import styles from './Standard.module.css'
 import PostContent from '../PostContent/PostContent';
 import { Link } from 'react-router-dom';
+import PostPage from '../PostPage/PostPage';
 
 const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, postId}) => {
     const handleOnModal = () => {
@@ -30,7 +31,7 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" strokeWidth="0.00024000000000000003"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fillRule="evenodd" clipRule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#ffffff"></path> </g></svg>
                 </button>
             }
-            <img id={`${isActive ? 'coverImage' : ''}`} className={`${styles.coverImage} ${isActive ? styles.active : ''}`} src={image} alt={alt} />
+            <img className={`${styles.coverImage} ${isActive ? styles.active : ''}`} src={image} alt={alt} />
         </div>
         <div className={`${styles.postOverlay} ${isActive?styles.dimBackground:''}`} onClick={isActive ? handleOffModal : null}></div>
         {isActive ? '' : 
@@ -55,10 +56,10 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
                 </button>
                 <button className={styles.button}>
                     <svg viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
-                        <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
-                        <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path className="cls-1" d="M21.5,12A9.5,9.5,0,1,0,12,21.5h9.5l-2.66-2.92A9.43,9.43,0,0,0,21.5,12Z" fill='none' stroke='#fff' strokeMiterlimit={10} strokeWidth='1.2px'></path></g></svg>
+                    <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
+                    <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
+                    <g id="SVGRepo_iconCarrier">
+                    <path className="cls-1" d="M21.5,12A9.5,9.5,0,1,0,12,21.5h9.5l-2.66-2.92A9.43,9.43,0,0,0,21.5,12Z" fill='none' stroke='#fff' strokeMiterlimit={10} strokeWidth='1.2px'></path></g></svg>
                 </button>
                 <button className={styles.button}>
                     <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.5 3.5L3.5 9L10 12L17 7L12 14L15 20.5L20.5 3.5Z" strokeWidth='1.2' stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
@@ -69,7 +70,7 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
             </div>
         </>
         }
-        {isActive&&<PostContent/>}
+        {isActive&&<PostPage fromFeed={true} image={image} alt={alt}/>}
     </div>
 )});
 

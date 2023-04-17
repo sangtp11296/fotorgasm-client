@@ -64,7 +64,7 @@ function PostGrid() {
                 loader={<h4>Loading...</h4>}
                 style={{ overflow: 'hidden' }}
             >
-                <MasonryLayout images={photos}/>
+              <MasonryLayout images={photos}/>
 
             </InfiniteScroll>
         </div>

@@ -2,10 +2,8 @@
     opacity: 1;
     transition: height .5s ease-out 0s;
     height: 100%;
-    width: 100%;
     overflow: hidden;
-    background: inherit;
-    /* box-shadow: 2px 2px 3px 0 rgb(0 0 0 / 20%) ; */
+    background-color: var(--surface-02);
     padding-bottom: 0;
     margin-bottom: 0;
     box-shadow: none;
@@ -16,91 +14,148 @@
     background-color: inherit;
     margin-bottom: 25px;
     position: relative;
+    margin-left: auto;
+    margin-right: auto;
 }
 .postContent{
-    padding: 34px 42px 12px;
-}
-.postContent img{
-    height: 400px;
+    padding: 34px 55px 12px;
 }
 .postCat{
+    margin-top: 150px;
     margin-bottom: 10px;
-    color: var(--primary);
     text-transform: uppercase;
-    font: 600 15px 'Noto Sans SC', sans-serif;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    width: fit-content;
 }
 .postCat a{
-    text-decoration: none;
-    color: inherit;
+    color: var(--primary);
+    font-family: 'Neue Helvetica';
+    font-weight: 700;
+    font-size: 13px;
 }
 .postTitle{
-    margin-bottom: 10px;
-    text-transform: uppercase;
-    font: 400 25px 'Josefin Sans', sans-serif;
-    line-height: 120%;
+    margin-bottom: 20px;
 }
 .postTitle a{
+    display: block;
+    line-height: 120%;
+    text-transform: uppercase;
+    font-family: 'Neue Helvetica';
+    font-weight: 500;
+    font-size: 60px;
     text-decoration: none;
     color: var(--on-surface);
+    width: 65%;
+}
+.postTextContainer{
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
 }
 .postText{
-    /* color: darkgray; */
-    font: 300 14px 'Montserrat', sans-serif;
-    word-spacing: 2px;
-    text-align: left;
+    font-family: 'Neue Helvetica';
+    font-size: 15px;
+    word-spacing: 1px;
+    text-align: justify;
     color: var(--on-surface);
-    opacity: .8;
+    width: 55%;
+}
+.postText h1{
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+.postText h2{
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.postText p{
+    font-size: 15px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    line-height: 1.2rem;
+}
+.postImage{
+    width: 690px;
+}
+.postImage img{
+    display: block;
+    position: relative;
+    left: -310px;
+    max-height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    max-width: 690px;
+    width: auto;
+    /* object-fit: cover; */
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
+.postImage figcaption{
+    text-align: right;
+    margin-bottom: 20px;
+    font-size: 13px;
+    font-style: italic;
 }
 .postInfoContainer{
     position: relative;
-    display: table;
+    display: flex;
     table-layout: fixed;
     height: 100%;
     width: 100%;
-    
 }
 .postInfo:first-child{
     text-align: left;
-    padding: 34px 0 0;
+    padding: 30px 0 0;
     position: relative;
-    display: table-cell;
+    display: flex;
+    align-items: center;
     height: 100%;
     width: 100%;
-    vertical-align: middle;
-    font: 200 12px 'Noto Sans SC', sans-serif;
-    opacity: .6;
 }
 .postInfo:last-child{
-    text-align: right;
-    padding: 34px 0 0;
+    padding: 30px 0 0;
     position: relative;
-    display: table-cell;
+    justify-content: flex-end;
+    align-items: center;
+    display: flex;
     height: 100%;
     width: 100%;
-    vertical-align: middle;
     font: 200 12px 'Noto Sans SC', sans-serif;
-    opacity: .6;
 }
 .postDate{
     display: inline-block;
     padding-right: 12px;
     text-transform: uppercase;
-    
+    font-family: 'Neue Helvetica';
+    font-weight: 400;
+    font-size: 13px;
     color: var(--on-surface);
-    word-spacing: 2px;
+    word-spacing: 1px;
+    opacity: .8;
 }
 .postSocial{
-    display: inline-block;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 .postSocial button{
-    display: inline-flex;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     vertical-align: middle;
-    padding-right: 12px;
+    margin-right: 12px;
     background-color: inherit;
     color: var(--on-surface);
     font-size: 13px;
-    padding-bottom: 2px;
+    font-family: 'Neue Helvetica';
+    font-weight: 400;
+    opacity: .8;
 }
 .postInfo:last-child button{
     display: inline-block;

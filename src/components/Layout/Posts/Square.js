@@ -1,14 +1,5 @@
 import React from 'react'
 import styles from './Square.module.css'
-import films from '../../../images/menu/on Films.png'
-import something from '../../../images/menu/on Something.png'
-import vinyls from '../../../images/menu/on Vinyls.png'
-import moods from '../../../images/menu/on Moods.png'
-import memories from '../../../images/menu/on Memories.png'
-import running from '../../../images/menu/on Running.png'
-import music from '../../../images/menu/on Music.png'
-import reading from '../../../images/menu/on Reading.png'
-import PostContent from '../PostContent/PostContent'
 
 const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postId}) => {
     const handleOnModal = () => {
@@ -77,7 +68,7 @@ const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postI
                 </div>
             </>
         }
-        {isActive&&<PostContent/>}
+        {/* {isActive&&<PostContent/>} */}
       </div>
   )});
 

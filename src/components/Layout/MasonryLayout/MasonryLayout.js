@@ -124,16 +124,11 @@ function MasonryLayout({images}) {
                         <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                     )
                 }
-            } else if(img.width<img.height){
+            } 
+            else if(img.width<img.height){
                 return(
                     <Standard desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                 ) 
-            } else {
-                return(
-                    <div className={`${styles.otherType} ${styles.postBlog}`} key={ind}>
-                        <img className={styles.postCover} src={img.urls.regular} alt={img.alt_description} />
-                    </div>
-                )
             }
         })}
     </div>

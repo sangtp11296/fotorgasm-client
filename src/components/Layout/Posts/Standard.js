@@ -1,7 +1,5 @@
 import React, { createRef, useRef, useEffect } from 'react'
 import styles from './Standard.module.css'
-import PostContent from '../PostContent/PostContent';
-import { Link } from 'react-router-dom';
 import PostPage from '../PostPage/PostPage';
 
 const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, postId}) => {
@@ -70,7 +68,7 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
             </div>
         </>
         }
-        {isActive&&<PostPage fromFeed={true} image={image} alt={alt}/>}
+        {isActive&&<PostPage fromFeed={true} title={title} cat={cat} image={image} alt={alt}/>}
     </div>
 )});
 

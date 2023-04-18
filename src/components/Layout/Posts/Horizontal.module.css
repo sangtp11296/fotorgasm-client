@@ -34,6 +34,7 @@
     height: 100%;
 }
 .postCover.active{
+    display: none;
     background-color: var(--surface-12);
     border-radius: 15px 15px 0px 0px;
     overflow: hidden;

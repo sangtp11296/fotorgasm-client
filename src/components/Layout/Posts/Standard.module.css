@@ -28,6 +28,7 @@
     height: 100%;
 }
 .postCover.active{
+    display: none;
     background-color: var(--surface-02);
     /* border-radius: 15px 15px 0px 0px; */
     /* max-height: 550px; */

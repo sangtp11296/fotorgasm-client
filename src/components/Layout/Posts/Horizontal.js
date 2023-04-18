@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Horizontal.module.css'
+import PostPage from '../PostPage/PostPage';
 
 function Horizontal({image, cat, desc, alt, title, onClick, setRef, isActive, postId}) {
     const handleOnModal = () => {
@@ -67,7 +68,7 @@ function Horizontal({image, cat, desc, alt, title, onClick, setRef, isActive, po
                 </div>
             </>
         }
-        {/* {isActive&&<PostContent/>} */}
+        {isActive&&<PostPage postForm={'horizontal'} fromFeed={true} title={title} cat={cat} image={image} alt={alt}/>}
     </div>
   )
 }

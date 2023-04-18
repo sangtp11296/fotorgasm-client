@@ -68,7 +68,7 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
             </div>
         </>
         }
-        {isActive&&<PostPage fromFeed={true} title={title} cat={cat} image={image} alt={alt}/>}
+        {isActive&&<PostPage postForm={'standard'} fromFeed={true} title={title} cat={cat} image={image} alt={alt}/>}
     </div>
 )});
 

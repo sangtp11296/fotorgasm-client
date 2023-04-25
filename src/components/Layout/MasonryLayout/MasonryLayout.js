@@ -116,12 +116,12 @@ function MasonryLayout({images}) {
                 const rand = Math.random() < 0.5
                 if(rand){
                     return(
-                        <Horizontal desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                     )
                 }
                 else{
                     return(
-                        <Horizontal desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
                     )
                 }
             } 

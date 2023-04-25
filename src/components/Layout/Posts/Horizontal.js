@@ -4,9 +4,9 @@ import PostPage from '../PostPage/PostPage';
 
 function Horizontal({image, cat, desc, alt, title, onClick, setRef, isActive, postId}) {
     const handleOnModal = () => {
-        document.body.classList.add('no-scroll')
+        document.body.classList.add('no-scroll');
         onClick();
-        window.history.pushState({postId},'',`/post/${postId}`)
+        window.history.pushState({postId},'',`/post/${postId}`);
     }
     const handleOffModal = () => {
         document.body.classList.remove('no-scroll');

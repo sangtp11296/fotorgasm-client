@@ -1,12 +1,15 @@
 import React from 'react'
 import styles from './Square.module.css'
+import PostPage from '../PostPage/PostPage';
 
 const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postId}) => {
     const handleOnModal = () => {
+        document.body.classList.add('no-scroll');
         onClick();
-        window.history.pushState({postId},'',`/post/${postId}`)
+        window.history.pushState({postId},'',`/post/${postId}`);
     }
     const handleOffModal = () => {
+        document.body.classList.remove('no-scroll');
         onClick();
         window.history.pushState({},'','/')
     }
@@ -68,7 +71,7 @@ const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postI
                 </div>
             </>
         }
-        {/* {isActive&&<PostContent/>} */}
+        {isActive&&<PostPage postForm={'square'} fromFeed={true} title={title} cat={cat} image={image} alt={alt}/>}
       </div>
   )});
 

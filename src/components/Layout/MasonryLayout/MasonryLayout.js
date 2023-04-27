@@ -1,19 +1,15 @@
 import React, { createRef, useLayoutEffect, useState, useRef, useEffect, useCallback } from 'react'
 import styles from './MasonryLayout.module.css'
-import films from '../../../images/menu/on Films.png'
-import something from '../../../images/menu/on Something.png'
-import vinyls from '../../../images/menu/on Vinyls.png'
-import moods from '../../../images/menu/on Moods.png'
-import memories from '../../../images/menu/on Memories.png'
-import running from '../../../images/menu/on Running.png'
-import music from '../../../images/menu/on Music.png'
-import reading from '../../../images/menu/on Reading.png'
 import Standard from '../Posts/Standard'
 import Horizontal from '../Posts/Horizontal'
 import Square from '../Posts/Square'
+import StandardVideo from '../Videos/StandardVideo'
+import SquareVideo from '../Videos/SquareVideo'
+import HorizontalVideo from '../Videos/HorizontalVideo'
 
 
-function MasonryLayout({images}) {
+function MasonryLayout({media}) {
+    const filterMedia = [... new Set(media)];
     const title = [
         "Số đỏ",
         "Dế Mèn Phiêu Lưu Ký",
@@ -93,7 +89,7 @@ function MasonryLayout({images}) {
         ];
     const desc = 'lkasjf lkjflkj;flkjdlak ighore gfdg lkjfglkj flkfdjglj hdgl dlkgj ldkgjlkdfjglkfjglkergjerlg  lek jglej glerkjg elrkgj lkdf glfkg hgj hk'
     const cat = ['Films','Something','Vinyls','Moods','Memories','Running','Music','Reading'];
-    const childRefs = images.map(() => createRef());
+    const childRefs = filterMedia.map(() => createRef());
     const [activeRef, setActivRef] = useState();
     
     const clickToOpen = (ind) => {
@@ -111,26 +107,45 @@ function MasonryLayout({images}) {
     },[activeRef]);
     return (
     <div className={styles.gridContainer}>
-        {images.map((img,ind) => {
-            if(img.width > img.height){
-                const rand = Math.random() < 0.5
-                if(rand){
+        {filterMedia.map((item,ind) => {
+            if (item.website === 'unsplash'){
+                if (item.width > item.height){
+                    const rand = Math.random() < 0.5
+                    if(rand){
+                        return(
+                            <Horizontal desc={desc} postId={item.id} key={ind} image={item.urls.regular} alt={item.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        )
+                    }
+                    else{
+                        return(
+                            <Square desc={desc} postId={item.id} key={ind} image={item.urls.regular} alt={item.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        )
+                    }
+                } else if (item.width < item.height){
                     return(
-                        <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <Standard desc={desc} postId={item.id} key={ind} image={item.urls.regular} alt={item.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                    ) 
+                }
+            } else if (item.website === 'pexels'){
+                if (item.height > item.width){
+                    return(
+                        <StandardVideo key={item.id} image={item.image} url={item.video_files}/>
                     )
                 }
-                else{
+                else if (item.height = item.width){
                     return(
-                        <Square desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
+                        <SquareVideo key={item.id} image={item.image} url={item.video_files}/>
                     )
                 }
-            } 
-            else if(img.width<img.height){
-                return(
-                    <Standard desc={desc} postId={ind} key={ind} image={img.urls.regular} alt={img.alt_description} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]}/>
-                ) 
+                else if (item.height < item.width){
+                    console.log(item)
+                    return(
+                        <HorizontalVideo key={item.id} image={item.image} url={item.video_files}/>
+                    )
+                }
             }
-        })}
+        })
+        }
     </div>
   )
 }

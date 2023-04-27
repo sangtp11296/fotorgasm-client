@@ -1,0 +1,11 @@
+.squareVideo{
+    grid-column: span 3;
+    grid-row: span 2;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.videoSrc{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}

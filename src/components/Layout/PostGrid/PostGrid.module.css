@@ -21,8 +21,14 @@
     text-transform: uppercase;
     margin-left: 6px;
 }
+.postSort:last-child span{
+    margin-left: 0;
+}
 .postSort i{
     scale: .8;
+}
+.postSort svg{
+    height: 22px;
 }
 .postGrid{
     position: relative;

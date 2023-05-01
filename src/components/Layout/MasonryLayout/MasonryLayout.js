@@ -129,18 +129,18 @@ function MasonryLayout({media}) {
             } else if (item.website === 'pexels'){
                 if (item.height > item.width){
                     return(
-                        <StandardVideo key={item.id} image={item.image} url={item.video_files}/>
+                        <StandardVideo desc={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
                     )
                 }
                 else if (item.height = item.width){
                     return(
-                        <SquareVideo key={item.id} image={item.image} url={item.video_files}/>
+                        <SquareVideo desc={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
                     )
                 }
                 else if (item.height < item.width){
                     console.log(item)
                     return(
-                        <HorizontalVideo key={item.id} image={item.image} url={item.video_files}/>
+                        <HorizontalVideo key={ind} image={item.image} url={item.video_files}/>
                     )
                 }
             }

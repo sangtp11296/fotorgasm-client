@@ -87,7 +87,7 @@ function MasonryLayout({media}) {
         "中庸",
         "荀子"
         ];
-    const desc = 'lkasjf lkjflkj;flkjdlak ighore gfdg lkjfglkj flkfdjglj hdgl dlkgj ldkgjlkdfjglkfjglkergjerlg  lek jglej glerkjg elrkgj lkdf glfkg hgj hk'
+    const desc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas interdum venenatis elit, non tristique leo feugiat id. Donec sed nunc ac nisi vulputate consectetur in vitae enim. Vestibulum a nulla et odio finibus commodo. Cras id nisl dolor. Nulla facilisi. Proin sit amet ante odio. Nullam convallis dui vel urna eleifend, eu porttitor lacus convallis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus tincidunt justo eget eros bibendum, id vestibulum dui congue. Fusce finibus velit non eros hendrerit, non auctor eros malesuada. Nulla sed vestibulum nunc. Praesent at arcu vel tellus pulvinar aliquet. Pellentesque gravida eget tellus eu pharetra. Aenean iaculis, neque sed dapibus fringilla, velit mi lobortis turpis, vitae malesuada justo magna vel massa.';
     const cat = ['Films','Something','Vinyls','Moods','Memories','Running','Music','Reading'];
     const childRefs = filterMedia.map(() => createRef());
     const [activeRef, setActivRef] = useState();

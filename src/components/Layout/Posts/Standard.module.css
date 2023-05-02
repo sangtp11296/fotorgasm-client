@@ -140,14 +140,20 @@
     bottom: 10px;
     /* background-color: black; */
 }
+.postSocial span{
+    color: var(--on-background);
+    font-family: 'Neue Helvetica';
+    font-size: 10px;
+}
 .postSocial button{
-    margin-bottom: 5px;
+    height: 20px;
+    margin-top: 5px;
     cursor: pointer;
     background-color: transparent;
 }
 .postSocial button:last-child{
     margin-bottom: 0;
-    margin-top: 10px;
+    margin-top: 13px;
 }
 .postSocial button:hover svg path{
     transition: all .1s ease-out;

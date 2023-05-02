@@ -28,12 +28,7 @@
     opacity: .8;
     border-radius: 0 0 15px 15px;
 }
-.videoIcon{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    filter: drop-shadow(0px 0px 2px #ffffff57);
-}
+
 .fullScreen,.minorScreen{
     position: absolute;
     background-color: transparent;
@@ -46,6 +41,9 @@
 .fullScreen svg{
     height: 20px;
 }
+.fullScreen:hover {
+    scale: 1.1;
+}
 .standardVideo:hover .fullScreen{
     opacity: 1;
     transition: all .2s ease-in-out;
@@ -57,6 +55,9 @@
 }
 .videoAudio button{
     background-color: transparent;
+}
+.videoAudio button:hover{
+    scale: 1.1;
 }
 .videoCat{
     width: fit-content;
@@ -106,4 +107,42 @@
     
     -webkit-box-orient: vertical;
     display: -webkit-box;
+}
+.videoSocial{
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    right: 10px;
+    bottom: 10px;
+    justify-content: center;
+    align-items: center;
+    /* background-color: black; */
+}
+.videoSocial span{
+    color: var(--on-background);
+    font-family: 'Neue Helvetica';
+    font-size: 10px;
+}
+.videoSocial button{
+    height: 20px;
+    margin-top: 5px;
+    cursor: pointer;
+    background-color: transparent;
+}
+.videoSocial button svg{
+    height: 20px;
+}
+.videoSocial button svg path{
+    transition: all .1s ease-out;
+    fill: none
+    /* stroke-width: 1; */
+}
+.videoSocial button:hover svg path{
+    transition: all .1s ease-out;
+    fill: rgba(72,149,239,1);
+    stroke: rgba(72,149,239,1);
+}
+.videoIcon{
+    filter: drop-shadow(0px 0px 2px #ffffff57);
+    margin-top: 13px;
 }

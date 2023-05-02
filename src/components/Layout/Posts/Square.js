@@ -13,6 +13,23 @@ const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postI
         onClick();
         window.history.pushState({},'','/')
     }
+    function randomNum(){
+        // Generate a random number between min and max
+        const num = Math.floor(Math.random() * (10000 - 0 + 1)) + 0;
+        // Check if the number is greater than 1000
+        if (num >= 1000) {
+            // Add "k" as thousands to the number
+            const thousands = Math.floor(num / 1000);
+            const remainder = Math.floor((num % 1000) / 100);
+            if (remainder === 0){
+            return <span>{thousands}k</span>;
+            } else return <span>{thousands}k{remainder}</span>;
+        } else if (num === 0) {
+            return null;
+        } else {
+            return <span>{num}</span>;
+        }
+    }
     return (
       <div style={{cursor:`${isActive?'':'pointer'}`}} onClick={isActive ? null : handleOnModal} ref={setRef} className={`${isActive? styles.active : ''} ${styles.squareType} ${styles.postBlog}`}>
             <div className={`${styles.postCover} ${isActive ? styles.active : ''}`}>
@@ -55,6 +72,7 @@ const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postI
                     <button className={styles.button}>
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12.62 20.8101C12.28 20.9301 11.72 20.9301 11.38 20.8101C8.48 19.8201 2 15.6901 2 8.6901C2 5.6001 4.49 3.1001 7.56 3.1001C9.38 3.1001 10.99 3.9801 12 5.3401C13.01 3.9801 14.63 3.1001 16.44 3.1001C19.51 3.1001 22 5.6001 22 8.6901C22 15.6901 15.52 19.8201 12.62 20.8101Z" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
                     </button>
+                    {randomNum()}
                     <button className={styles.button}>
                         <svg viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#ffffff">
                             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
@@ -62,9 +80,11 @@ const Square = (({image, cat, desc, alt, title, onClick, setRef, isActive, postI
                             <g id="SVGRepo_iconCarrier">
                                 <path className="cls-1" d="M21.5,12A9.5,9.5,0,1,0,12,21.5h9.5l-2.66-2.92A9.43,9.43,0,0,0,21.5,12Z" fill='none' stroke='#fff' strokeMiterlimit={10} strokeWidth='1.2px'></path></g></svg>
                     </button>
+                    {randomNum()}
                     <button className={styles.button}>
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M20.5 3.5L3.5 9L10 12L17 7L12 14L15 20.5L20.5 3.5Z" strokeWidth='1.2' stroke="#ffffff" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
                     </button>
+                    {randomNum()}
                     <button className={styles.button}>
                         <svg fill="#ffffff" viewBox="0 0 32 32" enableBackground="new 0 0 32 32" id="Glyph" version="1.1" xmlSpace="preserve" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"><path stroke="#ffffff" d="M13,16c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,14.346,13,16z" id="XMLID_294_"></path><path stroke="#ffffff" d="M13,26c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,24.346,13,26z" id="XMLID_295_"></path><path stroke="#ffffff" d="M13,6c0,1.654,1.346,3,3,3s3-1.346,3-3s-1.346-3-3-3S13,4.346,13,6z" id="XMLID_297_"></path></g></svg>
                     </button>

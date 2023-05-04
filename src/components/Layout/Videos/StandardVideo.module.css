@@ -8,6 +8,9 @@
     flex-direction: column;
     cursor: pointer;
 }
+.standardVideo:hover .videoSrc{
+    object-fit: contain;
+}
 .standardVideo:hover .videoOverlay{
     transition: all .2s ease-in-out;
     opacity: 1;
@@ -101,10 +104,8 @@
     color: var(--on-background-matte);
     font-size: 13px;
     font-weight: 300;
-    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
-    
     -webkit-box-orient: vertical;
     display: -webkit-box;
 }
@@ -114,9 +115,9 @@
     flex-direction: column;
     right: 10px;
     bottom: 10px;
+    width: 20px;
     justify-content: center;
     align-items: center;
-    /* background-color: black; */
 }
 .videoSocial span{
     color: var(--on-background);
@@ -134,8 +135,7 @@
 }
 .videoSocial button svg path{
     transition: all .1s ease-out;
-    fill: none
-    /* stroke-width: 1; */
+    fill: none;
 }
 .videoSocial button:hover svg path{
     transition: all .1s ease-out;

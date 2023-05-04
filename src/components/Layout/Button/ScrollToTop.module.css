@@ -1,13 +1,13 @@
 .scrollToTop{
+    height: 40px;
+    width: 40px;
     z-index: 2;
-    position: fixed;
-    bottom: 30px;
-    right: 15%;
-    border: 2px solid var(--on-background);
+    position: sticky;
+    bottom: 5vh;
+    margin-left: 1050px;
+    background: linear-gradient(90deg, rgba(41,79,182,1) 0%, rgba(69,163,228,1) 100%);
     border-radius: 100%;
-    padding: 5px;
     cursor: pointer;
-    opacity: .3;
     transition: all .1s ease-in-out;
 }
 .scrollToTop:hover{
@@ -15,5 +15,5 @@
     transition: all .1s ease-in-out;
 }
 .scrollToTop svg{
-    height: 25px;
+    height: 40px;
 }

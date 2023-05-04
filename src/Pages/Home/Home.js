@@ -7,9 +7,7 @@ import PostGrid from '../../components/Layout/PostGrid/PostGrid';
 import ScrollToTop from '../../components/Layout/Button/ScrollToTop';
 
 export default function Home(){
-  const scrollMenu = () =>{
-
-  }
+  
   return (
     <div className={styles.homePage}>
         <div className={styles.profileContainer}>
@@ -78,12 +76,6 @@ export default function Home(){
           </div>
           <PostGrid/>
         </div>
-        <ScrollToTop/>
-          {/* <Header/> */}
-          {/* <HorizontalGallery/> */}
-          {/* <PageCover jumpCallback={this.jumpFunction}/>
-          <ImageScroller  />
-          <PageContainer/> */}
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { createRef, useRef, useEffect } from 'react'
 import styles from './Standard.module.css'
 import PostPage from '../PostPage/PostPage';
 
-const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, postId}) => {
+const Standard = (({image, alt, title, cat, desc, postId, onClick, setRef, isActive}) => {
     const handleOnModal = () => {
         onClick();
         window.history.pushState({postId},'',`/post/${postId}`)
@@ -13,20 +13,25 @@ const Standard = (({image, alt, title, cat, desc, onClick, setRef, isActive, pos
     }
     function randomNum(){
         // Generate a random number between min and max
-        const num = Math.floor(Math.random() * (10000 - 0 + 1)) + 0;
+        const num = Math.floor(Math.random() * (100000000 - 0 + 1)) + 0;
+        const thousands = Math.floor(num / 1000);
+        const millions = Math.floor(num / 1000000);
+        const remainder = Math.floor((num % 1000) / 100);
         // Check if the number is greater than 1000
-        if (num >= 1000) {
+        if (num >= 1000 && num < 10000) {
           // Add "k" as thousands to the number
-          const thousands = Math.floor(num / 1000);
-          const remainder = Math.floor((num % 1000) / 100);
           if (remainder === 0){
             return <span>{thousands}k</span>;
           } else return <span>{thousands}k{remainder}</span>;
         } else if (num === 0) {
           return null;
+        } else if (num >= 10000 && num < 1000000){
+            return <span>{thousands}k</span>
+        } else if (num >= 1000000){
+            return <span>{millions}M</span>
         } else {
           return <span>{num}</span>;
-        }
+        } 
     }
     return (
     <div style={{cursor:`${isActive?'':'pointer'}`}} onClick={isActive ? null : handleOnModal} ref={setRef} className={`${isActive? styles.active : ''} ${styles.standardType} ${styles.postBlog}`}>

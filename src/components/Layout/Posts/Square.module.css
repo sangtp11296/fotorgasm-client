@@ -135,7 +135,9 @@
     flex-direction: column;
     right: 10px;
     bottom: 10px;
-    /* background-color: black; */
+    width: 20px;
+    justify-content: center;
+    align-items: center;
 }
 .postSocial span{
     color: var(--on-background);

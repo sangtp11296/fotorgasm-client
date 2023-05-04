@@ -31,7 +31,7 @@
     height: 22px;
 }
 .postGrid{
-    position: relative;
+    /* position: relative; */
     width: 100%;
     display: flex;
     justify-content: center;

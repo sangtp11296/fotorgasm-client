@@ -3,6 +3,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import MasonryLayout from '../MasonryLayout/MasonryLayout'
 import styles from './PostGrid.module.css'
 import axios from 'axios';
+import ScrollToTop from '../Button/ScrollToTop';
 
 function PostGrid() {
     const [click, isClicked] = useState('blog');
@@ -125,6 +126,7 @@ function PostGrid() {
 
             </InfiniteScroll>
         </div>
+        <ScrollToTop/>
     </>
   )
 }

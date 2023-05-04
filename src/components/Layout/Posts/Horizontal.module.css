@@ -23,7 +23,6 @@
     /* grid-column: span 6;
     grid-row: span 2; */
 }
-/* vertical Type */
 
 .horizontalType .postOverlay{
     height: 50%;
@@ -138,12 +137,14 @@
     -webkit-line-clamp: 2;
 }
 .postSocial{
+    width: 20px;
+    justify-content: center;
+    align-items: center;
     display: flex;
     position: absolute;
     flex-direction: column;
     right: 10px;
     bottom: 10px;
-    /* background-color: black; */
 }
 .postSocial span{
     color: var(--on-background);
@@ -152,13 +153,13 @@
 }
 .postSocial button{
     height: 20px;
-    margin-top: 5px;
+    margin-top: 4px;
     cursor: pointer;
     background-color: transparent;
 }
 .postSocial button:last-child{
     margin-bottom: 0;
-    margin-top: 13px;
+    margin-top: 4px;
 }
 .postSocial button:hover svg path{
     transition: all .1s ease-out;

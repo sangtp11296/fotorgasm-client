@@ -373,6 +373,12 @@ function PostPage({postForm, image, alt, fromFeed, title, cat}) {
         </div> :
         ''
       }
+      {/* Video */}
+      {
+        postForm === 'standardVideo' ?
+        <div className={styles.standardVideo}></div> :
+        ''
+      }
     </>
   )
 }

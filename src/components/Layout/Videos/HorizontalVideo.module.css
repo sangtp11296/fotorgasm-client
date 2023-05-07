@@ -96,7 +96,7 @@
     font-size: 13px;
     font-weight: 500;
 }
-.videoDesc{
+.videoCapt{
     color: var(--on-background-matte);
     font-size: 13px;
     font-weight: 300;
@@ -106,7 +106,7 @@
     -webkit-box-orient: vertical;
     display: -webkit-box;
 }
-.videoDesc{
+.videoCapt{
     -webkit-line-clamp: 1;
 }
 .videoSocial{

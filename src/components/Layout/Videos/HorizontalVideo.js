@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useRef} from 'react'
 import styles from './HorizontalVideo.module.css'
 
-function HorizontalVideo({image, url, title, cat, desc, onClick, setRef, isActive, postId}) {
+function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActive, postId}) {
   const [isAudio, setAudio] = useState();
   const [isMuted, setMuted] = useState('');
 
@@ -114,8 +114,8 @@ function HorizontalVideo({image, url, title, cat, desc, onClick, setRef, isActiv
             <div className={styles.videoTitle}>
                 <h1>{title}</h1>
             </div>
-            <div className={styles.videoDesc}>
-                {desc}
+            <div className={styles.videoCapt}>
+                {capt}
             </div>
         </div>
         <div className={styles.videoSocial}>

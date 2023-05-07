@@ -1,9 +1,19 @@
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './VideoPage.module.css'
 
-function VideoPage({postForm, url, image, fromFeed, title, cat, desc}) {
+function VideoPage({postForm, url, image, fromFeed, title, cat, capt}) {
     const [info, setInfo] = useState(false);
     const infoRef = useRef();
+    const caption = [
+  "Travel has always been a way for people to explore new places, cultures, and experiences. It is a way to broaden our horizons and open our minds to new possibilities. In today's world, travel is more accessible than ever before, and yet many people still do not take advantage of the opportunities it offers.One of the biggest benefits of travel is the opportunity to learn about different cultures and ways of life. When we travel, we are exposed to new foods, customs, and traditions. We learn about history and geography in a way that is impossible from a textbook or a screen. Travel also challenges our assumptions and biases, as we are forced to confront ideas and ways of life that may be different from our own.Another important benefit of travel is the opportunity to disconnect from our daily lives and routines. When we travel, we are forced to step outside of our comfort zones and embrace new experiences. This can be scary at times, but it is also incredibly rewarding. It can help us to gain perspective and clarity, and to appreciate the things that truly matter in life.Finally, travel is a way to build connections and relationships with people from around the world. When we travel, we have the opportunity to meet people who we may never have crossed paths with otherwise. We can build friendships and learn from each other's perspectives, and in doing so, we can help to break down barriers and promote understanding and empathyGoals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.",
+  "Setting goals is a crucial step towards achieving success in any aspect of life. Whether it's personal or professional, having clear and well-defined goals provides a roadmap for our actions and helps us stay focused and motivated. Without goals, we may find ourselves drifting aimlessly, unsure of what we want to achieve or how to get there.Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.",
+  'Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.In conclusion, setting goals is an essential step towards achieving success in any aspect of life. Whether its personal or professional, having clear and well-defined goals helps us to prioritize our time and resources, stay focused and motivated, measure progress, and boost our self-confidence and self-esteem. So, if you havent already, take some time to define your goals and start working towards them today.Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.In conclusion, setting goals is an essential step towards achieving success in any aspect of life. Whether its personal or professional, having clear and well-defined goals helps us to prioritize our time and resources, stay focused and motivated, measure progress, and boost our self-confidence and self-esteem. So, if you havent already, take some time to define your goals and start working towards them today.',
+  'Volunteering is a wonderful way to give back to the community and make a positive impact on the world around us. It can also have numerous benefits for the volunteers themselves, both personally and professionally.First and foremost, volunteering provides an opportunity to help others and make a difference in the world. Whether its through donating time, skills, or resources, volunteers play a crucial role in supporting charities and organizations that work to improve the lives of others. Volunteering can also help us to develop a deeper sense of empathy and understanding for those in need, and increase our overall sense of compassion and kindness.Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.In conclusion, setting goals is an essential step towards achieving success in any aspect of life. Whether its personal or professional, having clear and well-defined goals helps us to prioritize our time and resources, stay focused and motivated, measure progress, and boost our self-confidence and self-esteem. So, if you havent already, take some time to define your goals and start working towards them today.Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.In conclusion, setting goals is an essential step towards achieving success in any aspect of life. Whether its personal or professional, having clear and well-defined goals helps us to prioritize our time and resources, stay focused and motivated, measure progress, and boost our self-confidence and self-esteem. So, if you havent already, take some time to define your goals and start working towards them today.',
+  'Moreover, volunteering can have personal benefits as well. It can provide an opportunity to learn new skills, make new friends, and develop a sense of purpose and fulfillment. Volunteering can also help to boost self-confidence and self-esteem, as volunteers see the positive impact they are making on the world around them.From a professional standpoint, volunteering can also provide numerous benefits. It can provide an opportunity to network with like-minded individuals, develop new skills and experiences, and gain valuable work experience. Volunteering can also help to build a positive reputation and enhance a resume, which can be beneficial for career advancement.Setting goals helps us to prioritize our time and resources, and provides a sense of direction and purpose. It allows us to break down larger, more complex tasks into smaller, more manageable ones, and helps us stay on track by providing a clear endpoint to work towards. Goals also provide a way to measure progress, and allow us to celebrate our achievements along the way.Moreover, setting goals can boost our self-confidence and self-esteem. When we set and achieve goals, we feel a sense of accomplishment and pride in ourselves, which can help to build a positive self-image and increase our overall well-being. Goals also provide us with a sense of control over our lives, as we actively work towards creating the future we want.In conclusion, setting goals is an essential step towards achieving success in any aspect of life. Whether its personal or professional, having clear and well-defined goals helps us to prioritize our time and resources, stay focused and motivated, measure progress, and boost our self-confidence and self-esteem. So, if you havent already, take some time to define your goals and start working towards them today.',
+  'Moreover, volunteering can have personal benefits as well. It can provide an opportunity to learn new skills, make new friends, and develop a sense of purpose and fulfillment. Volunteering can also help to boost self-confidence and self-esteem, as volunteers see the positive impact they are making on the world around them.From a professional standpoint, volunteering can also provide numerous benefits. It can provide an opportunity to network with like-minded individuals, develop new skills and experiences, and gain valuable work experience. Volunteering can also help to build a positive reputation and enhance a resume, which can be beneficial for career advancement.In conclusion, volunteering is a wonderful way to give back to the community and make a positive impact on the world around us. It can also provide numerous benefits for volunteers themselves, both personally and professionally. So, if youre looking for a way to make a difference and improve your own life at the same time, consider volunteering your time and skills to a worthy cause.',
+  "The storm was fierce, with winds that howled and rain that poured down in sheets. But as I watched from my window, I felt a sense of awe and wonder. The power of nature was on full display, and it was both terrifying and beautiful. It was a reminder that even in the face of uncontrollable forces, there was still a sense of order and purpose in the universe.",
+    ];
+
     function randomNum(){
         // Generate a random number between min and max
         const num = Math.floor(Math.random() * (100000000 - 0 + 1)) + 0;
@@ -28,25 +38,46 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, desc}) {
       }
     // Handle Info max and min
     useEffect(() => {
+        const captWrapper = document.getElementsByClassName(`${styles.captWrapper}`)[0];
         if (info) {
-            document.getElementsByClassName(`${styles.videoDesc}`)[0].style.webkitLineClamp = '';
-            const contentHeight = document.getElementsByClassName(`${styles.videoCat}`)[0].scrollHeight + document.getElementsByClassName(`${styles.videoTitle}`)[0].scrollHeight + document.getElementsByClassName(`${styles.videoDesc}`)[0].scrollHeight;
-                console.log(contentHeight);
-                if (contentHeight > 0.45 * window.innerHeight){
-                    infoRef.current.style.maxHeight = 45 + 'vh';
+            document.getElementsByClassName(`${styles.videoCapt}`)[0].style.WebkitLineClamp = '';
+            const contentHeight = document.getElementsByClassName(`${styles.videoCat}`)[0].scrollHeight + document.getElementsByClassName(`${styles.videoTitle}`)[0].scrollHeight + document.getElementsByClassName(`${styles.videoCapt}`)[0].scrollHeight;
+            console.log(document.getElementsByClassName(`${styles.captWrapper}`)[0])
+                if (contentHeight > 0.55 * window.innerHeight){
+                    infoRef.current.style.maxHeight = 55 + 'vh';
+                    // captWrapper.style.webkitBackgroundClip = 'text';
+                    // captWrapper.style.backgroundClip = 'text';
+                    // captWrapper.style.backgroundAttachment = 'fixed';
+                    // document.getElementById('#caption').style.color = 'transparent';
                 } else {
                     infoRef.current.style.maxHeight = contentHeight + 'px';
                 }
-                console.log(document.getElementsByClassName(`${styles.videoInfo}`));
             } else if (!info){
-                console.log(info)
                 infoRef.current.style.maxHeight = 105 + 'px';
                 setTimeout(()=>{
-                    document.getElementsByClassName(`${styles.videoDesc}`)[0].style.webkitLineClamp = 1;
+                    document.getElementsByClassName(`${styles.videoCapt}`)[0].style.WebkitLineClamp = 1;
                 }, 500);
         }
         
     },[info])
+    function handleScroll(){
+        const shadowTop = document.getElementsByClassName(`${styles.shadowTop}`)[0];
+        const shadowBottom = document.getElementsByClassName(`${styles.shadowBottom}`)[0];
+        const caption = document.getElementsByClassName(`${styles.videoCapt}`)[0];
+        const captWrapper = document.getElementsByClassName(`${styles.captWrapper}`)[0];
+        const captionScrollHeight = caption.scrollHeight - caption.offsetHeight;
+        const currentScroll = caption.scrollTop / (captionScrollHeight);
+        console.log(currentScroll);
+        // if (currentScroll === 0){
+        //     captWrapper.style.backgroundImage = 'linear-gradient(var(--on-background) 85%, transparent 91%)';
+        // }else if (currentScroll === 1){
+        //     captWrapper.style.backgroundImage = 'linear-gradient(transparent 45%, var(--on-background) 55%)';
+        // } else {
+        //     captWrapper.style.backgroundImage = 'linear-gradient(transparent 45%, var(--on-background) 55%, var(--on-background) 85%, transparent 91%)';
+        // }
+        shadowTop.style.opacity = currentScroll;
+        shadowBottom.style.opacity = 1 - currentScroll;
+    }
   return (
     <>
         {
@@ -59,7 +90,6 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, desc}) {
                     )
                 })}
                 </video>
-                <div className={styles.videoOverlay}></div>
                 {/* <div className={styles.videoAudio}>
                 
                     <button style={{display: isAudio === false ? '' : 'none'}} disabled>
@@ -84,6 +114,7 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, desc}) {
                         </g>
                     </svg>
                 </button> */}
+                <div className={`${styles.videoOverlay} ${info ? styles.active : ''}`} style={{height: info ? '100%' : '20%', opacity: info ? '1':'.8'}}></div>
                 <div className={styles.videoInfo} ref={infoRef} onClick={()=>setInfo(!info)}>
                     {cat ? 
                         <div className={`${styles.videoCat}`}>
@@ -94,10 +125,12 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, desc}) {
                     <div className={styles.videoTitle}>
                         <h1>{title}</h1>
                     </div>
-                    <div className={styles.videoDesc}>
-                        {desc}
-                        {desc} 
-                        {desc} 
+                    <div className={`${styles.videoCapt} ${info ? styles.active : ''}`}  onScroll={handleScroll}  style={{overflow: info ? 'scroll' : "hidden"}}>
+                        <div className={`${styles.shadowTop} ${styles.shadow}`}></div>
+                        <div className={`${styles.shadowBottom} ${styles.shadow}`}></div>
+                        <div className={`${styles.captWrapper} ${info? styles.active : ''}`}>
+                            <p style={{color: 'var(--on-background)'}} id='#caption'>{caption[Math.floor(Math.random() * caption.length)]}</p>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.videoSocial}>

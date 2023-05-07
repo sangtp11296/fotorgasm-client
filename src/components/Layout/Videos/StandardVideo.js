@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react'
 import styles from './StandardVideo.module.css'
 import VideoPage from '../VideoPage/VideoPage';
 
-function StandardVideo({image, url, cat, title, desc, onClick, isActive, setRef, postId}) {
+function StandardVideo({image, url, cat, title, capt, onClick, isActive, setRef, postId}) {
   const [isAudio, setAudio] = useState();
   const [isMuted, setMuted] = useState('');
 
@@ -74,7 +74,7 @@ function StandardVideo({image, url, cat, title, desc, onClick, isActive, setRef,
     } 
   }
   return (
-    <div className={`${styles.videoPost} ${styles.standardVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={handleHoverOn} onMouseLeave={handleHoverOff}>
+    <div className={`${styles.videoPost} ${styles.standardVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={isActive ? null : handleHoverOn} onMouseLeave={isActive ? null : handleHoverOff}>
       {
         !isActive ?
         <>
@@ -120,8 +120,8 @@ function StandardVideo({image, url, cat, title, desc, onClick, isActive, setRef,
               <div className={styles.videoTitle}>
                   <h1>{title}</h1>
               </div>
-              <div className={styles.videoDesc}>
-                  {desc}
+              <div className={styles.videoCapt}>
+                  {capt}
               </div>
           </div>
           <div className={styles.videoSocial}>
@@ -152,7 +152,7 @@ function StandardVideo({image, url, cat, title, desc, onClick, isActive, setRef,
         </> : ''
       }
         
-        {isActive&&<VideoPage postForm={'standardVideo'} fromFeed={true} url={url} title={title} cat={cat} image={image} desc={desc}/>}
+        {isActive&&<VideoPage postForm={'standardVideo'} fromFeed={true} url={url} title={title} cat={cat} image={image} capt={capt}/>}
     </div>
   )
 }

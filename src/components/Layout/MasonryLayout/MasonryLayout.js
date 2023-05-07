@@ -130,18 +130,18 @@ function MasonryLayout({media}) {
             else if (item.website === 'pexels'){
                 if (item.height > item.width){
                     return(
-                        <StandardVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} desc={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
+                        <StandardVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} capt={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
                     )
                 }
                 else if (item.height = item.width){
                     const rand = Math.random() < 0.5
                     if (rand) {
                         return(
-                            <SquareVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} desc={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
+                            <SquareVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} capt={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
                         )
                     } else {
                         return(
-                            <HorizontalVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} desc={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
+                            <HorizontalVideo postId={item.id} isActive={activeRef===ind} onClick={()=>clickToOpen(ind)} setRef={childRefs[ind]} capt={desc} title={title[Math.floor(Math.random() * title.length)]} cat={cat[Math.floor(Math.random() * cat.length)]} key={ind} image={item.image} url={item.video_files}/>
                         )
                     }
                 }

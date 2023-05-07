@@ -1,7 +1,7 @@
 import React, {useRef, useEffect, useState} from 'react'
 import styles from './SquareVideo.module.css'
 
-function SquareVideo({image, url, cat, title, desc, onClick, isActive, setRef, postId}) {
+function SquareVideo({image, url, cat, title, capt, onClick, isActive, setRef, postId}) {
   const videoRef = useRef();
   const [isAudio, setAudio] = useState();
   const [isMuted, setMuted] = useState('');
@@ -112,8 +112,8 @@ function SquareVideo({image, url, cat, title, desc, onClick, isActive, setRef, p
             <div className={styles.videoTitle}>
                 <h1>{title}</h1>
             </div>
-            <div className={styles.videoDesc}>
-                {desc}
+            <div className={styles.videoCapt}>
+                {capt}
             </div>
         </div>
         <div className={styles.videoSocial}>

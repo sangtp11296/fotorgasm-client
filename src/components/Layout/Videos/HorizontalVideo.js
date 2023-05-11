@@ -1,5 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react'
 import styles from './HorizontalVideo.module.css'
+import VideoPage from '../VideoPage/VideoPage';
 
 function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActive, postId}) {
   const [isAudio, setAudio] = useState();
@@ -8,10 +9,12 @@ function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActiv
   const videoRef = useRef();
   let timeoutID;
   const handleOnModal = () => {
+    document.body.classList.add('no-scroll');
     onClick();
     window.history.pushState({postId},'',`/post/${postId}`)
   }
   const handleOffModal = () => {
+    document.body.classList.remove('no-scroll');
     onClick();
     window.history.pushState({},'','/')
   }
@@ -72,6 +75,8 @@ function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActiv
 }
   return (
     <div className={`${styles.videoPost} ${styles.horizontalVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={handleHoverOn} onMouseLeave={handleHoverOff}>
+        {!isActive ? 
+        <>
         <video className={styles.videoSrc} poster={image} ref={videoRef} muted>
           {url.map((vid,ind) => {
             return(
@@ -79,9 +84,9 @@ function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActiv
             )
           })}
         </video>
-        <div className={styles.videoAudio}>
+        <div className={styles.videoAudio} onClick={isActive ? null : handleOnModal}>
           {/* no sound */}
-          <button style={{display: isAudio === false ? '' : 'none'}} disabled>
+          <button style={{display: isAudio === false ? '' : 'none', scale:'none', opacity:'.5'}} disabled>
             <svg viewBox="0 0 24 24" height='21px' width='21px' fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5 8.14307C3.4148 8.66137 3 9.49393 3 10.5V13.5C3 14.6046 3.5 15.5 5.5 16C7.5 16.5 9 21 12 21C12.6098 21 13.0337 19.3265 13.2717 17M3 3L21 21M9 4.60756C9.84604 3.71548 10.8038 3 12 3C12.7739 3 13.2484 5.69533 13.4233 9" stroke="#ffffff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path> </g></svg>
           </button>
           {/* muted */}
@@ -143,6 +148,13 @@ function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActiv
                 </g> </g> </g></svg>
             </div>
         </div>
+        </> : ''
+        }
+        {isActive&&
+        <>
+          <div className={styles.dimOverlay} onClick={isActive ? handleOffModal : null}></div>
+          <VideoPage postForm={'horizontalVideo'} fromFeed={true} url={url} title={title} cat={cat} image={image} capt={capt}/>
+        </>}
     </div>
   )
 }

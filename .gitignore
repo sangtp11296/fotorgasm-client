@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /ckeditor5
+/src 2
 /.pnp
 .pnp.js
 

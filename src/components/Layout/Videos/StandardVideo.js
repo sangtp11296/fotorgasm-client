@@ -151,8 +151,11 @@ function StandardVideo({image, url, cat, title, capt, onClick, isActive, setRef,
           </div>
         </> : ''
       }
-        
-        {isActive&&<VideoPage postForm={'standardVideo'} fromFeed={true} url={url} title={title} cat={cat} image={image} capt={capt}/>}
+        {isActive&&
+        <>
+          <div className={styles.dimOverlay} onClick={isActive ? handleOffModal : null}></div>
+          <VideoPage postForm={'standardVideo'} fromFeed={true} url={url} title={title} cat={cat} image={image} capt={capt}/>
+        </>}
     </div>
   )
 }

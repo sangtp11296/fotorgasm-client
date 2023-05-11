@@ -43,7 +43,7 @@ function PostGrid() {
         });
 
       const headers = { Authorization: 'UcBD3Kb5HiiEZMeOkJs9r5t6eEdlfBSUWiLnGnNkAYZ0ncopY8NT4FkY' };
-      axios.get(`https://api.pexels.com/videos/search?query=sound%20music&page=${page}&per_page=10`, { headers })
+      axios.get(`https://api.pexels.com/videos/search?query=sound%20music&orientation=portrait&page=${page}&per_page=10`, { headers })
       .then(response => {
         const data = response.data.videos;
         data.map((video) => {

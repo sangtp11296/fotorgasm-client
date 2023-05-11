@@ -1,3 +1,4 @@
+
 /* Standard Video Page */
 .standardVideo{
     position: fixed;
@@ -6,11 +7,13 @@
     left: 30vw;
     width: auto;
     height: 90vh;
+    max-height: 90vh;
+    /* min-width: 500px; */
 }
 .standardVideo .videoSrc{
     object-fit: contain;
-    width: 100%;
-    height: 100%;
+    height: inherit;
+    width: inherit;
     transition: 2s ease-out;
 }
 .videoOverlay{
@@ -20,7 +23,15 @@
     /* transition: all .3s ease-in-out; */
     background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(5, 5, 5, 0.897) 100%);
     opacity: .8;
-    border-radius: 0 0 15px 15px;
+}
+.playPause{
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    z-index: 1;
+    width: 70px;
+    height: 70px;
+    opacity: .8;
 }
 .videoOverlay.active{
     background: rgba(0, 0, 0, 0.5);
@@ -46,8 +57,8 @@
 }
 .videoAudio{
     position: absolute;
-    top: 10px;
-    right: 40px;
+    top: 20px;
+    right: 20px;
 }
 .videoAudio button{
     background-color: transparent;
@@ -63,9 +74,7 @@
     flex-direction: column;
     padding-left: 25px;
     width: 85%;
-    max-height: 100px;
     height: auto;
-    transition: max-height .2s ease-in;
 }
 .videoCat{
     width: fit-content;
@@ -76,14 +85,14 @@
 .videoCat img{
     box-shadow: 0px 0px 2px 0px rgba(255, 255, 255, 0.153);
     border-radius: 100%;
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
 }
 .videoCat span{
     padding-left: 5px;
     color: var(--on-background);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 13px;
+    font-weight: 400;
     text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.285);
 }
 
@@ -100,46 +109,40 @@
     letter-spacing: .5px;
 }
 .videoCapt{
+    transition: max-height .5s ease-in;
     color: var(--on-background);
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     line-height: 1.2rem;
-    /* -webkit-line-clamp: 1; */
-    background: transparent;
     position: relative;
-    height: auto;
+    font-size: 15px;
 }
 .videoCapt::-webkit-scrollbar{
     width: 0;
     height: 0;
     background-color: transparent;
 }
-.shadow{
-    position: sticky;
-    left: 0;
-    z-index: 4;
-    width: 100%;
-    height: 40px;
-}
-.shadowTop{
-    top: 0;
-    background: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.35), transparent);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent);
-    opacity: 0;
-}
-
-.shadowBottom {
-    bottom: 0px;
-    background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent);
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.479), transparent);
-}
-.captWrapper.active {
-    /* background-image: linear-gradient(transparent 45%, var(--on-background) 55%, var(--on-background) 85%, transparent 91%);
+.captWrapper.fade {
+    background-image: linear-gradient(white 85%, transparent 91%); 
     -webkit-background-clip: text; 
     background-clip: text;
-    background-attachment: fixed; */
-    position: relative;
+    background-attachment: fixed;
+}
+.captWrapper.fade p{
+    color: transparent !important;
+    font-weight: 500;
+}
+.videographer{
+    padding-top: 14px;
+    height: 30px;
+    color: var(--on-background);
+    font-size: 14px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    letter-spacing: .5px;
 }
 .videoSocial{
     display: flex;
@@ -147,23 +150,23 @@
     flex-direction: column;
     right: 20px;
     bottom: 20px;
-    width: 20px;
+    width: 30px;
     justify-content: center;
     align-items: center;
 }
 .videoSocial span{
     color: var(--on-background);
     font-family: 'Neue Helvetica';
-    font-size: 10px;
+    font-size: 11px;
 }
 .videoSocial button{
-    height: 35px;
+    height: 30px;
     margin-top: 20px;
     cursor: pointer;
     background-color: transparent;
 }
 .videoSocial button svg{
-    height: 35px;
+    height: 30px;
 }
 .videoSocial button svg path{
     transition: all .1s ease-out;

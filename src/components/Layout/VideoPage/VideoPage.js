@@ -15,6 +15,8 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, capt}) {
     const [isMuted, setMuted] = useState('');
     // toggle comment
     const [isComment, setComment] = useState(false);
+
+    const [isRender, setRender] = useState();
     
 
     function randomNum(){
@@ -76,18 +78,18 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, capt}) {
     }
     // Check audio source and mute or unmute
     useEffect(()=>{
-        if (videoRef.current.mozHasAudio ||
-            Boolean(videoRef.current.webkitAudioDecodedByteCount) ||
-            Boolean(videoRef.current.audioTracks && videoRef.current.audioTracks.length)){
-            if(videoRef.current.muted){
-              setMuted('muted');
-              setAudio(true);
+        setTimeout(() => {
+            if (videoRef.current.mozHasAudio || Boolean(videoRef.current.webkitAudioDecodedByteCount) || Boolean(videoRef.current.audioTracks && videoRef.current.audioTracks.length)){
+              if(videoRef.current.muted){
+                setMuted('muted');
+                setAudio(true);
+              }
+            } else {
+              setAudio(false);
+              setMuted(null);
             }
-          } else {
-            setAudio(false);
-            setMuted(null);
-          }
-    },[])
+          }, 500);
+    }, [])
     function toggleMute(){
         videoRef.current.muted = !videoRef.current.muted;
         if (isMuted === 'unmuted'){
@@ -121,13 +123,13 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, capt}) {
             }
         }
     }
-    // Update fade out caption when changing viewport
-    useEffect(()=>{
-        window.addEventListener('resize',handleScroll);
-        return() => {
-            window.removeEventListener('resize',handleScroll);
-        }
-    }, [])
+    // Function center the component
+    // useEffect(()=>{
+    //     const videoContainer = document.getElementsByClassName(`${styles.standardVideo}`)[0] || document.getElementsByClassName(`${styles.otherVideo}`)[0];
+    //     console.log(videoContainer.offsetWidth)
+    //     videoContainer.style.marginLeft = `-${videoContainer.offsetWidth/2}px`;
+    //     videoContainer.style.marginTop = `-${videoRef.current.offsetHeight/2}px`;
+    // }, [])
     useEffect(()=>{
         const videoContainer = document.getElementsByClassName(`${styles.standardVideo}`)[0] || document.getElementsByClassName(`${styles.otherVideo}`)[0];
         console.log(videoContainer.offsetWidth)

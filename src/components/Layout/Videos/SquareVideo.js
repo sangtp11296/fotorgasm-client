@@ -72,7 +72,7 @@ function SquareVideo({image, url, cat, title, capt, onClick, isActive, setRef, p
     } 
 }
   return (
-    <div className={`${styles.videoPost} ${styles.squareVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={handleHoverOn} onMouseLeave={handleHoverOff}>
+    <div className={`${styles.videoPost} ${styles.squareVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={isActive ? null : handleHoverOn} onMouseLeave={isActive ? null : handleHoverOff}>
       {
         !isActive ? 
         <>

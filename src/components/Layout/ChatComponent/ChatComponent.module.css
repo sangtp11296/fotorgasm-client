@@ -1,0 +1,6 @@
+.chatComponent{
+    width: 25vw;
+    min-width: 20vw;
+    color: var(--on-background);
+    background-color: var(--surface-04);
+}

@@ -3,28 +3,47 @@
 .standardVideo{
     position: fixed;
     z-index: 2;
-    top: 5vh;
-    left: 30vw;
+    top: 50%;
+    left: 50%;
     width: auto;
     height: 90vh;
     max-height: 90vh;
     /* min-width: 500px; */
 }
+.standardVideo .videoContainer{
+    position: relative;
+    height: 100%;
+}
 .videoSrc{
+    position: relative;
     object-fit: contain;
-    height: inherit;
-    width: inherit;
+    height: 100%;
+    width: 100%;
     transition: 2s ease-out;
 }
 /* Square and Horizontal Video Page */
 .otherVideo{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     position: fixed;
     z-index: 4;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70vw;
-    height: auto;
+}
+.otherVideo .videoContainer{
+    position: relative;
+    width: auto;
+    height: 60vh;
+    max-width: 90vw;
+}
+.otherVideo .videoSrc{
+    position: relative;
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    transition: 2s ease-out;
+
 }
 .videoOverlay{
     position: absolute;
@@ -119,13 +138,13 @@
     letter-spacing: .5px;
 }
 .videoCapt{
+    width: 100%;
     transition: max-height .5s ease-in;
     color: var(--on-background);
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     line-height: 1.2rem;
-    position: relative;
     font-size: 15px;
 }
 .videoCapt::-webkit-scrollbar{
@@ -134,7 +153,12 @@
     background-color: transparent;
 }
 .captWrapper.fade {
-    background-image: linear-gradient(white 85%, transparent 91%); 
+    background-image: linear-gradient(white 85%, transparent 90%); 
+    background-clip: text;
+    background-attachment: fixed;
+}
+.otherVideo .captWrapper.fade {
+    background-image: linear-gradient(white 72%, transparent 76%); 
     -webkit-background-clip: text; 
     background-clip: text;
     background-attachment: fixed;
@@ -147,7 +171,7 @@
     padding-top: 14px;
     height: 30px;
     color: var(--on-background);
-    font-size: 14px;
+    font-size: 12px;
     display: flex;
     flex-direction: row;
     align-items: center;

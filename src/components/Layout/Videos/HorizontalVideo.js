@@ -74,7 +74,7 @@ function HorizontalVideo({image, url, title, cat, capt, onClick, setRef, isActiv
     } 
 }
   return (
-    <div className={`${styles.videoPost} ${styles.horizontalVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={handleHoverOn} onMouseLeave={handleHoverOff}>
+    <div className={`${styles.videoPost} ${styles.horizontalVideo}`} onClick={isActive ? null : handleOnModal} ref={setRef} onMouseEnter={isActive ? null : handleHoverOn} onMouseLeave={isActive ? null : handleHoverOff}>
         {!isActive ? 
         <>
         <video className={styles.videoSrc} poster={image} ref={videoRef} muted>

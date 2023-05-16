@@ -105,7 +105,7 @@ function PostGrid() {
                   <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
                   <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
                   <g id="SVGRepo_iconCarrier" >
-                    <path className="st1" style={{fill:`${click==='video'?'var(--on-background)':'var(--on-background-matte)'}`}} d="M32,19c0,1.1-0.9,2-2,2h-8c-1.1,0-2-0.9-2-2l0,0c0-1.1,0.9-2,2-2h8C31.1,17,32,17.9,32,19L32,19z"></path> 
+                    <path className="st1" style={{fill:`${click==='photo'?'var(--on-background)':'var(--on-background-matte)'}`}} d="M32,19c0,1.1-0.9,2-2,2h-8c-1.1,0-2-0.9-2-2l0,0c0-1.1,0.9-2,2-2h8C31.1,17,32,17.9,32,19L32,19z"></path> 
                     <path className="st2" style={{fill:`${click==='photo'?'var(--on-background)':'var(--on-background-matte)'}`}} d="M50,21H37v22h8c1.1,0,2-0.9,2-2v-6c0,0,0-2,2-2h1c1.1,0,2-0.9,2-2v-8C52,21.9,51.1,21,50,21z"></path> 
                     <path className="st3" style={{fill:`${click==='photo'?'var(--on-background)':'var(--on-background-matte)'}`}} d="M36,47c0,1.1-0.9,2-2,2H18c-1.1,0-2-0.9-2-2V19c0-1.1,0.9-2,2-2h16c1.1,0,2,0.9,2,2V47z"></path> 
                     <path className="st3" style={{fill:`${click==='photo'?'var(--on-background)':'var(--on-background-matte)'}`}} d="M32,17c0,1.1-0.9,2-2,2h-8c-1.1,0-2-0.9-2-2l0,0c0-1.1,0.9-2,2-2h8C31.1,15,32,15.9,32,17L32,17z"></path> 

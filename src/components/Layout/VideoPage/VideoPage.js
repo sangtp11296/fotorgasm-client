@@ -123,13 +123,6 @@ function VideoPage({postForm, url, image, fromFeed, title, cat, capt}) {
             }
         }
     }
-    // Function center the component
-    // useEffect(()=>{
-    //     const videoContainer = document.getElementsByClassName(`${styles.standardVideo}`)[0] || document.getElementsByClassName(`${styles.otherVideo}`)[0];
-    //     console.log(videoContainer.offsetWidth)
-    //     videoContainer.style.marginLeft = `-${videoContainer.offsetWidth/2}px`;
-    //     videoContainer.style.marginTop = `-${videoRef.current.offsetHeight/2}px`;
-    // }, [])
     useEffect(()=>{
         const videoContainer = document.getElementsByClassName(`${styles.standardVideo}`)[0] || document.getElementsByClassName(`${styles.otherVideo}`)[0];
         console.log(videoContainer.offsetWidth)

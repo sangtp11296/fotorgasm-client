@@ -1,0 +1,80 @@
+.welcomeAdmin{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.welcomeAdminContainer{
+    width: 40vw;
+    background-color: var(--surface-02);
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+.brandName{
+    margin-top: 40px;
+}
+.detailInput{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Neue Helvetica';
+}
+.detailInput h1{
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: var(--on-background);
+}
+.detailInput h2{
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    color: var(--on-background-light);
+}
+.signInUp{
+    display: flex;
+    justify-content: center;
+    background-color: var(--surface-08);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.signInUp span{
+    color: var(--on-background);
+    font-size: 14px;
+    padding: 13px 49px;
+    border-radius: 10px;
+    margin: 2px;
+}
+.boxInput{
+    border: 2px solid var(--surface-08);
+    border-radius: 15px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.boxInput div{
+    padding: 8px 15px;
+    margin: 10px 0px;
+    border-right: 2px solid var(--on-separate);
+}
+.boxInput svg{
+    height: 15px;
+}
+.boxInput input{
+    background-color: var(--surface-02);
+    width: 250px;
+    padding: 10px;
+    color: var(--on-background);
+}
+.boxInput input:focus{
+    outline: none;
+}

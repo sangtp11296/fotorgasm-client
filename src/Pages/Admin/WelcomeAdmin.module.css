@@ -6,13 +6,14 @@
     align-items: center;
 }
 .welcomeAdminContainer{
-    width: 40vw;
+    width: 500px;
     background-color: var(--surface-02);
-    height: 70vh;
+    height: 75vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    border-radius: 15px;
 }
 .brandName{
     margin-top: 40px;
@@ -38,6 +39,7 @@
     margin-bottom: 20px;
     color: var(--on-background-light);
 }
+
 .signInUp{
     display: flex;
     justify-content: center;
@@ -45,36 +47,87 @@
     border-radius: 10px;
     margin-bottom: 20px;
 }
-.signInUp span{
+.signInUp button{
     color: var(--on-background);
+    background-color: var(--surface-08);
     font-size: 14px;
     padding: 13px 49px;
     border-radius: 10px;
     margin: 2px;
+    cursor: pointer;
 }
-.boxInput{
+.signInUp button.active{
+    background-color: var(--surface-02);
+}
+.signForm{
+    max-height: 130px;
+    /* transition: all 5s; */
+}
+.signForm.signUp{
+    transition: all 1s;
+    max-height: 288px;
+}
+.formInput{
     border: 2px solid var(--surface-08);
     border-radius: 15px;
-    height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
 }
-.boxInput div{
+.formInput .iconContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 8px 15px;
     margin: 10px 0px;
-    border-right: 2px solid var(--on-separate);
+    /* border-right: 2px solid var(--on-separate); */
 }
-.boxInput svg{
+.iconContainer svg{
     height: 15px;
 }
-.boxInput input{
-    background-color: var(--surface-02);
-    width: 250px;
+.iconContainer.password svg{
+    height: 20px;
+}
+.iconContainer.password{
+    padding: 5px 15px;
+}
+.inputContainer{
+    display: flex;
+    flex-direction: column;
     padding: 10px;
+}
+.inputContainer h4{
+    color: var(--on-background-matte);
+    font-size: 12px;
+    font-weight: 500;
+}
+.formInput input{
+    background-color: var(--surface-02);
+    width: 184px;
     color: var(--on-background);
 }
-.boxInput input:focus{
+.formInput input:focus{
     outline: none;
+}
+.checkerContainer{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+.button{
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: var(--primary);
+    color: var(--on-background);
+    font-size: 15px;
+    letter-spacing: .8px;
+    cursor: pointer;
+    transition: all .2s;
+}
+.button:hover{
+    transition: all .2s;
+    background-color: var(--blue);
 }

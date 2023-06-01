@@ -68,11 +68,12 @@
     max-height: 288px;
 }
 .formInput{
+    position: relative;
     border: 2px solid var(--surface-08);
     border-radius: 15px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     margin-bottom: 20px;
 }
@@ -80,7 +81,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 15px;
+    padding: 8px 17.5px;
     margin: 10px 0px;
     /* border-right: 2px solid var(--on-separate); */
 }
@@ -104,19 +105,24 @@
     font-weight: 500;
 }
 .formInput input{
-    background-color: var(--surface-02);
+    background-color: transparent;
     width: 184px;
     color: var(--on-background);
 }
 .formInput input:focus{
     outline: none;
 }
+.formInput input:-webkit-autofill,
+.formInput input:-webkit-autofill:focus {
+    background-color: transparent  !important;
+  }
 .checkerContainer{
     padding: 10px;
     display: flex;
     justify-content: center;
 }
 .button{
+    margin-top: 10px;
     width: 300px;
     height: 50px;
     border-radius: 10px;

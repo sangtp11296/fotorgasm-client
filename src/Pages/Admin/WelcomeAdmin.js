@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import styles from './WelcomeAdmin.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux/es/exports';
 import { loginStart, loginSuccess, loginFailure } from '../../Redux/auth/authSlice';
 import axios from 'axios';
@@ -9,6 +9,7 @@ function WelcomeAdmin() {
   const [sign, setSign] = useState('signin');
   const [error, setError] = useState(null);
   const [passError, setPassError] = useState(null);
+  const navigate = useNavigate();
 
   const userRef = useRef();
   const passRef = useRef();
@@ -20,16 +21,16 @@ function WelcomeAdmin() {
   const handleSignIn = async (event)=> {
     event.preventDefault();
     setError(null);
-    () => dispatch(loginStart());
+    dispatch(loginStart());
     try{
       const res = await axios.post('https://w9esxs9q88.execute-api.ap-southeast-1.amazonaws.com/dev/login',{
         username: userRef.current.value,
         password: passRef.current.value
       });
-      () => dispatch(loginSuccess(res.data));
-      res.data && window.location.replace('/fotorgasm');
+      dispatch(loginSuccess(userRef.current.value));
+      res.data && navigate('/fotorgasm');
     } catch (err) {
-      () => dispatch(loginFailure());
+      dispatch(loginFailure());
       console.log(err);
       setError(true);
     }

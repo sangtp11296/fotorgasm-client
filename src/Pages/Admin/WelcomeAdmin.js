@@ -27,7 +27,8 @@ function WelcomeAdmin() {
         username: userRef.current.value,
         password: passRef.current.value
       });
-      dispatch(loginSuccess(userRef.current.value));
+      dispatch(loginSuccess(res.data));
+      console.log(res.data)
       res.data && navigate('/fotorgasm');
     } catch (err) {
       dispatch(loginFailure());

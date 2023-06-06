@@ -3,6 +3,8 @@ import { PURGE } from "redux-persist";
 
 const initialState = {
     user: null,
+    userID: null,
+    userAvatar: null,
     isFetching: false,
     error: false
 };
@@ -15,7 +17,9 @@ const authSlice = createSlice({
             state.isFetching = true;
         },
         loginSuccess: (state, action) => {
-            state.user = action.payload;
+            state.user = action.payload.username;
+            state.userID = action.payload.userID;
+            state.userAvatar = action.payload.userAvatar;
             state.isFetching = false;
         },
         loginFailure: (state) => {
@@ -23,6 +27,7 @@ const authSlice = createSlice({
         },
         logout: (state) => {
             state.user = null;
+            state.userID = null;
             state.isFetching = false;
             state.error = false;
         }

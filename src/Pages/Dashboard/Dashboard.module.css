@@ -196,17 +196,21 @@
 .editPart{
     border-radius: 100%;
     padding: 0;
-    cursor: pointer;
     position: relative;
 }
 .editPart .iconContainer:first-child{
     padding: 10px;
 }
+.editForm{
+    position: relative;
+    display: flex;
+}
 .editItem{
-    position: absolute;
+    /* position: absolute; */
     transition: all .2s ease-in-out;
 }
 .iconContainer{
+    cursor: pointer;
     display: flex;
     align-items: center;
 }
@@ -557,17 +561,21 @@
     .editPart{
         border-radius: 100%;
         padding: 0;
-        cursor: pointer;
         position: relative;
     }
     .editPart .iconContainer:first-child{
         padding: 10px;
     }
+    .editForm{
+        position: relative;
+        display: flex;
+    }
     .editItem{
-        position: absolute;
+        /* position: absolute; */
         transition: all .2s ease-in-out;
     }
     .iconContainer{
+        cursor: pointer;
         display: flex;
         align-items: center;
     }
